@@ -1,0 +1,75 @@
+<div class="signup-tab">
+  <div class="modal-header bg-login padding-top-10 padding-bottom-20">
+    <h3 class="color-white">Sign Up</h3>
+  </div>
+  <div class="modal-body" style="max-height: 450px;">
+    <div class="text-center signup-completed" data-ng-show="regExist">
+      <h3>User Exist</h3>
+      <button class="btn btn-default btn-primary btn-login" data-ng-click="closePop()">Close</button>
+    </div>
+    <div class="text-center signup-completed" data-ng-show="regCompleted">
+      <h3>Your account has been successfully created. You should receive an account validation email shortly. Once this validation has been completed you will be able to log in to your account.If you do not get the validation email, please contact support@expaus.in.</h3>
+      <button class="btn btn-default btn-primary btn-login" data-ng-click="closePop()">Close</button>
+    </div>
+    <form data-ng-submit="register(user, signUpForm)" name="signUpForm" data-ng-hide="regCompleted || regExist" novalidate>
+      <div class="padding-all-50 padding-top-0 padding-bottom-0">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="text" data-ng-model="user.name" name="name" class="form-control input-flat" placeholder="Name" required/>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="email" data-ng-model="user.email" name="email" class="form-control input-flat" placeholder="Email" required/>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="password" data-ng-model="user.password" name="password" class="form-control input-flat" placeholder="Password" required/>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="text" data-ng-model="user.company" name="brand" class="form-control input-flat" placeholder="Company Name" required/>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="text" data-ng-model="user.department" name="department" class="form-control input-flat" placeholder="Department" required/>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="text" data-ng-model="user.phonenumber" name="phonenumber" class="form-control input-flat" placeholder="Phone Number" required/>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <div style="center">
+                <input type="checkbox" id="checkbox-head" class="regular-checkbox" data-ng-model="terms" />
+                <label for="checkbox-head"></label>
+                I accept the <a href="#" ng-click="$event.preventDefault(); termsAndConditionDocPopup()">terms and agreements</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <button type="submit" data-ng-disabled="!terms" class="btn btn-register input-flat">Register</button>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group text-center">
+              <div class="center">Already have an account?</div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <button class="btn btn-full btn-login input-flat" data-ng-click="loginAdvertiser()">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

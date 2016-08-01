@@ -1,0 +1,340 @@
+<div data-ng-controller="HomeCtrl" scroll>
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please upgrade your browser to improve your experience.</p>
+  <![endif]-->
+    <header class="navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="" href="index.html"> <img src="assets/images/logo.png" width="174" heigh="40" class="brand" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="submenu" ng-init="setLanguageView()">
+                        <a href="#" ng-click="$event.preventDefault();" ng-mouseenter="toggleLaguage = true" ng-mouseleave="toggleLaguage = false">{{language}}
+                        <span class="caret"></span></a>
+                        <ul ng-mouseenter="toggleLaguage = true" ng-mouseleave="toggleLaguage = false" data-slide-toggle="toggleLaguage" data-slide-toggle-duration="300">
+                            <li ng-if="localStorage.NG_TRANSLATE_LANG_KEY != 'en'"><a href="#" ng-click="$event.preventDefault();changeLanguage('en')">English</a></li>
+                            <li ng-if="localStorage.NG_TRANSLATE_LANG_KEY != 'jap'"><a href="#" ng-click="$event.preventDefault();changeLanguage('jap')">日本語</a></li>
+                            <li ng-if="localStorage.NG_TRANSLATE_LANG_KEY != 'kor'"><a href="#" ng-click="$event.preventDefault();changeLanguage('kor')">Korean</a></li>
+                            <li ng-if="localStorage.NG_TRANSLATE_LANG_KEY != 'chin'"><a href="#" ng-click="$event.preventDefault();changeLanguage('chin')">Chinese</a></li>
+                        </ul>
+                    </li>
+                    <li><a translate="LANDING_PAGE.HEADER_LI_2" href="#" ng-click="$event.preventDefault(); login();">Sign In</a></li>
+                    <li><a translate="LANDING_PAGE.HEADER_LI_3" href="#" ng-click="$event.preventDefault(); signup()">Sign Up</a></li>
+                </ul>
+            </div>
+            <!-- END navbar-collapse -->
+        </div>
+        <!-- END container -->
+    </header>
+    <!-- END header-->
+    <div class="mobile_header navbar-fixed-top" ng-init="trigger = false;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="mb_logo">
+                        <img src="assets/images/logo.png" width="174" heigh="40" class="brand" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-7 sign_in_up">
+                    <ul class="pull-right">
+                        <li><a translate="LANDING_PAGE.HEADER_LI_2_MOBILE" href="#" ng-click="$event.preventDefault(); login();$window.scrollTo(0, 0);">Sign In</a></li>
+                        <li><a translate="LANDING_PAGE.HEADER_LI_3_MOBILE" href="#" ng-click="$event.preventDefault(); signup()">Sign Up</a></li>
+                        <li class="mb_trigger" ng-click="trigger = !trigger; console.log(trigger);toggleLaguage = true">
+                            <p><i class="fa fa-bars"></i></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="display:none;" data-slide-toggle="trigger" data-slide-toggle-duration="300">
+                <!-- <ul class="nav navbar-nav pull-right" ng-mouseleave="trigger = false; toggleLaguage= !toggleLaguage"> -->
+                <ul class="nav navbar-nav pull-right">
+                    <li class="submenu">
+                        <a href="#" ng-click="$event.preventDefault();toggleLaguage= !toggleLaguage">{{language}}
+                            <!-- <span class="caret"></span> -->
+                        </a>
+                        <ul data-slide-toggle="toggleLaguage" data-slide-toggle-duration="300">
+                            <li ng-if="localStorage.NG_TRANSLATE_LANG_KEY != 'en'"><a href="#" ng-click="$event.preventDefault();changeLanguage('en')">English</a></li>
+                            <li ng-if="localStorage.NG_TRANSLATE_LANG_KEY != 'jap'"><a href="#" ng-click="$event.preventDefault();changeLanguage('jap')">日本語</a></li>
+                            <li ng-if="localStorage.NG_TRANSLATE_LANG_KEY != 'kor'"><a href="#" ng-click="$event.preventDefault();changeLanguage('kor')">Korean</a></li>
+                            <li ng-if="localStorage.NG_TRANSLATE_LANG_KEY != 'chin'"><a href="#" ng-click="$event.preventDefault();changeLanguage('chin')">Chinese</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- END container -->
+    </div>
+    <section id="home_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="welcome_text text-center">
+                        <h1 translate="LANDING_PAGE.HEADING_PAGE1">Connect with consumers more directly, more organically, and at scale</h1>
+                        <h3 translate="LANDING_PAGE.SUB_HEADING_PAGE1">Influencer marketing platform for powerful collaboration</h3>
+                    </div>
+                    <div class="sign_up_btn text-center">
+                        <button translate="LANDING_PAGE.BTN_SINGUP" class="btn" ng-click="$event.preventDefault(); signup();">Register on expaus</button>
+                    </div>
+                    <div class="some_fact text-center">
+                        <div class="col-md-4">
+                            <div class="fact_single">
+                                <h3><span><i class="fa fa-users"></i></span> 1800+</h3>
+                                <p translate="LANDING_PAGE.P_REG_INSTAGRAM">Registered Instagramers</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="fact_single">
+                                <h3><span><i class="fa fa-instagram"></i></span> 90000000+</h3>
+                                <p translate="LANDING_PAGE.P_FOLLOWERS">Total Followers</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="fact_single">
+                                <h3><span><i class="fa fa-globe"></i></span> 10+</h3>
+                                <p translate="LANDING_PAGE.P_COUNTIERS">countries</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END row-->
+        </div>
+        <!-- END container-->
+    </section>
+    <!-- HOME home_banner-->
+    <section id="brands">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 translate="LANDING_PAGE.HEADING_BRAND">Brands using expaus</h1>
+                </div>
+                <div class="brand_wrap">
+                    <div class="col-md-2 col-md-offset-1 col-xs-5 col-xs-offset-2 ">
+                        <img src="assets/images/brand/ellecafe-320.png" width="160" heigh="106" class="brand" alt="">
+                    </div>
+                    <div class="col-md-2 col-xs-5 ">
+                        <img src="assets/images/brand/bread-320.png" width="160" heigh="106" class="brand" alt="">
+                    </div>
+                    
+                    <div class="col-md-2 col-xs-5" style="margin-top: 41px;">
+                        <img src="assets/images/brand/gcc-320.png" width="532" heigh="106" class="brand" alt="">
+                    </div>
+                    <div class="col-md-2 col-xs-5">
+                        <img src="assets/images/brand/nine-320.png" width="160" heigh="106" class="brand" alt="">
+                    </div>
+                    <div class="col-md-2 col-xs-5">
+                        <img src="assets/images/brand/ameya-320.png" width="160" heigh="106" class="brand" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- END row-->
+        </div>
+        <!-- END container-->
+    </section>
+    <!-- END brands-->
+    <section id="three_steps">
+        <div class="container step_wraper">
+            <div class="col-md-12">
+                <h1 translate="LANDING_PAGE.HEADING_THREESTEPS">3 steps</h1>
+            </div>
+            <div class="row">
+                <div class="step_single">
+                    <div class="col-md-6 col-sm-6 visible-mobile">
+                        <div class="step_content">
+                            <h3 translate="LANDING_PAGE.HEADING_STEP1">1. Manage Campain</h3>
+                            <p translate="LANDING_PAGE.P_STEP1">Create camapaigns and invite Instagramers to promote your brand. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="step_img">
+                            <img src="assets/images/step1.png" width="480" heigh="296" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 visible-lg-screen">
+                        <div class="step_content">
+                            <h3 translate="LANDING_PAGE.HEADING_STEP1">1. Manage Campain</h3>
+                            <p translate="LANDING_PAGE.P_STEP1">Create camapaigns and invite Instagramers to promote your brand. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END row-->
+            <div class="row">
+                <div class="step_single">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="step_content">
+                            <h3 translate="LANDING_PAGE.HEADING_STEP2">2. Search Instagramers</h3>
+                            <p translate="LANDING_PAGE.P_STEP2">Search for the best instagramers for your brand promotion. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="step_img">
+                            <img src="assets/images/step2.png" width="480" heigh="296" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END row-->
+            <div class="row">
+                <div class="step_single">
+                    <div class="col-md-6 col-sm-6 visible-mobile">
+                        <div class="step_content">
+                            <h3 translate="LANDING_PAGE.HEADING_STEP3">3. Collaborate</h3>
+                            <p translate="LANDING_PAGE.P_STEP3">Easy to coordinate and negotiate with the instagramers to collaborate for your promotion. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="step_img">
+                            <img src="assets/images/step3.png" width="480" heigh="296" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 visible-lg-screen">
+                        <div class="step_content">
+                            <h3 translate="LANDING_PAGE.HEADING_STEP3">3. Collaborate</h3>
+                            <p translate="LANDING_PAGE.P_STEP3">Easy to coordinate and negotiate with the instagramers to collaborate for your promotion. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END row-->
+        </div>
+        <!-- END container-->
+    </section>
+    <!-- END three_steps-->
+    <section id="case_study">
+        <div class="container">
+            <div class="row">
+                <div data-wrap-owlcarousel class="owl-carousel">
+                    <div class="slider_item">
+                        <div class="col-md-6">
+                            <div class="case_study_text">
+                                <div class="case_info">
+                                    <h3 translate="LANDING_PAGE.HEADING_CASE1_1">Case Study </h3>
+                                    <h1 translate="LANDING_PAGE.HEADING_CASE1_2">ELLE café</h1>
+                                    <h3 translate="LANDING_PAGE.HEADING_CASE1_3">Overview:</h3>
+                                    <p translate="LANDING_PAGE.P_CASE1_1">
+                                        ELLE caféマグカップの新発売に合わせて、8名のインスタグラマーと ブランドの認知拡大を目的としたPRキャンペーンを実施。 ELLEのブランドイメージと、食卓の風景を上手く重ね合わせることで 日常に馴染んだキャンペーンに成功。
+                                    </p>
+                                </div>
+                                <div class="case_results">
+                                    <h3 translate="LANDING_PAGE.HEADING_CASE1_4">Result:</h3>
+                                    <h1 translate="LANDING_PAGE.HEADING_CASE1_5">600K | 20K | 276</h1>
+                                    <p translate="LANDING_PAGE.P_CASE1_2">トータルリーチ数 　 投稿へのライク数　 総コメント数</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="case_study_img">
+                                <img src="assets/images/slider1.jpg" width="556" heigh="384" class="img-responsive" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END slider item-->
+                    <div class="slider_item">
+                        <div class="col-md-6">
+                            <div class="case_study_text">
+                                <div class="case_info">
+                                    <h3 translate="LANDING_PAGE.HEADING_CASE2_1">Case Study </h3>
+                                    <h1 translate="LANDING_PAGE.HEADING_CASE2_2">ELLE café</h1>
+                                    <h3 translate="LANDING_PAGE.HEADING_CASE2_3">Overview:</h3>
+                                    <p translate="LANDING_PAGE.P_CASE2_1">
+                                        ELLE caféマグカップの新発売に合わせて、8名のインスタグラマーと ブランドの認知拡大を目的としたPRキャンペーンを実施。 ELLEのブランドイメージと、食卓の風景を上手く重ね合わせることで 日常に馴染んだキャンペーンに成功。
+                                    </p>
+                                </div>
+                                <div class="case_results">
+                                    <h3 translate="LANDING_PAGE.HEADING_CASE2_4">Result:</h3>
+                                    <h1 translate="LANDING_PAGE.HEADING_CASE2_5">600K | 20K | 276</h1>
+                                    <p translate="LANDING_PAGE.P_CASE2_2">トータルリーチ数 　 投稿へのライク数　 総コメント数</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="case_study_img">
+                                <img src="assets/images/slider2.jpg" width="556" heigh="384" class="img-responsive" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END slider item-->
+                </div>
+                <!-- END slider-->
+            </div>
+            <!-- END row -->
+        </div>
+        <!-- END container -->
+    </section>
+    <!-- END case_study-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="footer_logo">
+                        <img src="assets/images/logo-footer.png" width="124" heigh="29" class="brand" alt="">
+                        <p>Copyright &copy; 2015 Lxgic Inc.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6">
+                    <div class="footer_link">
+                        <h3 translate="LANDING_PAGE.FOOTER_INSTAGRAMERS">INSTAGRAMERS</h3>
+                        <ul>
+                            <li><a translate="LANDING_PAGE.FOOTER_INSTAGRAMERS_SIGN_UP" target="_self" href="/auth/instagram">Instagramer Sign Up</a></li>
+                            <li><a translate="LANDING_PAGE.FOOTER_FOR_INSTAGRAMERS" href="https://lp.expaus.in/instagramer/">For Instagramer</a></li>
+                            <li><a translate="LANDING_PAGE.FOOTER_FOR_INSTAGRAMER_FAQ" href="">Instagramer FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6">
+                    <div class="footer_link">
+                        <h3 translate="LANDING_PAGE.FOOTER_ADVERTISERS">ADVERTISERS</h3>
+                        <ul>
+                            <li><a href="" ng-click="$event.preventDefault(); signupAdvertiser()" translate="LANDING_PAGE.FOOTER_ADVERTISER_SIGN_UP">Advertiser Sign Up</a></li>
+                            <li><a translate="LANDING_PAGE.FOOTER_FOR_ADVERTISER" href="https://lp.expaus.in/brand/">For Advertiser</a></li>
+                            <li><a translate="LANDING_PAGE.FOOTER_ADVERTISER_FAQ" href="">Advertiser FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6">
+                    <div class="footer_link">
+                        <h3 translate="LANDING_PAGE.FOOTER_LEARN_MORE">PARTNERS</h3>
+                        <ul>
+                            <li><a translate="LANDING_PAGE.FOOTER_TOP_FASHION" target="_blank" href="http://www.topfashioninfluencers.com" ng-class="{lowercase : language == '日本語'}">Top Fashion Influencers</a></li>
+                            <li><a translate="LANDING_PAGE.FOOTER_TACKLE" target="_blank" href="http://www.tackleagency.com" ng-class="{lowercase : language == '日本語'}">TACKLE</a></li>
+                            <li><a translate="LANDING_PAGE.FOOTER_NOKIA_INTERNATIONAL" target="_blank" href="http://www.nomiainternational.com" ng-class="{lowercase : language == '日本語'}">Nokia International</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6">
+                    <div class="footer_link">
+                        <h3 translate="LANDING_PAGE.FOOTER_CONTACTUS">CONTACT US</h3>
+                        <ul>
+                            <li><a href="" ng-click="$event.preventDefault();sendEmail('info@expaus.in', 'expaus info', '')"><span style="text-transform: lowercase;">info@expaus.in</span></a></li>
+                            <li><a href=""><span translate="LANDING_PAGE.FOOTER_PHONE_SL">Sales:</span> <span>080-4324-6049</span></a></li>
+                            <li><a href=""><span translate="LANDING_PAGE.FOOTER_PHONE_SUP">Support:</span> <span>080-4141-6049</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- END row-->
+        </div>
+        <!-- END container-->
+    </footer>
+    <!-- END footer-->
+    <div class="scrollup" ng-show="{{scrollPos >= 200}}">
+        <p><i class="fa fa-angle-up"></i></p>
+    </div>
+    <!-- jQuery core -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/jquery-1.11.3.min.js"><\/script>')</script> -->
+    <!--Bootrstrap JS-->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <!--Owl JS-->
+    <!-- <script src="js/owl.carousel.min.js"></script> -->
+    <!--Main js-->
+    <!-- <script src="js/main.js"></script> -->
+    <!-- </body> -->
+</div>

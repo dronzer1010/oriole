@@ -1,0 +1,25 @@
+<form name="aboutNotificationForm" novalidate ng-init="getProfileData();">
+    <div class="row margin-top-20">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <span class="checkbox-inline color-white">
+        <input id="advertiser" type="checkbox" data-ng-model="notification.emailFromExpousTeam">
+        <label translate="PROFILE_PAGE_NOTIFICATION.LABEL_1" for="advertiser">Email me when there's news from expaus.</label></span>
+            </div>
+            <div class="form-group">
+                <span class="checkbox-inline color-white">
+        <input id="expaus" type="checkbox" data-ng-model="notification.emailFromAdvertiser">
+      <label translate="PROFILE_PAGE_NOTIFICATION.LABEL_2" for="expaus">
+        Email me when I get new message from advertiser.</label></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-wide" value="save" ng-click="submitNotificationSetting(notification)">
+            </div>
+        </div>
+    </div>
+</form>

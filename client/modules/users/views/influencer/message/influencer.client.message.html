@@ -1,0 +1,289 @@
+<!-- <div class="container-fluid bg-grey-light">
+  <div class="bg-white margin-top-25"> -->
+
+<div class="row ma-search-box-diff max-right-box influ_message_top">
+    <nav class="navbar navbar-default">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="padding-top-10">
+                <span>
+                    <i class="color-yellow fa fa-circle">
+                    </i>
+                    <div class="wrapper-one">
+                        <span translate="AD_MESSAGE_PAGE.STATUS_2" class="margin-left-0">
+                            Not Hired
+                        </span>
+                        <div class="tooltip" translate="AD_MESSAGE_PAGE.TIPS_1">
+                            You still have not started an actual contract with Instagramer. Press 'Hire' button to collaborate with Instagramer.
+                        </div>
+                    </div>
+                </span>
+                <span>
+                    <i class="color-light-blue fa fa-circle">
+                    </i>
+                    <div class="wrapper-one">
+                        <span translate="AD_MESSAGE_PAGE.STATUS_3" class="margin-left-0">
+                            In Progress
+                        </span>
+                        <div class="tooltip" translate="AD_MESSAGE_PAGE.TIPS_2">
+                        You are now waiting for the work to be submitted from Instagramer.
+                        </div>
+                    </div>
+                </span>
+                <span>
+                    <i class="color-purple fa fa-circle">
+                    </i>
+                    <div class="wrapper-one">
+                        <span translate="AD_MESSAGE_PAGE.STATUS_4" class="margin-left-0">
+                            In Review
+                        </span>
+                        <div class="tooltip" translate="AD_MESSAGE_PAGE.TIPS_3">
+                            You are reviewing the work submitted from Instagramer. You can either press 'Request Changes' or 'End Contract' button for the next step.
+                        </div>
+                    </div>
+                </span>
+                <span>
+                    <i class="color-orange fa fa-circle">
+                    </i>
+                    <div class="wrapper-one">
+                        <span translate="AD_MESSAGE_PAGE.STATUS_5" class="margin-left-0">
+                        Changes Request
+                        </span>
+                        <div class="tooltip" translate="AD_MESSAGE_PAGE.TIPS_4">
+                        Instagramer is reworking on the work per your request.'Request Changes' button was pressed.
+                        </div>
+                    </div>
+                </span>
+                <span>
+                    <i class="color-green fa fa-circle">
+                    </i>
+                    <div class="wrapper-one">
+                        <span translate="AD_MESSAGE_PAGE.STATUS_6" class="margin-left-0">
+                            Completed
+                        </span>
+                        <div class="tooltip" translate="AD_MESSAGE_PAGE.TIPS_5">
+                            Instagramer has successfully completed the task. Release button was pressed and payment was released.
+                        </div>
+                    </div>
+                </span>
+                <!-- <div class="pull-right">
+                    <button ui-sref="advertiser.message" data-ng-click="createCampaignPopUp()" class="btn bg-red btn-round input-flat save-draft" translate="AD_MESSAGE_PAGE.BTN_1">
+                        Create Campaign
+                    </button>
+                </div> -->
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container-fluid bg-grey-light" ng-init="getProfileData('message');">
+    <div class="container-fluid bg-white  scrollable-fixheight influncer-scrollable-fixheight">
+        <div class="row margin-left-10">
+            <div class="row">
+                <div class="col-md-3">
+                    <select ng-show="conversationList.length > 0" class="dropdown-camp form-control input-flat"
+                            data-ng-model="conversationFilter.campaignStatus" ng-list
+                            ng-init="conversationFilter.campaignStatus = ''" style="margin-top:7px">
+                        <option translate="MESSAGE_PAGE.OPTION_STATUS_1" select value="">All</option>
+                        <option translate="MESSAGE_PAGE.OPTION_STATUS_2" value="applied,invited">Not Hired</option>
+                        <option translate="MESSAGE_PAGE.OPTION_STATUS_3" value="hired">In Progress</option>
+                        <option translate="MESSAGE_PAGE.OPTION_STATUS_4" value="inReview">In Review</option>
+                        <option translate="MESSAGE_PAGE.OPTION_STATUS_5" value="changesRequired">Changes Required
+                        </option>
+                        <option translate="MESSAGE_PAGE.OPTION_STATUS_6" value="completed">Completed</option>
+                    </select>
+                    <div class="message-ht sc_hd1 sc_hd2 sc_hd3" id="message_left">
+                        <div ng-repeat="conversation in conversationList | conversationFilter:conversationFilter.campaignStatus track by $index">
+                            <div class="max-message" data-ng-click="selecteConvesation(conversation)">
+
+                                <h5 ng-class="{current: isActive1(conversation)}">{{conversation.advertiserId.name}}
+                                    <span class="lbl-sm">{{lMessage.timeSent | date:'yyyy-MM-dd'}}</span>
+                                </h5>
+                                <p class="color-black">{{conversation.campaignId.campaignTitle}}</p>
+                                <p>{{conversation.lastMessage}}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="messageList" class="hidden-md hidden-xs hidden-sm col-md-9 padding-left-0 sc_hd1 sc_hd2 sc_hd3"
+                     id="message_right">
+                    <div class="max-message-section">
+                        <div scroll-glue class="message-ht message-margin"
+                             style="min-height:0px;">
+                            <div class="message_right_top">
+                                <div ng-repeat="msg in messageList | orderBy: 'timeSent' | conversationMessageFilter: selectedConversation.advertiserId._id | filter: {conversation: selectedConversation.conver._id}  | filter: {conversation: selectedConversation._id} track by $index">
+                                    <div class="message-top-fix" ng-show="$index === 0">
+                                        <div class="border align-right padding-all-15">
+                                            <span translate="MESSAGE_PAGE.P_HEADER_STATUS_1"
+                                                  ng-show="selectedConversation.status == 'applied' || selectedConversation.status == 'invited'"
+                                                  class="color-yellow  pull-left">Not Hired</span>
+                                            <span translate="MESSAGE_PAGE.P_HEADER_STATUS_2"
+                                                  ng-show="selectedConversation.status == 'hired' || selectedConversation.status == 'directOffer'"
+                                                  class="color-light-blue  pull-left">In Progress</span>
+                                            <span translate="MESSAGE_PAGE.P_HEADER_STATUS_3"
+                                                  ng-show="selectedConversation.status == 'inReview'"
+                                                  class="color-purple  pull-left">In Review</span>
+                                            <span translate="MESSAGE_PAGE.P_HEADER_STATUS_4"
+                                                  ng-show="selectedConversation.status == 'changesRequired'"
+                                                  class="color-orange  pull-left">Changes Request</span>
+                                            <span translate="MESSAGE_PAGE.P_HEADER_STATUS_5"
+                                                  ng-show="selectedConversation.status == 'completed'"
+                                                  class="color-green  pull-left">Completed</span>
+                                            <button ng-if="selectedConversation.status !== 'invited' && selectedConversation.status !== 'applied'"
+                                                    type="button" class="btn btn-green" ngf-max-height="5000" ngf-max-size="5MB"
+                                                    ngf-select="upload($file, 'Work submitted', selectedConversation.advertiserId._id, messageForm, selectedConversation.campaignId._id, 'Work submitted', 'workSubmit', selectedConversation._id, true)">
+                                                <span translate="MESSAGE_PAGE.BTN_SUBMIT_WORK"
+                                                      ng-if="selectedConversation.status !== 'changesRequired'">Submit Work</span><span
+                                                    translate="MESSAGE_PAGE.BTN_RESUBMIT_WORK"
+                                                    ng-if="selectedConversation.status === 'changesRequired'">Resubmit Work</span>
+                                            </button>
+                                            <div ng-if="selectedConversation.status === 'invited' || selectedConversation.status === 'applied'"
+                                                 type="button" class="wrapper-one btn btn-green"
+                                                 style="font-size: 0.8em; font-weight: 700; rgba(16, 202, 176, 0.4) !important;">
+                                                Submit Work
+                                                <div class="tooltip">You still have not started an actual contract with
+                                                    Instagramer. Press 'Hire' button to collaborate with Instagramer.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message_right_body" id="message_right_body" style='margin-top:46px; overflow-x: hidden;'>
+                                <div ng-repeat="msg in messageList | orderBy: 'timeSent' | conversationMessageFilter: selectedConversation.advertiserId._id | filter: {conversation: selectedConversation.conver._id}  | filter: {conversation: selectedConversation._id} track by $index">
+                                    <div ng-if="(msg.timeSent | date:'yyyy-MM-dd') !== (messageList[$index-1].timeSent | date:'yyyy-MM-dd')"
+                                         class="chat-break row"><span class="break-date">{{msg.timeSent | date:'yyyy-MM-dd'}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <div ng-show="msg.sender != _id">
+                                                <div class="col-md-10 col-md-offset-1 request-change"
+                                                     ng-if="msg.type == 'changeRequest'">
+                                                    <div class="row heading">
+                                                        {{msg.heading}}
+                                                    </div>
+                                                    <div class="row message">
+                                                        <pre style="white-space: pre-wrap; word-wrap: break-word; border-color: #ffc5c5">{{msg.message}}</pre>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="msg.type == 'normal'" class="chat-time-top col-md-1">
+                                                    <span class="chat-time">{{msg.timeSent | date: 'HH:mm'}}</span>
+                                                </div>
+                                                <div ng-if="msg.type == 'normal'" class="max-chat-box bg-pink"
+                                                     ng-class="{ 'background-transparent': msg.fileLink}">
+                                                    <pre class="bg-pink"
+                                                         style="white-space: pre-wrap; word-wrap: break-word; border-color: #ff7b7b">{{msg.message}}</pre>
+                                                    <div class="row">
+                                                        <img ng-if="msg.fileLink" class="img-thumbnail"
+                                                             style="max-height: 150px;"
+                                                             ng-src="{{msg.fileLink}}">
+                                                    </div>
+                                                </div>
+                                                <div ng-if="msg.type == 'normal'" class="hidden-md hidden-xs hidden-sm max-chat-img img-circle"></div>
+                                            </div>
+                                            <div ng-show="msg.sender == _id">
+                                                <div class="col-md-10 col-md-offset-1 submit-work"
+                                                style="margin-right:2%"
+                                                     ng-if="msg.type == 'workSubmit'">
+                                                    <div class="row" style="padding-bottom: 10px;">
+                                                        <pre style="white-space: pre-wrap; word-wrap: break-word; border-color: #ffc5c5">{{msg.message}}</pre>
+                                                    </div>
+                                                    <div class="row">
+                                                        <img ng-if="msg.fileLink" class="img-thumbnail"
+                                                             style="max-height: 200px;"
+                                                             ng-src="{{msg.fileLink}}">
+                                                    </div>
+                                                </div>
+                                                <div ng-if="msg.type == 'normal'" class="max-chat-box bg-pink-light"
+                                                style="margin-right:2%"
+                                                     ng-class="{ 'background-transparent': msg.fileLink}">
+                                                    <pre class="bg-pink-light" style="white-space: pre-wrap; word-wrap: break-word; border-color: #ffc5c5">{{msg.message}}</pre>
+                                                    <div class="row">
+                                                        <img ng-if="msg.fileLink" class="img-thumbnail"
+                                                             style="max-height: 150px;  float: right;   margin-right: 50px;"
+                                                             ng-src="{{msg.fileLink}}">
+                                                    </div>
+                                                </div>
+                                                <div ng-if="msg.type == 'normal'" class="chat-time-top col-md-1">
+                                                    <span class="chat-time">{{msg.timeSent | date: 'HH:mm'}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="max-message-bottom" style="border: none !important; height:auto; position:relative">
+                                <form name="messageForm"
+                                      ng-submit="sendMessageData(selectedConversation.influencerId._id, message, messageForm, selectedConversation._id, '', '', 'normal')"
+                                      novalidate>
+                                    <div style="margin: 0px;border: none !important;">
+                                        <!--<button type="button"-->
+                                               <!--ngf-select="upload($file, '', selectedConversation.advertiserId._id, messageForm, selectedConversation.campaignId._id, '', 'normal', selectedConversation._id)"-->
+                                               <!--class="btn btn-grey input"-->
+                                               <!--style="float: left;">+-->
+
+                                        <!--</button>-->
+                                        <!--<textarea id="chat_text_area" ng-model="message"-->
+                                                  <!--required-->
+                                                  <!--style="height: 34px; width:70%; resize: vertical; max-height: 60px; float: left;"-->
+                                                  <!--ng-keydown="checkIfEnterKeyWasPressed($event)">-->
+                                        <!--</textarea>-->
+                                        <!--<button type="button" class="btn btn-grey">SEND</button>-->
+
+                                        <!--<button type="button" class="btn btn-default" value="SEND"-->
+                                               <!--style="float: right;"-->
+                                               <!--ng-click="sendBtn($event);sendMessageData(selectedConversation.advertiserId._id, message, messageForm, '', '', '' , 'normal', selectedConversation._id)">-->
+                                        <!--</button>-->
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                                                <button type="button" ngf-max-height="5000" ngf-max-size="5MB"
+                                                       ngf-select="upload($file, '', selectedConversation.advertiserId._id, messageForm, selectedConversation.campaignId._id, '', 'normal', selectedConversation._id)"
+                                                       class="btn"
+                                                > + </button>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-7">
+                                                <textarea id="chat_text_area" ng-model="message"
+                                                required
+                                                style="width: 100%; height: 34px; resize: both; max-height: 60px; max-width: 105%"
+                                                ng-keydown="checkIfEnterKeyWasPressed($event)">
+
+                                                </textarea>
+                                        </div>
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                                            <button type="button" class="btn" ng-click="sendBtn($event);sendMessageData(selectedConversation.advertiserId._id, message, messageForm, '', '', '' , 'normal', selectedConversation._id)"
+                                            translate="MESSAGE_PAGE.BTN_SEND"> Send </button>
+                                        </div>
+                                        <div class="col-xs-1"></div>
+
+                                        <!--<div class="col-xs-10">-->
+                                        <!--<input type="button"-->
+                                        <!--ngf-select="upload($file, '', selectedConversation.advertiserId._id, messageForm, selectedConversation.campaignId._id, '', 'normal', selectedConversation._id)"-->
+                                        <!--class="btn btn-grey input" value="+" style="position:absolute;-->
+                                        <!--top:0px;width:5%;height:34px"/>-->
+                                        <!--<textarea id="chat_text_area" class="form-control" ng-model="message"-->
+                                        <!--required-->
+                                        <!--style="margin-top: 0px; margin-right: 0px; width: 88%; height: 34px; position: absolute;left: 12.5%; resize: vertical; max-height: 44px;"-->
+                                        <!--ng-keydown="checkIfEnterKeyWasPressed($event)"></textarea>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-2">-->
+                                        <!--<input type="submit" class="btn btn-grey input" value="SEND"-->
+                                        <!--style="margin-top:0px"-->
+                                        <!--ng-click="sendBtn($event);sendMessageData(selectedConversation.advertiserId._id, message, messageForm, '', '', '' , 'normal', selectedConversation._id)"/>-->
+                                        <!--</div>-->
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // margin 75
+        var winH = $(window).height();
+        $('#message_left').css('height', winH - 78 - 169);
+        $('#message_right').css('height', winH - 78 - 78);
+        $('#message_right_body').css('height', winH - 78 - 209);
+//        $('#chat_text_area').css('width', $(window).width()*70/100);
+
+    </script>

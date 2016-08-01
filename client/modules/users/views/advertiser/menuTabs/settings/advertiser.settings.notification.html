@@ -1,0 +1,58 @@
+
+<div class="influ-setting ma-setting-profile bg-white bg-grey-light">
+    <div class="row margin-top-20 margin-bottom-277 margin-left-10">
+        <div class="col-md-6">
+            <form>
+                <div class="row form-group">
+                    <label class="col-md-4 col-xs-12" translate="SETTINGS.PREFERRED_LANGUAGE">Preffered Language</label>
+                    <div class="col-md-8 col-xs-12">
+                        <select class="form-control input-flat" name="" ng-init="advertiserInfo.preferredLanguage='English'" data-ng-model="advertiserInfo.preferredLanguage">
+                            <option value="English" translate="SETTINGS.ENGLISH">English</option>
+                        </select>
+                        <span class="little-lbl margin-top-3" style="width:100%" translate="SETTINGS.PREFERRED_LANGUAGE_DESC">You will receive the email in the selected language</span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-md-4 col-xs-12" translate="SETTINGS.CAMPAIGN_STATUS">Campaign Status</label>
+                    <div class="col-md-8 col-xs-12">
+                        <span class="check-lbl">
+        <input id="campaignStatus" type="checkbox" data-ng-model="advertiserInfo.campaignStatus" class="ng-pristine ng-untouched ng-valid">
+        <label for="campaignStatus" translate="SETTINGS.CAMPAIGN_STATUS_DESC">Recieve Email when campaign's status changed</label>
+      </span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-md-4 col-xs-12" translate="SETTINGS.CAMPAIGN_APPLICANT">Campaign applicant</label>
+                    <div class="col-md-8 col-xs-12">
+                        <span class="check-lbl">
+            <input id="campaignUpdate" type="checkbox" data-ng-model="advertiserInfo.campaignUpdate" class="ng-pristine ng-untouched ng-valid">
+            <label for="campaignUpdate" translate="SETTINGS.CAMPAIGN_APPLICANT_DESC">Recieve Email when influencers applied your campaign</label>
+          </span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-md-4 col-xs-12" translate="SETTINGS.MESSAGES">Messages</label>
+                    <div class="col-md-8 col-xs-12">
+                        <span class="check-lbl">
+            <input id="message" type="checkbox" data-ng-model="advertiserInfo.message" lass="ng-pristine ng-untouched ng-valid">
+            <label for="message" translate="SETTINGS.MESSAGES_DESC">Recieve Email when getting a message from influencer</label>
+          </span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-md-4 col-xs-12" translate="SETTINGS.EXPAUS_UPDATES">Expaus Updates</label>
+                    <div class="col-md-8 col-xs-12">
+                        <span class="check-lbl">
+          <input id="expausUpdate" type="checkbox" data-ng-model="advertiserInfo.expausUpdate" class="ng-pristine ng-untouched ng-valid">
+          <label for="expausUpdate" translate="SETTINGS.EXPAUS_UPDATES_DESC">Receive useful info from expaus</label>
+        </span>
+                    </div>
+                </div>
+                <div class="row form-group padding-left-15 align-left">
+                    <button class="btn btn-primary bg-red" data-ng-click="updateAdvertiser1(advertiserInfo)" translate="SETTINGS.SAVE_CHANGES">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

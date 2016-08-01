@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html>
+
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="One of the biggest Influencer Marketing Platform in Asia with over 1000 famous Instagramers. Make better social campaigns and engage with consumers directly.">
+    <!-- Optimize mobile viewport -->
+    <base href="/">
+    <title>expaus - Instagram Influencers Marketing Platform in Asia</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <!-- SPELLS -->
+    <!-- bower:css -->
+    <!-- endinject -->
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+
+<body>
+    <div data-ui-view></div>  
+    <div class="all-bottom"></div>  
+    <div data-growl=""></div>
+    <!-- bower:js -->
+    <!-- endinject -->
+    <!-- inject:js -->
+    <!-- endinject -->
+    <script  src="https://maps.google.com/maps/api/js?key=AIzaSyAAJfDO2jMJ-6Iqe_xK6sCGMnXVoLyLgag&libraries=places&language=en-US"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <!--[if lte IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Base64/0.3.0/base64.min.js"></script>
+    <![endif]-->
+    
+    <script src="//cdn.jsdelivr.net/satellizer/0.14.0/satellizer.min.js"></script>
+    <script  async src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+    <script>
+    var socket = io.connect(location.hostname + ':3000');
+    socket.on('message', function(data) {
+        //console.log(data);
+    });
+    </script>
+    <script>
+    if (location.hostname == "expaus.in") {
+       /* $(document).keydown(function(event){
+            if(event.keyCode==123){
+            return false;
+        }
+        else if(event.ctrlKey && event.shiftKey && event.keyCode==73){        
+              return false;  //Prevent from ctrl+shift+i
+           }
+        });
+
+        $(document).on("contextmenu",function(e){        
+                e.preventDefault();
+        });*/
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-68384281-4', 'auto');
+        ga('send', 'pageview');
+    }
+
+    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-md-4" ng-repeat="influencer in bookmarkedInfluencerList">
+            <div class="max-block center">
+                <img ui-sref="advertiser.home.influencer({influencerId: influencer.influencerId._id})" class="img-responsive img-circle" ng-src="{{influencer.influencerId.profilePhoto}}">
+                <h4 class="headline bold" ui-sref="advertiser.home.influencer({influencerId: influencer.influencerId._id})">{{influencer.influencerId.aboutMe.name}}</h4>
+                <p ui-sref="advertiser.home.influencer({influencerId: influencer.influencerId._id})"><!-- {{influencer.influencerId.aboutMe.gender}}, {{calculateAge(influencer.influencerId.aboutMe.birthday)}} Year Old -->
+                <span ng-if="influencer.influencerId.aboutMe.gender=='male'" translate="HOMEPAGE.MALE"></span>
+                            <span ng-if="influencer.influencerId.aboutMe.gender=='female'" translate="HOMEPAGE.FEMALE"></span>
+                            <span style="margin-left: 0px;">, {{calculateAge(influencer.influencerId.aboutMe.birthday)}}</span> 
+                            <span translate="HOMEPAGE.YEAR_OLD" style="margin-left: 0px;">Year Old</span></br>
+                </p>
+                <p ui-sref="advertiser.home.influencer({influencerId: influencer.influencerId._id})">{{influencer.influencerId.aboutMe.city}}</p>
+                <div class="row">
+                    <div class="row padding-left-10 padding-right-10">
+                        <div class="col-xs-6 padding-right-5">
+                            <div class="button-block" data-ng-click="inviteInfluencerPopUp(influencer, $index)">
+                                <img id="test1{{$index}}" src="./assets/images/contact.png">
+                                <label class="padding-top-0" for="test1{{$index}}" translate="HOMEPAGE.CHAT">Chat</label>
+                            </div>
+                        </div>
+                        <div ng-if="false" data-ng-click="inviteInfluencerPopUp(influencer.influencerId, $index)" class="col-xs-6 padding-right-5">
+                            <div class="button-block button-block-clicked" data-ng-click="inviteInfluencerPopUp(influencer, $index)">
+                                <img id="test2{{$index}}" src="./assets/images/contact-highlighted.png">
+                                <label class="padding-top-0" for="test2{{$index}}" translate="HOMEPAGE.CHAT">Chat</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 padding-left-5" data-ng-click="bookmarkedInfluencerFunc(influencer.influencerId._id, checkInfluencer(influencer.influencerId._id), $index)">
+                            <div class="button-block button-block-clicked">
+                                <img id="test{{$index}}" src="./assets/images/save-highlighted.png">
+                                <label class="padding-top-0" for="test{{$index}}" translate="HOMEPAGE.BOOKMARK">Bookmark</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row max-block-footer" ui-sref="advertiser.home.influencer({influencerId: influencer.influencerId._id})">
+                    <div class="col-md-4 col-md-offset-1 col-xs-offset-2 col-xs-2 center">
+                        <label class="color-grey" translate="HOMEPAGE.FOLLOWERS">Followers</label>
+                        <label class="color-black">{{influencer.influencerId.followed_by}}</label>
+                    </div>
+                    <div class="col-md-5 col-md-offset-2 col-xs-offset-3 col-xs-3 center">
+                        <label class="color-grey" translate="HOMEPAGE.AVERAGE_LIKES">Average Likes</label>
+                        <label class="color-black">{{influencer.influencerId.averageLikes}}</label>
+                    </div>
+
+                </div>
+
+                <div class="row max-avatar-footer" ui-sref="advertiser.home.influencer({influencerId: influencer.influencerId._id})">
+                    <div class="col-md-11 col-md-offset-1 align-left">
+                        <button ng-repeat="category in influencer.influencerId.aboutMe.category" class="btn btn-primary bg-red">
+                             <p ng-if="category=='Cosmetic'" translate="HOMEPAGE.COSMETIC"></p>
+                            <p ng-if="category=='Fashion'" translate="HOMEPAGE.FASHION"></p>
+                            <p ng-if="category=='Food'" translate="HOMEPAGE.FOOD"></p>
+                            <p ng-if="category=='Sports'" translate="HOMEPAGE.SPORTS"></p>
+                            <p ng-if="category=='Jewellary'" translate="HOMEPAGE.JEWELLARY"></p>
+                            <p ng-if="category=='Health'" translate="HOMEPAGE.HEALTH"></p>
+                            <p ng-if="category=='Travel'" translate="HOMEPAGE.TRAVEL"></p>
+                            <p ng-if="category=='Music'" translate="HOMEPAGE.MUSIC"></p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

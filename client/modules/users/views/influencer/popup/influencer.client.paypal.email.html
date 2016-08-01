@@ -1,0 +1,22 @@
+<div>
+<div class="signup-tab bg-white padding-top-30 padding-bottom-30">
+  <div class="signup-tab-content center">
+    <div class="color-navy-blue padding-bottom-10">
+      <h3 class="bold" translate="HIRED_ADD_PAYPAL.H3_1">You Got Hired</h3>
+    </div>
+    <div class="padding-bottom-10">
+      <p class="bold" translate="HIRED_ADD_PAYPAL.P_1">You still haven’t added any paypal email on your profile. Add paypal email below and save them. Once you add the info, this alert will disappear.</p>
+    </div>
+    <form  name="paypalsettingForm" novalidate>   
+      <div class="form-group">
+        <input type="text" placeholder="paypal Email" class="form-control input-flat" data-ng-model="data.paypalSetting.paypalEmail" required />
+      </div>
+      <div class="form-group">
+        <div class="col-md-6 col-md-offset-3">
+          <button class="btn btn-green" data-ng-click="savePaypalEmail(paypalsettingForm, data)" translate="HIRED_ADD_PAYPAL.BTN_SAVE">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>  
+</div>

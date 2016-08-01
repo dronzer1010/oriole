@@ -1,0 +1,41 @@
+<div class="wrapper wrapper-content ma-campaign bg-grey-light">
+        <div class="row bg-white border padding-row">
+            <div class="col-md-3">
+                <h4>Your CTAs</h4>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3 mob-none"></div>
+        </div>
+        <div class="row border closed-relative bg-white padding-top-10 padding-bottom-10" ng-repeat="cta in CTAList">
+            <div class="col-md-4 col-xs-4">
+                <div class="max-message border-less padding-top-5 padding-bottom-0">
+                    <h4 class="color-red bold">{{cta.CTATitle }}</h4>
+                </div>
+            </div>
+             <div class="col-md-2 col-xs-3 col-md-offset-6 ">
+                <div class="">
+                    <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn bg-red" ng-show="campaign.campaignStatus !== 'Close'" translate="ADVERTISER_CAMPAIGNS.ACTIONS">ACTIONS <i class="fa fa-caret-down margin-left-5"></i></button>
+                        <button class="btn bg-red close-action" ng-show="campaign.campaignStatus == 'Close'" translate="ADVERTISER_CAMPAIGNS.ACTIONS">ACTIONS <i class="fa fa-caret-down margin-left-5"></i></button>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                        <a ng-show="campaign.campaignStatus == 'Close'" data-ng-click="openAndCloseCampaign(campaign._id, 'Accept')" translate="ADVERTISER_CAMPAIGNS.REOPEN">Reopen</a></li>
+                        <li><a ui-sref="advertiser.campaigns.detailed({campaignId: campaign._id})" ng-show="campaign.campaignStatus !== 'Close'" translate="ADVERTISER_CAMPAIGNS.VIEW_CAMPAIGN" >View Campaign</a></li>
+                        <li><a ui-sref="advertiser.campaigns.detailed({campaignId: campaign._id})" ng-show="campaign.campaignStatus == 'Close'" translate="ADVERTISER_CAMPAIGNS.VIEW_CAMPAIGN">View Campaign</a></li>
+                        <li><a ui-sref="advertiser.candidate.applicants.campaign({campaignid: campaign._id})" data-ng-click="loadCandiatePage('applicants')" translate="ADVERTISER_CAMPAIGNS.VIEW_APPLICANT">View Applicants</a></li>
+                        <li><a ng-href="" data-ng-click="makePrivate(campaign._id, 'false')" 
+                            ng-show="campaign.visiblePrivate == true && campaign.campaignStatus !== 'Close'" translate="ADVERTISER_CAMPAIGNS.MAKE_PUBLIC">Make Public</a></li>
+                        <li><a ng-href="" data-ng-click="makePrivate(campaign._id, 'true')" 
+                        ng-show="campaign.visiblePrivate == false && campaign.campaignStatus !== 'Close'" translate="ADVERTISER_CAMPAIGNS.MAKE_PRIVATE">Make Private</a></li>
+                        <li><a ui-sref="advertiser.campaign.home" data-ng-click="editCampaign(campaign._id)"
+                        translate="ADVERTISER_CAMPAIGNS.EDIT_CAMPAIGN"  ng-show="campaign.campaignStatus !== 'Close'">Edit Campaign</a></li>
+                        <li><a data-ng-click="duplicateCampaign(campaign)" translate="ADVERTISER_CAMPAIGNS.DUPLICATE_CAMPAIGN">Duplicate Campaign</a></li>
+                        <li><a data-ng-click="deleteCampaign(campaign._id)" translate="ADVERTISER_CAMPAIGNS.DELETE_CAMPAIGN">Delete Campaign</a></li>
+                        <li><a ng-show="campaign.campaignStatus == 'Accept'" data-ng-click="openAndCloseCampaign(campaign._id, 'Close')" translate="ADVERTISER_CAMPAIGNS.CLOSE_CAMPAIGN">Close Campaign</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>

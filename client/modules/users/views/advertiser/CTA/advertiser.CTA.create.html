@@ -1,0 +1,209 @@
+<div class="row ma-search-box-diff ">
+    <nav class="navbar navbar-default">
+        <div class="col-md-2  padding-top-10">
+           <div class="returnState">
+           <i class="fa fa-caret-left" aria-hidden="true"></i>
+</div>
+            Create CTA
+        </div>
+    </nav>
+</div>
+<div class="bg-grey-light padding-top-20 max-height" ui-view style="clear:both;">
+    <div class="wrapper wrapper-content ma-campaign bg-grey-light">
+      <form role="form" class="form-horizontal CTAForm" name="CTAForm" ng-submit="saveCTA(CTAForm , CTAConditions)" novalidate>
+        <div class="row">
+           <div class="col-md-3">
+               <h5 class="CTA_headings">Trigger Status</h5>
+           </div>
+        </div>
+        <div class="row form-group">
+              <div class="col-md-1">
+                <button type="button"ng-class="CTAEnabled?'btn btn-md btn-warning':'btn btn-md btn-default disabled'" ng-click="changeTriggerState()">Enabled&nbsp;&nbsp;&nbsp;&nbsp;</button>
+              </div>
+              <div class="col-md-3">
+                <button type="button" ng-class="CTAEnabled?'btn btn-md btn-default disabled' :'btn btn-md btn-warning'" ng-click="changeTriggerState()">Disabled</button>
+              </div>
+            </div>
+        <div class="row form-group" ng-class="{ 'has-error' :CTAForm.CTAName.$invalid && !CTAForm.CTAName.$pristine  }">
+          
+          <div class="col-md-1"><label class=" control-label" for="CTA_name">CTA Name</label></div>
+          <div class="col-md-4"><input  type="text" id="CTA_name" name="CTAName" class="form-control" ng-model="CTAName" required/></ins></div>
+          <p ng-show="CTAForm.CTAName.$invalid && !CTAForm.CTAName.$pristine" class="help-block">CTA Name is required.</p>
+        </div>
+        <div class="row form-group">
+          
+          <div class="col-md-10">
+            <label for="fireOnce" class="control-label">Fire only once per user
+            <input type="checkbox"  name="fireOnce" id="fireOnce" style="position:relative;display:inline-block;left:0px;" /> 
+            </label>
+            <label class="control-label">Each user will recieve this message once per session</label>
+          </div>
+          
+        </div>
+        <div class="row">
+            
+            <div class="col-md-10">
+              <hr id="CTA-hr">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <h5 class="CTA_headings">Conditions</h5>
+            </div> 
+        </div>
+        
+        <div class="row form-group" ng-repeat = "condition in CTAConditions">
+         
+            <div class="col-md-1"><label class="control-label">Condition</label></div>
+            <div class="col-md-4">
+              <select class="form-control" name="condition_{{$index}}" ng-model="condition.selectedConditon" ng-options=" item as item.option for item in condition.options" ng-change="optionSelected(condition)" required>
+              
+              </select>
+            </div>
+            <div class="col-md-4">
+              <input class="form-control" name="conditionVal_{{$index}}" type="text" ng-model="condition.value" placeholder="Condition" required/>
+            </div>
+            <div class="col-md-1">
+              <div class="removeCTAPin" ng-click="removeCondition(condition ,$index)"><i class="fa fa-minus"></i></div>
+            </div>
+          
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <button type="button" class="addfields btn btn-blank" ng-show="CTAConditions.length < conditionOptions.length" ng-click="addNewCondition()">Add Condition</button>
+          </div>
+        </div>
+         <div class="row">
+            
+            <div class="col-md-10">
+              <hr id="CTA-hr">
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+              <h5 class="CTA_headings">Actions</h5>
+            </div> 
+        </div>
+        <div class="row form-group">
+          <div class="col-md-1">
+            <label class="control-label" for="CTA_action">Action</label>
+          </div>
+          <div class="col-md-4">
+            <select class="form-control" id="CTA_action" name="action_type" ng-model="CTAForm.CTAActionType" ng-options="option.type for option in actionOptions" required></select>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <div class="row form-group">
+              <div class="col-md-4"><label class="control-label" for="CTA_content_color" >Color Top</label></div>
+              <div class="col-md-8">
+                <input class="form-control" type="text" id="CTA_content_color" name="CTA_top_color" ng-model="demoCTATopColor"  required/>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-4"><label class="control-label" for="CTA_footer_color" >Color Bottom</label></div>
+              <div class="col-md-8">
+                <input class="form-control" name="CTA_bottom_color" type="text" id="CTA_footer_color" ng-model="demoCTABottomColor"   required/>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-4"><label class="control-label" for="CTA_title" >Title</label></div>
+              <div class="col-md-8">
+                <input  class="form-control" type="text" id="CTA_title" name="CTA_title" ng-model="CTATitlePlaceholder" required />
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-4"><label class="control-label" for="CTA_title" >CTA Image</label></div>
+              <div class="col-md-8">
+                 <button class="btn btn-blank" type="file" name="CTA_image_url"  ngf-select="uploadCTAImage($file, $invalidFiles)" accept="image/*" 
+                            ngf-resize="{width:100, height:100 , quality: 1.0}"
+                            ngf-max-height="2000" resize-quality="0.8" ngf-max-size="2MB">Upload Image
+                </button>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-4"><label for="CTA_content" class="control-label" >Content</label></div>
+              <div class="col-md-8">
+                <textarea id="CTA_content" class="form-control" name="CTA_content" ng-model="CTAContentPlaceholder" required></textarea>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-4"><label class="control-label" for="CTA_fieldName" >Field Name</label></div>
+              <div class="col-md-8">
+                <input  class="form-control" type="text" id="CTA_fieldName" name="CTA_fieldName" ng-model="CTAFieldTitle"  required/>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-4"><label class="control-label" for="CTA_buttonType" >Button Type</label></div>
+              <div class="col-md-8">
+                <select class="form-control" name="CTA_button_type"></select>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-4"><label class="control-label" for="CTA_buttonColor" >Button Color</label></div>
+              <div class="col-md-8">
+                <input  class="form-control" type="text" id="CTA_buttonColor" name="CTA_button_color" ng-model="CTAButtonColor" required/>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-4"><label class="control-label" for="CTA_buttonName" >Button Name</label></div>
+              <div class="col-md-8">
+                <input  class="form-control" type="text" id="CTA_buttonName" name="CTA_button_name"  ng-model="CTAButtonTitle" required/>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-4"><label class="control-label" for="CTA_buttonURL" >Button URL</label></div>
+              <div class="col-md-8">
+                <input  class="form-control" type="text" id="CTA_buttonURL" name="CTA_button_url" ng-model="CTAButtonURL" />
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-4">
+                <input type="submit" class="btn btn-md btn-warning" value="Create Trigger" ng-disabled="CTAForm.$invalid" />
+              </div>
+              <div class="col-md-4 col-md-offset-4">
+                <button class="btn btn-md btn-default">Cancel</button>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="CTA_demo_wrapper">
+              <div class="CTA_demo_content_wrapper" style="background : {{demoCTATopColor}}">
+               <div class="row">
+                 <div class="col-md-5 CTA_img">
+                   <img ng-src="{{CTAImageURL}}" class="img-responsive" width="220" ng-model="CTAImageURL"/>
+                 </div>
+                 <div class="col-md-7" >
+                   <h3>{{CTATitlePlaceholder}}</h3>
+                   <p >{{CTAContentPlaceholder}}</p>
+                 </div>
+               </div>
+              </div>
+              <div class="CTA_demo_footer_wrapper" style="background : {{demoCTABottomColor}}">
+                <div class="row">
+                 
+                    <div class="col-md-8 " >
+                    <div style="background:#fff; color:#444;padding:5px ; height:32px;">
+                      {{CTAFieldTitle}}
+                    </div>
+                      
+                    </div>
+                    <div class="col-md-4">
+                    <div style="background:{{CTAButtonColor}}; padding:5px ;color:#fff; border-radius:3px;
+                    text-align:center">{{CTAButtonTitle}}</div>
+                     
+                    </div>
+            
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </form>
+    </div>
+</div>

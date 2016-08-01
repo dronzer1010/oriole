@@ -1,0 +1,19 @@
+<div class="row ma-search-box-diff ">
+    <nav class="navbar navbar-default">
+    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    		
+    		<ul class="nav navbar-nav tb-menu margin-top-0">
+                <li><a ui-sref-active="current" ui-sref="advertiser.cta.list" data-ng-click="showPage('list')">
+                CTA List <span class="sr-only"></span></a></li>
+                <li><a ui-sref-active="current" ui-sref="advertiser.cta.script" data-ng-click="showPage('script')" > CTA Script</a></li>
+                <li><a ui-sref-active="current" ui-sref="advertiser.cta.analytics" data-ng-click="showPage('analytics')"
+                >CTA Analytics</a></li>
+            </ul>
+    		<div class="col-md-2 pull-right align-center ">
+            	<button   data-ng-click="loadCreateCTA()" class="btn bg-red btn-round input-flat save-draft" style="float:right;" >Create CTA</button>
+        	</div>
+    	</div>
+      
+    </nav>
+</div>
+<div class="bg-grey-light padding-top-20 " ui-view style="clear:both;margin-bottom:15px"></div>

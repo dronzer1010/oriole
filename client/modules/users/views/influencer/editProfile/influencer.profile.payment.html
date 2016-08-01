@@ -1,0 +1,16 @@
+<form name="paypalsettingform" ng-submit="savePaypalSetting(paypalsettingform,paypalsetting)" novalidate>
+    <div class="form-section">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label translate="PROFILE_PAGE_PAYMENT.LABEL_PAYPAL" class="col-md-4" translate="PROFILE_PAGE_PAYMENT.LABEL_PAYPAL">Paypal Email</label>
+                <div class="col-md-9">
+                    <input type="email" data-ng-model="paypalsetting.paypalEmail" class="form-control input-flat" name="paypalEmail" placeholder="Paypal Email" required />
+                    <p translate="PROFILE_PAGE_PAYMENT.P_PAYPAL_VALIDATION" ng-show="paypalsettingform.paypalEmail.$invalid && !paypalsettingform.paypalEmail.$pristine" translate="PROFILE_PAGE_PAYMENT.P_PAYPAL_VALIDATION">Please enter a valid email address</p>
+                </div>
+            </div>
+            <div class="col-md-12 form-group center">
+                <input type="submit" class="btn btn-primary btn-wide"  value="save" />
+            </div>
+        </div>
+    </div>
+</form>

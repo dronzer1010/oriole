@@ -1,0 +1,38 @@
+<div  data-ng-controller="AdvertiserCtrl">
+	<div class="bg-white padding-all-20 center">
+		<div class="padding-bottom-10">
+			<h3 class="bold">Your original payment is ${{price}}</h3>
+		</div>
+		<div class="color-navy-blue padding-bottom-10">
+			<h3 class="bold">Send bonus</h3>
+		</div>
+		<form  name="newForm" ng-submit="sendBonus(newForm, data, applyCampaignId)" ng-class="{submitted:requestForm.submitted}" novalidate>
+			<div class="form-group clearfix">
+        <label class="col-md-8">Bonus to influencer</label>
+        <div class="col-md-4">
+          <input type="Number" ng-keyup = "serviceFee = data.payment * 30/100; totalFee = data.payment + data.payment * 30/100" data-ng-model="data.payment" placeholder="min $100" class="form-control col-md-4 align-right input-flat" required>
+        </div>
+      </div>
+      <h4 class="border margin-top-5">
+	      <div class="form-group clearfix">
+	        <label class="col-md-8">Service Fee</label>
+	        <label class="col-md-4 align-right">{{serviceFee}}</label>
+	      </div>
+      </h4>
+      <h4 class="margin-top-15">
+	      <div class="form-group clearfix">
+	        <label class="col-md-8">Total</label>
+	        <label class="col-md-4 align-right">{{totalFee}}</label>
+	      </div>
+      </h4>
+		</form>
+    <div class="row">
+	    <div class="col-md-6">
+	      <button class="btn btn-yellow input-flat" data-ng-click="closePop()">Cancel</button>
+	    </div>
+	    <div class="col-md-6">
+	    	<button class="btn btn-green input-flat">Send bonus and end contract</button>
+	    </div>
+		</div>
+	</div>
+</div>

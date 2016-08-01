@@ -1,0 +1,86 @@
+<style>
+.searchbar {
+    display: none;
+}
+</style>
+<div class="container-fluid bg-grey-light ma-detailcampany" ng-init="viewCampaign();">
+    <div class="container-fluid padding-top-20 padding-bottom-10">
+        <div class="row">
+            <div class="col-md-8">
+                <h2><strong>{{singleCampaignDetails.campaignTitle}}</strong></h2>
+            </div>
+        </div>
+        <div class="row responsive-camp">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Cosmetic'" translate="HOMEPAGE.COSMETIC"></span>
+                        <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Fashion'" translate="HOMEPAGE.FASHION"></span>
+                        <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Food'" translate="HOMEPAGE.FOOD"></span>
+                        <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Sports'" translate="HOMEPAGE.SPORTS"></span>
+                        <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Jewellary'" translate="HOMEPAGE.JEWELLARY"></span>
+                        <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Health'" translate="HOMEPAGE.HEALTH"></span>
+                        <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Travel'" translate="HOMEPAGE.TRAVEL"></span>
+                        <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Music'" translate="HOMEPAGE.MUSIC"></span>
+                    </div>
+                </div>
+                <div class="row padding-top-20">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mid-lbl color-grey" translate="CAMPAIGN_DETAILS.BUDGET">Budget</label>
+                            <p>$ {{singleCampaignDetails.priceRange.from}} - $ {{singleCampaignDetails.priceRange.to}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mid-lbl color-grey" translate="CAMPAIGN_DETAILS.DUE_DATE">Due Date</label>
+                            <p>{{singleCampaignDetails.dueDate | date:'yyyy-MM-dd'}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mid-lbl color-grey" translate="CAMPAIGN_DETAILS.TARGET_AGE">Target Age</label>
+                            <p>{{singleCampaignDetails.targetAge.from}} - {{singleCampaignDetails.targetAge.to}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3  ">
+                        <div class="form-group">
+                            <label class="mid-lbl color-grey" translate="CAMPAIGN_DETAILS.REFERENCE_URL">Reference</label>
+                            <p><a href="{{singleCampaignDetails.referenceUrl}}" target="_blank">{{singleCampaignDetails.referenceUrl}}</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 camp-detail-marg-minus">
+                <span class="checkbox cb-btn margin-bottom-15 hover" data-ng-click="applyCampaignFunc(singleCampaignDetails._id)">
+                    <!-- <input id="test1" type="checkbox" ng-checked="checkAppliedCampaign(singleCampaignDetails._id)"><label for="test1"><div ng-show="checkAppliedCampaign(singleCampaignDetails._id)" class="color-red">Apply</div><div ng-show="!checkAppliedCampaign(singleCampaignDetails._id)">Apply</div></label> -->
+
+                    <img  ng-src="{{!checkAppliedCampaign(singleCampaignDetails._id)?'./assets/images/contact.png':'./assets/images/contact-highlighted.png'}}" id="test1">
+                    <label for="test1">                  
+                    <div ng-show="checkAppliedCampaign(singleCampaignDetails._id)" class="color-red" translate="HOMEPAGE.APPLY">Apply</div><div ng-show="!checkAppliedCampaign(singleCampaignDetails._id)" translate="HOMEPAGE.APPLY">Apply</div>
+                    </label>
+                </span>
+                <span class="checkbox cb-btn hover" data-ng-click="bookmarkCampaignFunc(singleCampaignDetails._id)">
+                    <!-- <input id="test2" type="checkbox" ng-checked="checkBookmarkedCampaign(singleCampaignDetails._id)"><label for="test2"><div ng-show="checkBookmarkedCampaign(singleCampaignDetails._id)" class="color-red">Bookmark</div><div ng-show="!checkBookmarkedCampaign(singleCampaignDetails._id)">Bookmark</div></label> -->
+                    <img  ng-src="{{!checkBookmarkedCampaign(singleCampaignDetails._id)?'./assets/images/save.png':'./assets/images/save-highlighted.png'}}" id="test2" >
+                    <label for="test2">
+                      <div ng-show="checkBookmarkedCampaign(singleCampaignDetails._id)" class="color-red" translate="HOMEPAGE.BOOKMARK">Bookmark</div><div ng-show="!checkBookmarkedCampaign(singleCampaignDetails._id)" translate="HOMEPAGE.BOOKMARK">Bookmark
+                      </div>
+                    </label>
+                </span>
+            </div>
+        </div>
+        <div class="row responsive-camp">
+            <div class="col-md-12">
+                <div class="bg-white border-all padding-all-20">
+                    <h4><strong translate="CAMPAIGN_DETAILS.DETAIL">Details</strong></h4>
+                    <div class="padding-top-15">
+                        <p class="wrap-text" data-ng-bind-html="singleCampaignDetails.campaignDetail | nl2br"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </body>
+</html> -->

@@ -1,0 +1,87 @@
+<div ng-if="advertiserInfo" class="influ-setting setting bg-grey-light bg-white">
+    <div class="row margin-top-20 margin-left-10">
+        <div class="col-md-6">
+            <form name="saveForm" novalidate>
+                <div class="row form-group">
+                    <label class="col-md-4" translate="SETTINGS.DASHBOARD_LANGUAGE">
+                        Dashboard Language
+                    </label>
+                    <div class="col-md-8">
+                        <select ng-init="initLanguage()" class="form-control input-flat" name="gender" data-ng-model="advertiserInfo.language">
+                            <option value="en" translate="SETTINGS.ENGLISH" >
+                                English
+                            </option>
+                            <option value="jap" translate="SETTINGS.JAP" >
+                                Japanese
+                            </option>
+                            <option value="kor" translate="SETTINGS.KOREAN">
+                                Korean
+                            </option>
+                            <option value="chin" translate="SETTINGS.CHINESE">
+                                Chinese
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-md-4" translate="SETTINGS.PROFILE_IMAGE">
+                        Profile Image
+                    </label>
+                    <div class="col-md-8">
+                        <div class="col-md-3 align-left padding-right-0 padding-left-0">
+                            <img class="img-responsive img-circle img-setting" ng-src="{{profile||advertiserInfo.profile}}" ng-model="profile" />
+                        </div>
+                        <div class="col-md-9 padding-right-0 align-left" style="padding-left:0px">
+                            <button class="btn btn-blank" type="file" ngf-select="uploadProfile($file, $invalidFiles)" accept="image/*" 
+                            ngf-resize="{width: 60, height: 60, quality: 0.9}"
+                            ngf-max-height="2000" resize-quality="0.8" ngf-max-size="2MB" translate="SETTINGS.UPLOAD_IMAGE">
+                                Upload Image
+                            </button>
+                            <!-- <button class="btn btn-blank margin-left-5">
+                                Delete
+                            </button> -->
+                            <span class="little-lbl margin-top-3" style="width:100%" translate="SETTINGS.MAX_SIZE_IMG_UPLOAD">
+                                Maximum size 2MB
+                            </span>
+                            <span class="little-lbl" style="width:100%" translate="SETTINGS.RECOMMENDED_DIMENSIONS">
+                                Recommended dimensions 60x60px
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-md-4 col-xs-12" translate="SETTINGS.COMPANY_NAME">
+                        Company Name
+                    </label>
+                    <div class="col-md-8 col-xs-12">
+                        <input type="text" class="form-control input-flat" name="companyName" data-ng-model="advertiserInfo.company" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-md-4 col-xs-12" style="margin-top:10px" translate="SETTINGS.LOGIN_EMAIL">
+                        Login Email
+                    </label>
+                    <div class="col-md-8 col-xs-12">
+                        <input type="text" class="form-control input-flat" name="email" data-ng-model="advertiserInfo.email" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-md-4 col-xs-12" style="margin-top:10px" translate="SETTINGS.TIME_ZONE_SETTINGS">
+                       Timezone Settings
+                    </label>
+                    <div class="col-md-8 col-xs-12">
+                        <select data-ng-model="advertiserInfo.preferredTimezone" class="form-control input-flat  timezone"></select>
+                    </div>
+                </div>
+                <div class="row form-group padding-left-15 align-left">
+                    <button class="btn btn-primary bg-red" data-ng-click="updateAdvertiser(advertiserInfo)" translate="SETTINGS.SAVE_CHANGES">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $('.timezone').timezones();
+</script>

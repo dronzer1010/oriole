@@ -1,0 +1,45 @@
+//urls
+// $url_0: url(grabbing.png);
+.owl-carousel {
+    display: none;
+    position: relative;
+    width: 100%;
+    .owl-wrapper {
+        display: none;
+        position: relative;
+        &:after {
+            content: ".";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            line-height: 0;
+            height: 0;
+        }
+    }
+    .owl-wrapper-outer {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        &.autoHeight {
+            transition: height 500ms ease-in-out;
+        }
+    }
+    .owl-item {
+        float: left;
+        cursor: move;
+    }
+}
+
+.owl-controls {
+    user-select: none;
+    .owl-page {
+        cursor: pointer;
+    }
+    .owl-buttons div {
+        cursor: pointer;
+    }
+}
+
+.grabbing {
+    // cursor: $url_0 8 8, move;
+}

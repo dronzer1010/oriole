@@ -1,0 +1,62 @@
+<div class="wrapper wrapper-content padding-top-5 padding-bottom-10 bg-grey-light max-height" ng-init="viewSignleCampaign();">
+    <div class="row">
+        <div class="col-md-12">
+            <h2><p class="col-md-9 padding-left-0">{{singleCampaignDetails.campaignTitle}}</p>
+        <button  data-ng-click="editCampaign(singleCampaignDetails._id)" class="btn bg-red btn-round input-flat save-draft edit pull-right" data-ng-show="!comingFrom" translate="CAMPAIGN_DETAILS.EDIT">Edit</button>
+        </h2>
+        </div>
+    </div>
+    <div class="row responsive-camp">
+        <div class="col-md-11">
+            <div class="row">
+                <div class="col-md-12">
+                <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Cosmetic'" translate="HOMEPAGE.COSMETIC"></span>
+                <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Fashion'" translate="HOMEPAGE.FASHION"></span>
+                <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Food'" translate="HOMEPAGE.FOOD"></span>
+                <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Sports'" translate="HOMEPAGE.SPORTS"></span>
+                <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Jewellary'" translate="HOMEPAGE.JEWELLARsYan"></span>
+                <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Health'" translate="HOMEPAGE.HEALTH"></span>
+                <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Travel'" translate="HOMEPAGE.TRAVEL"></span>
+                <span class="btn-camp" ng-if="singleCampaignDetails.campaignCategory=='Music'" translate="HOMEPAGE.MUSIC"></span>
+                   
+                </div>
+            </div>
+            <div class="row padding-top-20">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="mid-lbl color-grey" translate="CAMPAIGN_DETAILS.BUDGET">Budget</label>
+                        <p>$ {{singleCampaignDetails.priceRange.from}} - $ {{singleCampaignDetails.priceRange.to}}</p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="mid-lbl color-grey" translate="CAMPAIGN_DETAILS.DUE_DATE">Due Date</label>
+                        <p>{{singleCampaignDetails.dueDate | date:'yyyy-MM-dd'}}</p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="mid-lbl color-grey" translate="CAMPAIGN_DETAILS.TARGET_AGE">Target Age</label>
+                        <p>{{singleCampaignDetails.targetAge.from}} - {{singleCampaignDetails.targetAge.to}}</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="mid-lbl color-grey" translate="CAMPAIGN_DETAILS.REFERENCE_URL">Reference URL</label>
+                        <p><a href="{{singleCampaignDetails.referenceUrl}}" target="_blank">{{singleCampaignDetails.referenceUrl}}</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bg-white border-all padding-all-20 width-97">
+                        <h4><strong translate="CAMPAIGN_DETAILS.DETAILS">Details</strong></h4>
+                        <div class="padding-top-15">
+                            <p class="wrap-text" data-ng-bind-html="singleCampaignDetails.campaignDetail"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

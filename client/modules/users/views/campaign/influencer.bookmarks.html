@@ -1,0 +1,49 @@
+<div ng-if= "_id" class="container-fluid bg-grey-light ma-bookmark"  ng-init="bookmarkedCampaignData(_id)">
+    <div class="container-fluid">
+        <div class="row margin-top-20">
+            <div ng-repeat="campaign in bookmarkedCampaignList" ng-show="campaign.campaignId !== null">
+                <div class="col-md-4">
+                    <div class="big-box padding-top-15 padding-left-20"  style="background-image: url({{campaign.campaignId.campaignImage}});background-size: cover; background-repeat: no-repeat;">
+
+
+                        <h4 class="headline">{{campaign.campaignId.campaignTitle}}</h4>
+                            <span class="btn-camp" ng-if="campaign.campaignId.campaignCategory=='Cosmetic'" translate="HOMEPAGE.COSMETIC"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignId.campaignCategory=='Fashion'" translate="HOMEPAGE.FASHION"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignId.campaignCategory=='Food'" translate="HOMEPAGE.FOOD"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignId.campaignCategory=='Sports'" translate="HOMEPAGE.SPORTS"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignId.campaignCategory=='Jewellary'" translate="HOMEPAGE.JEWELLARY"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignId.campaignCategory=='Health'" translate="HOMEPAGE.HEALTH"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignId.campaignCategory=='Travel'" translate="HOMEPAGE.TRAVEL"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignId.campaignCategory=='Music'" translate="HOMEPAGE.MUSIC"></span>
+                        <div class="big-box-footer">
+                            <div class="footer-top">
+                                <label class="color-white">Facebook Inc.</label>
+                                <label class="pull-right color-white">${{campaign.campaignId.priceRange.from}}-{{campaign.campaignId.priceRange.to}}</label>
+                            </div>
+                            <div class="footer-inner">
+                                <span class="checkbox-inline color-white" data-ng-click="applyCampaignFunc(campaign.campaignId._id)">
+							  <!-- <input type="checkbox" id="test1{{$index}}" ng-checked="checkAppliedCampaign(campaign._id)" data-ng-click="applyCampaignFunc(campaign._id)">
+							  -->
+								<img	ng-src="{{!checkAppliedCampaign(campaign.campaignId._id)?'./assets/images/apply.png':'./assets/images/apply-highlighted.png'}}" id="test1{{$index}}"  >
+							  <label for="test1{{$index}}"> 						     
+							  	<div ng-show="checkAppliedCampaign(campaign.campaignId._id)" class="color-red" translate="HOMEPAGE.APPLY">Apply</div><div ng-show="!checkAppliedCampaign(campaign.campaignId._id)" translate="HOMEPAGE.APPLY">Apply</div>
+							  </label>
+							  </span>
+                                <span class="checkbox-inline color-white pull-right" ng-click="bookmarkCampaignFunc(campaign.campaignId._id, checkBookmarkedCampaign(campaign.campaignId._id))">
+							  <!-- <input id="test2{{$index}}" type="checkbox" ng-checked="checkBookmarkedCampaign(campaign._id)" for="test2{{$index}}" data-ng-click="bookmarkCampaignFunc(campaign._id, checkBookmarkedCampaign(campaign._id))"> -->
+							  <img	ng-src="{{!checkBookmarkedCampaign(campaign.campaignId._id)?'./assets/images/bookmark.png':'./assets/images/bookmark-highlighted.png'}}" id="test2{{$index}}" >
+							  <label for="test2{{$index}}">
+							  	<div ng-show="checkBookmarkedCampaign(campaign.campaignId._id)" class="color-red" translate="HOMEPAGE.BOOKMARK">Bookmark</div><div ng-show="!checkBookmarkedCampaign(campaign.campaignId._id)" translate="HOMEPAGE.BOOKMARK">Bookmark</div>
+							  </label>
+						    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(".max-range-slider").slider({});
+</script>

@@ -1,0 +1,154 @@
+<div class="container-fluid bg-white navbar-fixed-top" ng-init="visibleSubMenu=false;">
+    <nav class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <!--
+                <span class="visible-xs navbar-brand">
+                    Sidebar
+                </span>
+            -->
+            <a ng-if="$root.influ_Cham" class="ma-search search-camp" ng-click="collapseSearch();">
+                <i class="fa fa-search">
+                </i>
+            </a>
+            <a href="#">
+                <img style="padding-top:14px;" src="assets/images/logo.png" class="brand" alt=""/>
+            </a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" ng-click="collapseNav()">
+                <span class="sr-only">
+                    Toggle navigation
+                </span>
+                <span class="icon-bar">
+                </span>
+                <span class="icon-bar">
+                </span>
+                <span class="icon-bar">
+                </span>
+            </button>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" collapse="navCollapsed">
+            <ul class="nav navbar-nav tb-menu" ng-if="env != 'block'">
+                <li>
+                    <a translate="INFLUENCER_COMMON_HEADER.LIST_1" ui-sref-active="current" ui-sref="influencer.campaign"  data-toggle="collapse" data-target="#" ng-click="show_influ_Cham()">
+                        Campaigns
+                        <span class="sr-only">
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a translate="INFLUENCER_COMMON_HEADER.LIST_2" ui-sref-active="current" ui-sref="influencer.myCampaign"  data-toggle="collapse" data-target="#" ng-click="hide_influ_Cham()">
+                        My Campaigns
+                    </a>
+                </li>
+                <li>
+                    <a translate="INFLUENCER_COMMON_HEADER.LIST_3" ui-sref-active="current" ui-sref="influencer.bookmarks"  data-toggle="collapse" data-target="#" ng-click="hide_influ_Cham()">
+                        Bookmarks
+                    </a>
+                </li>
+                <li>
+                    <a translate="INFLUENCER_COMMON_HEADER.LIST_4" ui-sref-active="current" ui-sref="influencer.message"  data-toggle="collapse" data-target="#" ng-click="hide_influ_Cham()">
+                        Messages
+                    </a>
+                </li>
+                 <li>
+                    <a translate="INFLUENCER_COMMON_HEADER.LIST_5" ui-sref-active="current" ui-sref="influencer.analytics"  data-toggle="collapse" data-target="#" ng-click="hide_influ_Cham()">
+                        Analytics
+                    </a>
+                </li>
+                <div class="profile-hidden padding-left-15 padding-top-10">
+                    <li class="padding-bottom-15">
+                        <a translate="INFLUENCER_COMMON_HEADER.MENU_PROFILE_PC" ui-sref="influencer.instagrammers"  data-toggle="collapse" data-target="#" ng-click="hide_influ_Cham()">
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a translate="INFLUENCER_COMMON_HEADER.MENU_SIGNOUT_PC" target="_self" ng-href="/logout">
+                            Sign Out
+                        </a>
+                    </li>
+                </div>
+            </ul>
+            <ul class="nav navbar-nav tb-menu test padding-bottom-15" ng-if="env == 'block'">
+                <li>
+                    <a ng-click="hide_influ_Cham()">
+                        <div tooltip="Coming Soon" data-toggle="collapse" data-placement="bottom">
+                            <span translate="INFLUENCER_COMMON_HEADER.LIST_1">
+                                Campaigns
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="hide_influ_Cham()">
+                        <div tooltip="Coming Soon" data-toggle="collapse">
+                            <span translate="INFLUENCER_COMMON_HEADER.LIST_2">
+                                My Campaign
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="hide_influ_Cham()">
+                        <div tooltip="Coming Soon" data-toggle="collapse">
+                            <span translate="INFLUENCER_COMMON_HEADER.LIST_3">
+                                Bookmarks
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="hide_influ_Cham()">
+                        <div tooltip="Coming Soon" data-toggle="collapse">
+                            <span translate="INFLUENCER_COMMON_HEADER.LIST_4">
+                                Messages
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                     <a  translate="INFLUENCER_COMMON_HEADER.LIST_5" ui-sref-active="current" ui-sref="influencer.analytics"  data-toggle="collapse" data-target="#" ng-click="hide_influ_Cham()">
+                        Analytics
+                    </a>
+                </li>
+                <div class="profile-hidden padding-left-15 padding-top-10">
+                    <li>
+                        <a translate="INFLUENCER_COMMON_HEADER.MENU_PROFILE_PC" ui-sref="influencer.instagrammers"  data-toggle="collapse" data-target="#" ng-click="hide_influ_Cham()">
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a translate="INFLUENCER_COMMON_HEADER.MENU_SIGNOUT_PC" target="_self" ng-href="/logout">
+                            Sign Out
+                        </a>
+                    </li>
+                </div>
+            </ul>
+            <ul class="nav navbar-nav navbar-right visible-md-block visible-lg-block" style="margin-right:30">
+                <li>
+                    <a ng-href="" class="dropdown-toggle" ng-click="$event.preventDefault(); visibleSubMenu = !visibleSubMenu;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="user-circle">
+                            <i class="fa fa-user">
+                            </i>
+                        </span>
+                        <i class="fa fa-caret-down">
+                        </i>
+                    </a>
+                    <ul class="dropdown-menu" ng-class="{ 'visibleMenu' : visibleSubMenu}" ng-mouseleave="visibleSubMenu = !visibleSubMenu;">
+                        <li>
+                            <a translate="INFLUENCER_COMMON_HEADER.MENU_PROFILE_MOBILE" ui-sref="influencer.instagrammers" ng-click="hide_influ_Cham()">
+                                Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a translate="INFLUENCER_COMMON_HEADER.MENU_SIGNOUT_MOBILE" target="_self" href="/logout">
+                                Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+</div>

@@ -1,0 +1,60 @@
+<div class="flui-candiate bg-white ma-candidate bg-grey-light">
+    <div class="row padding-top-20 padding-bottom-20 ">
+        <div class="bg-white padding-left-20">
+            <div class="col-md-3">
+                <select class="dropdown-camp form-control input-flat" data-ng-model="search.campaignId" ng-options="campaign._id as campaign.campaignTitle for campaign in campaignList" ng-init="search.campaignId=''">
+                    <option value>All campaign</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div ng-repeat="hired in testHireList | filter:{campaignId:{_id : search.campaignId||undefined}}">
+        <div class="row">
+            <div class="col-md-12 margin-top-10 margin-bottom-10">
+                <div class="col-md-1 padding-right-0 padding-top-5">
+                    <img class="img-responsive img-circle img-ht-70" ng-src="{{hired.influencerId.profilePhoto}}">
+                </div>
+                <div class="col-md-3">
+                    <div class="max-message border-less padding-top-0 padding-bottom-0 margin-left-15">
+                        <h3 class="color-red">{{hired.influencerId.aboutMe.name}}</h3>
+                        <p class="bold">{{hired.campaignId.campaignTitle}}</p>
+                        <p>$ {{hired.influencerId.aboutMe.minPrice}}</p>
+                    </div>
+                </div>
+                <div class="col-md-2 border-left">
+                    <div class="max-message align-center border-less">
+                        <label class="small-lbl color-grey-light" translate="PROFILE_PAGE_TOP.LABEL_FOLLOWERS">FOLLOWERS</label>
+                        <h4 class="color-red align-center">{{hired.influencerId.followed_by}}</h4>
+                    </div>
+                </div>
+                <div class="col-md-2 border-left">
+                    <div class="max-message align-center border-less">
+                        <label class="small-lbl color-grey-light" translate="PROFILE_PAGE_TOP.LABEL_LIKES" >LIKES AVG</label>
+                        <h4 class="color-red align-center">{{hired.influencerId.averageLikes}}</h4>
+                    </div>
+                </div>
+                <div class="col-md-2 border-left">
+                    <div class="max-message align-center border-less">
+                        <label class="small-lbl color-grey-light" translate="PROFILE_PAGE_TOP.LABEL_COMMENTS">COMMENTS AVG</label>
+                        <h4 class="color-red align-center">{{hired.influencerId.averageComments}}</h4>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-3 border-left">
+                    <div class="max-campaign-btn">
+                        <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn bg-red" translate="ADVERTISER_CAMPAIGNS.ACTIONS">ACTIONS<i class="fa fa-caret-down"></i></button>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="advertiser.common.influencer({influencerId: hired.influencerId._id})" data-ng-click="influencerDetailsFunc('influencerDetails', hired.influencerId)" translate="AD_MESSAGE_PAGE.BTN_2">View Profile</a></li>
+                            <li><a ui-sref="advertiser.messages" data-ng-click="messageView(hired)" translate="ADVERTISER_CANDIDATE.SEND_MESSAGE">Send Message</a></li>
+                            <li><a data-ng-click="endContract(hired.influencerId._id, hired.price)" translate="ADVERTISER_CANDIDATE.END_CONTRACT">End Contract</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-11 col-md-offset-1">
+                    <h6 class="padding-left-15 margin-top-0 color-grey-light"></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

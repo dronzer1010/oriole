@@ -1,0 +1,103 @@
+<div data-ng-controller="AdvertiserCtrl">
+    <button type="button" data-ng-click="$dismiss()" class="close category-close fa fa-times-circle-o" data-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-content edit-campaign">
+        <div class="modal-header border-less">
+            <h4 class="modal-title center" ng-show="pageCampaign == 'new'" id="myModalLabel" translate="CAMPAIGN_DETAILS.POST_CAMPAIGN">Post a Campaign</h4>
+            <h4 class="modal-title center" ng-show="pageCampaign == 'edit'" translate="CAMPAIGN_DETAILS.EDIT_CAMPAIGN">Edit Campaign</h4>
+        </div>
+        <div class="modal-body">
+            <form name="createCampaignForm" novalidate>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label translate="CAMPAIGN_DETAILS.CAMPAIGN_TITLE">Campaign Title</label>
+                            <input type="text" placeholder="Campaign Title" class="form-control input-flat" name="campaignTitle" data-ng-model="campaign.campaignTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label translate="CAMPAIGN_DETAILS.CATEGORY">Category</label>
+                            <input type="text" class="form-control input-flat" data-ng-model="categoryData" data-ng-click="categoryPopup()" ng-show="categoryData" />
+                            <input type="text" class="form-control input-flat" data-ng-model="campaign.campaignCategory" data-ng-click="categoryPopup()" ng-hide="categoryData" ng-show="campaign.campaignCategory" />
+                            <!-- <input type="text" placeholder="Select Category" class="form-control" name="campaignCategory" data-ng-model="campaign.campaignCategory"> -->
+                        </div>
+                        <div class="form-group">
+                            <label translate="CAMPAIGN_DETAILS.DETAIL">Detail</label>
+                            <textarea type="text" ng-trim="false" placeholder="Company Detail" class="form-control input-flat" name="campaignDetail" data-ng-model="campaign.campaignDetail"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label translate="CAMPAIGN_DETAILS.DUE_DATE">Due Date</label>
+                           <!--  <input type="text" id="datepicker" class="form-control input-flat" name="dueDate" data-ng-model="campaign.dueDate"> -->
+                            <div class="clearfix"></div>
+                                <select class="form-control duedate_campaign" ng-model="campaign.year" ng-options="o for o in years" required>
+                                </select>
+                                   <select class="form-control duedate_campaign" ng-model="campaign.month" ng-options="month.value as month.name for month in months" required>
+                                </select>
+                                <select class="form-control duedate_campaign" ng-model="campaign.day" ng-options="day as day for day in days" required>
+                                </select>
+         
+                        </div>
+                        <div class="form-group">
+                        <div class="clearfix"></div>
+                            <label translate="CAMPAIGN_DETAILS.SELECT_AREA">Select Area</label>
+                            <input class="dropdown-camp form-control input-flat" data-ng-model="campaign.area" googleplace/>
+                        </div>
+                        <div class="form-group  margin-top-10">
+                            <label translate="ADVERTISER_CAMPAIGNS.PRICE_RANGE">Price Range</label>
+                            <div class="clearfix"></div>
+                            <input type="text" class="dropdown col-md-3" name="priceRange.from" data-ng-model="campaign.priceRange.from" placeholder="from">
+                            <input type="text" class="dropdown col-md-3 margin-left-20" name="priceRange.to" data-ng-model="campaign.priceRange.to" placeholder="to">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group margin-top-10">
+                            <label class="" translate="CAMPAIGN_DETAILS.TARGET_AGE">Target Age</label>
+                            <div class="clearfix"></div>
+                            <input type="text" class="dropdown col-md-3" name="targetAge.from" data-ng-model="campaign.targetAge.from" placeholder="from">
+                            <input type="text" class="dropdown col-md-3 margin-left-20" name="targetAge.to" data-ng-model="campaign.targetAge.to" placeholder="to">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group margin-top-10">
+                            <label translate="HOMEPAGE.GENDER">Gender</label>
+                            <div class="clearfix"></div>
+                            <select type="text" class="dropdown col-md-3" name="gender" ng-init="campaign.gender='male'" data-ng-model="campaign.gender" placeholder="Male">
+                                <option value="male" translate="HOMEPAGE.MALE">Male</option>
+                                <option value="female" translate="HOMEPAGE.FEMALE">Female</option>
+                            </select>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group margin-top-10">
+                            <label class="" translate="CAMPAIGN_DETAILS.VISIBILITY">Visibility</label>
+                            <select class="form-control input-flat" name="visiblePrivate" ng-model="campaign.visiblePrivate">
+                                <option value="" translate="CAMPAIGN_DETAILS.SELECT_VISIBILITY">Select Visiblity</option>
+                                <option value="false" translate="CAMPAIGN_DETAILS.VISIBILITY_EVERYONE">Everyone can see the campaign</option>
+                                <option value="true" translate="CAMPAIGN_DETAILS.VISIBILITY_INVITED">Only invited applicants see the campaign</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group padding-top-25">
+                            <img class="img-edit-camp img-responsive" ng-src="{{campaignImage}}" name="campaignImage" data-ng-model="campaign.campaignImage">
+                        </div>
+                        <div class="form-group center">
+                            <button class="btn btn-primary btn-blue" type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="5000" ngf-max-size="5MB" translate="SETTINGS.UPLOAD_IMAGE">Upload Image</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="" translate="CAMPAIGN_DETAILS.REFERENCE_URL">Reference URL</label>
+                            <input type="text" name="referenceUrl" data-ng-model="campaign.referenceUrl" class="form-control input-flat">
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <div class="form-group margin-top-25">
+                          <button ng-show="pageCampaign == 'edit'" class="btn btn-yellow" data-ng-click="campaignUpdate(campaign, createCampaignForm, 'Draft')" translate="CAMPAIGN_DETAILS.SAVE_AS_DRAFT">Save as Draft</button>
+                          <button ng-show="pageCampaign == 'new'" class="btn btn-yellow" data-ng-click="campaignSave(campaign, createCampaignForm, 'Draft')" translate="CAMPAIGN_DETAILS.SAVE_AS_DRAFT">Save as Draft</button>
+                          <button ng-show="pageCampaign == 'edit'" class="btn btn-green" data-ng-click="campaignUpdate(campaign, createCampaignForm, 'Pending')" translate="CAMPAIGN_DETAILS.PUBLISH">Publish</button>
+                          <button ng-show="pageCampaign == 'new'" class="btn btn-green" data-ng-click="campaignSave(campaign, createCampaignForm, 'Pending')" translate="CAMPAIGN_DETAILS.PUBLISH">Publish</button>
+                </div>
+          </div>
+        </div>
+      </form>
+      </div>
+  </div>
+</div>

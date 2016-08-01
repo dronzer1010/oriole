@@ -1,0 +1,40 @@
+<div  data-ng-controller="InfluencerCtrl">
+  <button type="button" data-ng-click="$dismiss()" class="category-close fa fa-times-circle-o" data-dismiss="modal" aria-label="Close"></button>
+  <div class="modal-body">
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Cosmetic') == false" ng-href="" data-ng-click="catgeoryArray('Cosmetic')" translate="CATEGORY_BOX.LI_1_FALSE">Cosmetic</div>
+        <div class="category-box-checked" ng-show="checkCategory('Cosmetic') == true" ng-href="" data-ng-click="catgeoryArray('Cosmetic')" translate="CATEGORY_BOX.LI_1_TRUE">Cosmetic</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Fashion') == false" ng-href="" data-ng-click="catgeoryArray('Fashion')" translate="CATEGORY_BOX.LI_2_FALSE">Fashion</div>
+        <div class="category-box-checked" ng-show="checkCategory('Fashion') == true" ng-href="" data-ng-click="catgeoryArray('Fashion')" translate="CATEGORY_BOX.LI_2_TRUE">Fashion</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Food') == false" ng-href="" data-ng-click="catgeoryArray('Food')" translate="CATEGORY_BOX.LI_3_FALSE">Food</div>
+        <div class="category-box-checked" ng-show="checkCategory('Food') == true" ng-href="" data-ng-click="catgeoryArray('Food')" translate="CATEGORY_BOX.LI_3_TRUE">Food</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Sports') == false" ng-href="" data-ng-click="catgeoryArray('Sports')" translate="CATEGORY_BOX.LI_4_FALSE">Sports</div>
+        <div class="category-box-checked" ng-show="checkCategory('Sports') == true" ng-href="" data-ng-click="catgeoryArray('Sports')" translate="CATEGORY_BOX.LI_4_TRUE">Sports</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Jewellary') == false" ng-href="" data-ng-click="catgeoryArray('Jewellary')" translate="CATEGORY_BOX.LI_5_FALSE">Jewellery</div>
+        <div class="category-box-checked" ng-show="checkCategory('Jewellary') == true" ng-href="" data-ng-click="catgeoryArray('Jewellary')" translate="CATEGORY_BOX.LI_5_TRUE">Jewellery</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Health') == false" ng-href="" data-ng-click="catgeoryArray('Health')" translate="CATEGORY_BOX.LI_6_FALSE">Health</div>
+        <div class="category-box-checked" ng-show="checkCategory('Health') == true" ng-href="" data-ng-click="catgeoryArray('Health')" translate="CATEGORY_BOX.LI_6_TRUE">Health</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Travel') == false" ng-href="" data-ng-click="catgeoryArray('Travel')" translate="CATEGORY_BOX.LI_7_FALSE">Travel</div>
+        <div class="category-box-checked" ng-show="checkCategory('Travel') == true" ng-href="" data-ng-click="catgeoryArray('Travel')" translate="CATEGORY_BOX.LI_7_TRUE">Travel</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Music') == false" ng-href="" data-ng-click="catgeoryArray('Music')" translate="CATEGORY_BOX.LI_8_FALSE">Music</div>
+        <div class="category-box-checked" ng-show="checkCategory('Music') == true" ng-href="" data-ng-click="catgeoryArray('Music')" translate="CATEGORY_BOX.LI_8_TRUE">Music</div>
+      </div>
+    </div>
+  </div>
+</div>

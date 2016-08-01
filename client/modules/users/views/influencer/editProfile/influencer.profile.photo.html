@@ -1,0 +1,50 @@
+<form ng-if="instagramId" name="aboutPhotoForm" ng-submit="saveInstagramPhotoListChanges(removingMediaList, clickedImages)" ng-init="getSavedIntagramPhotos()" novalidate style="padding-top:10px">
+    <div class="row">
+        <div class="col-xs-6 col-md-2" ng-repeat="photo in photoList | limitTo:9">
+            <div class="box-icon">
+                <i class="fa fa-times-circle" data-ng-click="removePhoto($index)"></i>
+                <img class="img-responsive" ng-model="photo.$index" ng-src="{{photo.thumbnail}}">
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-2" ng-repeat="instagramSavedPhoto in instagramSavedPhotoList">
+            <div class="box-icon">
+                <i class="fa fa-times-circle" data-ng-click="addToRemoveList(instagramSavedPhoto, $index)"></i>
+                <img class="img-responsive" ng-model="instagramSavedPhoto.$index" ng-src="{{instagramSavedPhoto.images.thumbnail}}">
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-2" ng-repeat="instagramSavedPhoto in clickedImages">
+            <div class="box-icon">
+                <i class="fa fa-times-circle" data-ng-click="removeFromSeletedList(instagramSavedPhoto, $index)"></i>
+                <img class="img-responsive" ng-model="instagramSavedPhoto.$index" ng-src="{{instagramSavedPhoto.images.thumbnail}}">
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-2" ng-repeat="photo in photoList | orderBy:'-count' | limitTo:9:10">
+            <div class="box-icon">
+                <i class="fa fa-times-circle" data-ng-click="removePhoto($index)"></i>
+                <img class="img-responsive" ng-src="{{photo.thumbnail}}">
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-2" ng-repeat="photo in localPhotoList">
+            <div class="box-icon">
+                <i class="fa fa-times-circle" data-ng-click="removePhotoLocal($index)"></i>
+                <img class="img-responsive" ng-src="{{photo.thumbnail}}">
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-2" ng-repeat="photo in photos">
+            <div class="box-icon">
+                <i class="fa fa-times-circle" data-ng-click="removePhotoAWS($index)"></i>
+                <img class="img-responsive" ng-src="{{photo}}">
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-2 ">
+            <div class="box-icon bg-black influ-new-add" ng-click="showAddPhotoDialog($event)">
+                <span class="new-add"><i class="fa fa-plus"></i></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6 form-group center">
+                <input type="submit" value="Save" class="btn btn-primary btn-wide" />
+            </div>
+        </div>
+    </div>
+</form>

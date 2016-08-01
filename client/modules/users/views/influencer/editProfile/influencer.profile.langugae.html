@@ -1,0 +1,49 @@
+<form name="langugaeForm" novalidate  ng-init="getProfileData('language');">
+    <div class="row margin-top-20">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <div class="row form-group">
+                <label translate="PROFILE_PAGE_LANGUAGE.LABEL_1" class="col-md-4 col-xs-12">Language</label>
+                <div class="col-md-6 col-xs-12">
+                    <select class="form-control input-flat" name="" ng-change="changeLanguage(language.language)" data-ng-model="language.language">
+                        <option value="en">English</option>
+                        <option value="jap">日本語</option>
+                        <option value="kor">Korean</option>
+                        <option value="chin">Chinese</option>
+                    </select>
+                    <span translate="PROFILE_PAGE_LANGUAGE.P_1" class="little-lbl width-270 margin-top-3">Select the dashboard language</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row form-group">
+                    <label translate="PROFILE_PAGE_LANGUAGE.LABEL_2" class="col-md-4 col-xs-12">Notification Language</label>
+                    <div class="col-md-6 col-xs-12">
+                        <select class="form-control input-flat" ng-change="changeLanguage(language.language)" name="" data-ng-model="language.preferredLanguage">
+                            <option value="en">English</option>
+                            <option value="jap">日本語</option>
+                        </select>
+                        <span translate="PROFILE_PAGE_LANGUAGE.P_2" class="little-lbl width-270 margin-top-3">You will receive the email in the selected language</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row form-group">
+                <label class="col-md-4 col-xs-12" translate="SETTINGS.TIME_ZONE_SETTINGS">Timezone Settings</label>
+                <div class="col-md-6 col-xs-12">
+                            <select data-ng-model="language.preferredTimezone" class="form-control input-flat  timezone"></select>
+                     <span></span>      
+             </div></div>
+            </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-wide" value="save" ng-click="submitLangugae(language)">
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $('.timezone').timezones();
+</script>

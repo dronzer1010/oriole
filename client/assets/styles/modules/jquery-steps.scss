@@ -1,0 +1,358 @@
+//colors
+$white: white;
+$color_friar_gray_approx: #827d7d;
+$black: black;
+$color_gallery_approx: #eee;
+$color_silver_chalice_approx: #aaa;
+$color_mountain_meadow_approx: #1ab394;
+$color_downy_approx: #6fd1bd;
+$color_mandy_approx: #ed5565;
+$color_celeste_approx: #ccc;
+$color_pippin_approx: rgb(251, 227, 228);
+$color_your_pink_approx: #fbc2c4;
+$color_falu_red_approx: #8a1f11;
+$color_cararra_approx: #edecec;
+$color_pink_swan_approx: #bbb;
+$color_chicago_approx: #5f5f5f;
+//@extend-elements
+%extend_1 {
+    background-color: $white;
+    border: 1px solid $color_friar_gray_approx;
+    color: $black;
+}
+
+%extend_2 {
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+}
+
+%extend_3 {
+    display: block;
+    width: auto;
+    padding: 8px;
+    text-decoration: none;
+}
+
+%extend_4 {
+    background: $color_gallery_approx;
+    color: $color_silver_chalice_approx;
+    cursor: default;
+}
+
+%extend_5 {
+    background: $color_mountain_meadow_approx;
+    color: $white;
+    cursor: default;
+}
+
+%extend_6 {
+    background: $color_mountain_meadow_approx;
+    color: $white;
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-default {
+    @extend %extend_1;
+    &:hover {
+        @extend %extend_1;
+    }
+}
+
+.wizard {
+    display: block;
+    overflow: hidden;
+    a {
+        outline: 0;
+    }
+    ul {
+        @extend %extend_2;
+        > li {
+            display: block;
+            padding: 0;
+        }
+    }
+    > {
+        .steps {
+            position: relative;
+            display: block;
+            width: 100%;
+            .current-info {
+                position: absolute;
+                left: -999em;
+            }
+            a {
+                @extend %extend_3;
+                &:hover {
+                    @extend %extend_3;
+                }
+                &:active {
+                    @extend %extend_3;
+                }
+            }
+            > ul > li {
+                width: 25%;
+                float: left;
+            }
+            .disabled a {
+                @extend %extend_4;
+                &:hover {
+                    @extend %extend_4;
+                }
+                &:active {
+                    @extend %extend_4;
+                }
+            }
+            .current a {
+                @extend %extend_5;
+                &:hover {
+                    @extend %extend_5;
+                }
+                &:active {
+                    @extend %extend_5;
+                }
+            }
+            .done a {
+                background: $color_downy_approx;
+                color: $white;
+                &:hover {
+                    background: $color_downy_approx;
+                    color: $white;
+                }
+                &:active {
+                    background: $color_downy_approx;
+                    color: $white;
+                }
+            }
+            .error a {
+                background: $color_mandy_approx;
+                color: $white;
+                &:hover {
+                    background: $color_mandy_approx;
+                    color: $white;
+                }
+                &:active {
+                    background: $color_mandy_approx;
+                    color: $white;
+                }
+            }
+        }
+        .content {
+            background: $white;
+            display: block;
+            margin: 5px 5px 10px 5px;
+            min-height: 120px;
+            overflow: hidden;
+            position: relative;
+            width: auto;
+            border-radius: 5px;
+            > {
+                .title {
+                    position: absolute;
+                    left: -999em;
+                }
+                .body {
+                    float: left;
+                    position: absolute;
+                    width: 95%;
+                    height: 95%;
+                    padding: 2.5%;
+                    ul {
+                        list-style: disc !important;
+                        > li {
+                            display: list-item;
+                        }
+                    }
+                    > iframe {
+                        border: 0 none;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    input {
+                        display: block;
+                        border: 1px solid $color_celeste_approx;
+                        &.error {
+                            background: $color_pippin_approx;
+                            border: 1px solid $color_your_pink_approx;
+                            color: $color_falu_red_approx;
+                        }
+                    }
+                    input[type="checkbox"] {
+                        display: inline-block;
+                    }
+                    label {
+                        display: inline-block;
+                        margin-bottom: 0.5em;
+                        &.error {
+                            color: $color_falu_red_approx;
+                            display: inline-block;
+                            margin-left: 1.5em;
+                        }
+                    }
+                }
+            }
+        }
+        .actions {
+            position: relative;
+            display: block;
+            text-align: right;
+            width: 100%;
+            > ul {
+                display: inline-block;
+                text-align: right;
+                > li {
+                    float: left;
+                    margin: 0 0.5em;
+                }
+            }
+            a {
+                @extend %extend_6;
+                &:hover {
+                    @extend %extend_6;
+                }
+                &:active {
+                    @extend %extend_6;
+                }
+            }
+            .disabled a {
+                background: $color_gallery_approx;
+                color: $color_silver_chalice_approx;
+                &:hover {
+                    background: $color_gallery_approx;
+                    color: $color_silver_chalice_approx;
+                }
+                &:active {
+                    background: $color_gallery_approx;
+                    color: $color_silver_chalice_approx;
+                }
+            }
+        }
+        .loading .spinner {}
+    }
+    &.vertical > {
+        .steps {
+            display: inline;
+            float: left;
+            width: 30%;
+            > ul > li {
+                float: none;
+                width: 100%;
+            }
+        }
+        .content {
+            display: inline;
+            float: left;
+            margin: 0 2.5% 0.5em 2.5%;
+            width: 65%;
+        }
+        .actions {
+            display: inline;
+            float: right;
+            margin: 0 2.5%;
+            width: 95%;
+            > ul > li {
+                margin: 0 0 0 1em;
+            }
+        }
+    }
+}
+
+.tabcontrol {
+    display: block;
+    overflow: hidden;
+    a {
+        outline: 0;
+    }
+    ul {
+        @extend %extend_2;
+        > li {
+            display: block;
+            padding: 0;
+        }
+    }
+    > {
+        .steps {
+            position: relative;
+            display: block;
+            width: 100%;
+            .current-info {
+                position: absolute;
+                left: -999em;
+            }
+            > ul {
+                position: relative;
+                margin: 6px 0 0;
+                top: 1px;
+                z-index: 1;
+                > li {
+                    float: left;
+                    margin: 5px 2px 0 0;
+                    padding: 1px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    &:hover {
+                        background: $color_cararra_approx;
+                        border: 1px solid $color_pink_swan_approx;
+                        padding: 0;
+                    }
+                    &.current {
+                        background: $white;
+                        border: 1px solid $color_pink_swan_approx;
+                        border-bottom: 0 none;
+                        padding: 0 0 1px 0;
+                        margin-top: 0;
+                        > a {
+                            padding: 15px 30px 10px;
+                        }
+                    }
+                    > a {
+                        color: $color_chicago_approx;
+                        display: inline-block;
+                        border: 0 none;
+                        margin: 0;
+                        padding: 10px 30px;
+                        text-decoration: none;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+        .content {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: 35em;
+            overflow: hidden;
+            border-top: 1px solid $color_pink_swan_approx;
+            padding-top: 20px;
+            > {
+                .title {
+                    position: absolute;
+                    left: -999em;
+                }
+                .body {
+                    float: left;
+                    position: absolute;
+                    width: 95%;
+                    height: 95%;
+                    padding: 2.5%;
+                    ul {
+                        list-style: disc !important;
+                        > li {
+                            display: list-item;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.wizard-big.wizard > .content {
+    min-height: 320px;
+}

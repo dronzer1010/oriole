@@ -1,0 +1,53 @@
+<div class="container-fluid bg-grey-light of-hidden" ng-init ="getProfileData()" style="margin-top:70px">
+  <div class="container">
+    <div class="tb-section border-less">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="tb-section-left">
+            <div class="row">
+            	<div class="col-md-6 col-xs-5 center">
+	            	<img ng-src="{{profilePhoto}}" class="img-responsive img-circle img-ht">
+	            </div>
+	            <div class="col-md-6 col-xs-7">
+	            	<h3><strong>{{aboutMe.name}}</strong></h3>
+	            	<label ng-if="aboutMe.birthday"  class="mid-lbl">{{aboutMe.gender}}, {{calculateAge(aboutMe.birthday)}}  <span translate="PROFILE_PAGE_TOP.LABEL_YEAR" >Year</span></label>
+
+	            	<br class="hide block"/>
+	            	<label class="mid-lbl" style="white-space: normal;">{{aboutMe.city}}</label>
+	            	<a translate="PROFILE_PAGE_TOP.BUTTON_EDIT_PC" class="btn btn-primary bg-red none" ui-sref="influencer.profile.aboutMe">Edit Profile</a>
+	            </div>
+	          </div>
+	          <div class="row">
+	            <div class="col-md-12 col-xs-4 form-group margin-top-30 center">
+	            	<label translate="PROFILE_PAGE_TOP.LABEL_FOLLOWERS" class="small-lbl">FOLLOWERS</label>
+	            	<h3 class="follower color-red">{{followed_by}}</h3>
+	            </div>
+	            <div class="col-md-12 col-xs-4 form-group margin-top-30 center">
+	            	<label translate="PROFILE_PAGE_TOP.LABEL_LIKES" class="small-lbl">LIKES AVG</label>
+	            	<h3 class="follower color-red">{{averageLikes}}</h3>
+	            </div>
+	            <div class="col-md-12 col-xs-4 form-group margin-top-30 center">
+	            	<label translate="PROFILE_PAGE_TOP.LABEL_COMMENTS" class="small-lbl">COMMENTS AVG</label>
+	            	<h3 class="follower color-red">{{averageComments}}</h3>
+	            </div>
+	            <div class="col-md-12 form-group margin-top-30 center">
+	            	<label translate="PROFILE_PAGE_TOP.LABEL_MINPRICE" class="small-lbl">PRICE</label>
+	            	<h3 class="follower"><strong>$ {{aboutMe.minPrice}}</strong></h3>
+	            </div>
+	            <div class="col-xs-12 form-group center hide block">
+	            	<a translate="PROFILE_PAGE_TOP.BUTTON_EDIT_MOBILE" class="btn bg-red btn-round" ui-sref="influencer.profile.aboutMe" >Edit Profile</a>
+	            </div>
+	          </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div ng-if="instagramId" class="tb-section-middle xs-padding-0" ng-init="getSavedIntagramPhotos();">
+	          <div class="col-md-4 col-xs-4 xs-padding-0 margin-bottom-20" ng-repeat="photo in instagramSavedPhotoList">
+	            <img height="203" width="203" ng-src="{{photo.images.thumbnail}}" class="img-responsive">
+	          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

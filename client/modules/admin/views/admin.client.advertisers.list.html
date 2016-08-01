@@ -1,0 +1,66 @@
+<div class="wrapper wrapper-content admin bg-grey-light padding-top-20 companies" ng-init="adminCtrl.listApprovedAdvertiser();">
+    <div class="col-lg-12 ">
+        <div class="col-lg-12 company-table">
+            <div class="col-lg-12 company-head">
+               
+                <div class="col-lg-2">
+                    <strong>Company</strong>
+                </div>
+                <div class="col-lg-2">
+                    <strong>Owner</strong>
+                </div>
+                <div class="col-lg-2">
+                    <strong>Email</strong>
+                </div>
+                
+            </div>
+            <div class="col-lg-12 company-data" ng-repeat="item in adminCtrl.advertiserslist">
+               
+                <div class="col-lg-2">
+                    <strong>{{item.company}}</strong>
+                </div>
+                <div class="col-lg-2">
+                    <strong>{{item.name}}</strong>
+                </div>
+                <div class="col-lg-3">
+                    <strong>{{item.email}}</strong>
+                </div>
+                <div class="col-lg-1 company-collapse">
+                    <button type="button" class="btn btn-primary" ng-click="item.isCollapsed = !item.isCollapsed">Know more</button>
+                </div>
+                <div class="col-lg-1 company-collapse">
+                    <button type="button"  ng-click="adminCtrl.remove(item._id)" class="btn btn-primary">Delete</button>
+                </div>
+                <div class="col-lg-12">
+                    <div ng-init="item.isCollapsed = true" collapse="item.isCollapsed">
+                        <div class="well well-lg" style="height: 200px;">
+                            <div class="col-lg-8">
+                                <div class="col-lg-4">Department : </div>
+                                <div class="col-lg-4">{{item.department}}</div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="col-lg-4">Phone number : </div>
+                                <div class="col-lg-4">{{item.phonenumber}}</div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="col-lg-4">Date of signup : </div>
+                                <div class="col-lg-4">{{item.created_at}}</div>
+                            </div>
+                            <div class="col-lg-8" style="margin-top: 30px;">
+                                <input type="radio"  value="Standard" ng-click="adminCtrl.updateaction(item,'Standard')" ng-model="item.userLevel">Standard
+                                <input type="radio"  value="Subscriber" ng-click="adminCtrl.updateaction(item,'Subscriber')" ng-model="item.userLevel">Subscriber
+                                 <input type="radio"  value="Trial" ng-click="adminCtrl.updateaction(item,'Trial')" ng-model="item.userLevel">Trial
+                            </div>
+                            <div class="col-lg-8" ng-if="admin=='admin'"> 
+                                <div class="col-lg-4">Assign to reseller</div>
+                                <select ng-change="adminCtrl.updateReseller(item)" ng-if="adminCtrl.resellerslist" class="form-control birthday" ng-model="item.resellerId" ng-options="reseller._id as reseller.company for reseller in adminCtrl.resellerslist" required>
+                                    <option value="">Select Reseller</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

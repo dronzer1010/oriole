@@ -1,0 +1,46 @@
+<div ng-if="advertiserInfo.instagramId && advertiserInfo.userLevel!='Trial'" class="container ma-campaign bg-grey-light padding-top-15">
+<form  name="aboutPhotoForm" ng-submit="saveInstagramPhotoListChanges(removingMediaList, clickedImages)" novalidate style="padding-top:10px">
+    <div class="row">
+        <div ng-if="hastagListing" class="col-xs-6 col-md-2" ng-repeat="hashtag in hastagListing" style="margin-bottom:10px!important;">
+            <div class="box-icon bg-black influ-new-add" style="padding:5%;height:137px;text-align:center;width: 152px;display: table-cell;vertical-align: middle;">
+                <i class="fa fa-times-circle" data-ng-click="removeTag(hashtag._id)" style="top:-12%;"></i>
+                <a ui-sref="advertiser.analytics.details({tagname: hashtag.name})" style="color:white;position: relative">{{hashtag.name}}</a>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-2">
+             <div ng-if="!isTokenInValid" class="box-icon bg-black  addnewtag" ng-click="addNewTagForm($event)" style="padding:5%;height:137px;text-align:center;">
+                <span class="new-add"><i class="fa fa-plus"></i></span>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+<div ng-if="advertiserInfo.userLevel=='Trial'">
+        <div class="row" style="width:100%;">
+           <img style="width:95%;margin-top: 44px;margin-left:49px;" src="assets/images/hashtag-analytics.jpg"></img>
+        </div>
+        <div class="overlayTrial">
+            <div style="margin:0 auto;height:95%;top:50%;color:red;font-size:25px;">
+                You need a monthly contract. Please contact support@expaus.in
+            </div>
+        </div>
+<style>
+.nav .navbar-nav .tb-menu .margin-top-0{
+    display: none;
+}
+.overlayTrial
+{
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 3px;
+
+    text-align: center;
+    right: 0;
+    background: rgba(2, 2, 2, 0.5);
+    z-index: 15000;
+}
+
+</style>
+</div>

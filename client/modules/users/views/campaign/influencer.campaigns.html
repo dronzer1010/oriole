@@ -1,0 +1,106 @@
+<div class="container-fluid searchbar bg-black-light" style="margin-top:66px;">
+    <div class="ma-search-box-diff padding-top-15 padding-bottom-15" collapse="searchCollapsed" style="background:#666">
+        <div class="row">
+            <div class="col-md-2 margin-top-minus-3">
+                <label class="mid-lbl color-white"><strong translate="HOMEPAGE.GENDER">Gender</strong></label>
+                <div class="form-group">
+                    <span class="small-lbl color-white">
+                  <input id="male" type="checkbox" data-ng-model="search.male" cd-true-value="male" cd-false-value="" ng-checked="true">
+                  <label for="male" style="width:50px" translate="HOMEPAGE.MALE">Male</label>
+                  </span>
+                    <span class="small-lbl color-white margin-left-20">
+          <input id="female" type="checkbox" ng-model="search.female" cd-true-value="female" cd-false-value="" ng-checked="true">
+          <label for="female" ng-init="female" translate="HOMEPAGE.FEMALE">Female</label>
+          </span>
+                </div>
+            </div>
+            <div class="col-md-2 width-19" style="width:17%;">
+                <label class="mid-lbl color-white"><strong translate="HOMEPAGE.AGE">Age</strong></label>
+                <p class="range-text"> 18
+                    <input type="text" ng-model="search.age" ng-list class="span2 form-control" value="" data-slider-min="18" data-slider-max="50" data-slider-step="1" data-slider-value="[18,50]" id="max-range-slider"> 50+</p>
+            </div>
+            <div class="col-md-3">
+                <label class="mid-lbl color-white"><strong translate="HOMEPAGE.PRICE">Price</strong></label>
+                <p class="range-text"> $100
+                    <input type="text" ng-model="search.price" ng-list class="span2" value="" data-slider-min="100" data-slider-max="1000" data-slider-step="50" data-slider-value="[100,1000]" id="max-range-slider1" /> $1000+ </p>
+            </div>
+            <script type="text/javascript">
+            var slider = new Slider('#max-range-slider', {});
+            var slider1 = new Slider('#max-range-slider1', {});
+            $(function() {
+                $(".ma-search").click(function() {
+                    $(".ma-search-box").slideToggle();
+                });
+            });
+            </script>
+            <div class="col-md-2 cat-category" style="width:15%">
+  
+                <input class="dropdown-camp form-control input-flat" placeholder="Search Area" data-ng-model="search.chosenPlace" googleplace/>
+            </div>
+            <div class="col-md-2">
+              
+                <select class="dropdown-camp form-control input-flat" data-ng-model="search.campaignCategory" ng-options="category|translate for category in categories">
+                    <option value="" translate="HOMEPAGE.CATEGORY_SELECT">Select Category</option>
+                </select>
+            </div>
+           <div class="col-md-1">
+             <button class="btn btn-primary bg-red" data-ng-click="applyInfluencerFilter(search)" translate="HOMEPAGE.APPLY">
+                        Apply
+              </button>
+             </div>
+        </div>
+         
+    </div>
+</div>
+<div  ng-if="userIsOkay" class="bg-grey-light " ng-init="applyInfluencerFilter(search)" ui-view>
+    <div class="container-fluid ">
+        <div class="row searchbar-body">
+            <div dir-paginate="campaign in campaignData |itemsPerPage:15" total-items="totalPages">
+                <div class="col-md-4">
+                    <div class="big-box" style="background-image: url({{campaign.campaignImage}});background-size: cover; background-repeat: no-repeat;">
+                        <div class="hover header padding-bottom-100 padding-top-15 padding-left-20" ui-sref="influencer.campaign.details({campaignId: campaign._id})" >
+                            <h4 class="headline">{{campaign.campaignTitle}}</h4>
+                           
+                            <span class="btn-camp" ng-if="campaign.campaignCategory=='Cosmetic'" translate="HOMEPAGE.COSMETIC"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignCategory=='Fashion'" translate="HOMEPAGE.FASHION"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignCategory=='Food'" translate="HOMEPAGE.FOOD"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignCategory=='Sports'" translate="HOMEPAGE.SPORTS"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignCategory=='Jewellary'" translate="HOMEPAGE.JEWELLARY"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignCategory=='Health'" translate="HOMEPAGE.HEALTH"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignCategory=='Travel'" translate="HOMEPAGE.TRAVEL"></span>
+                            <span class="btn-camp" ng-if="campaign.campaignCategory=='Music'" translate="HOMEPAGE.MUSIC"></span>
+                        </div>
+                        <div class="big-box-footer">
+                            <div class="footer-top hover" ui-sref="influencer.campaign.details({campaignId: campaign._id})">
+                                <!-- <label class="color-white hover">Facebook Inc.</label> -->
+                                <label class="pull-right color-white hover">${{campaign.priceRange.from}}-{{campaign.priceRange.to}}</label>
+                            </div>
+                            <div class="footer-inner" style="opacity: 0.9;">
+                                <span class="checkbox-inline color-white" data-ng-click="applyCampaignFunc(campaign._id)">
+                                  <!-- <input type="checkbox" id="test1{{$index}}" ng-checked="checkAppliedCampaign(campaign._id)" data-ng-click="applyCampaignFunc(campaign._id)">
+                                  -->
+                                  <img ng-src="{{!checkAppliedCampaign(campaign._id)?'./assets/images/apply.png':'./assets/images/apply-highlighted.png'}}" id="test1{{$index}}"  >
+                                <label for="test1{{$index}}">                            
+                                  <div ng-show="checkAppliedCampaign(campaign._id)" class="color-red" translate="HOMEPAGE.APPLY">Apply</div><div ng-show="!checkAppliedCampaign(campaign._id)" translate="HOMEPAGE.APPLY">Apply</div>
+                                </label>
+                                </span>
+                                <span class="checkbox-inline color-white pull-right" ng-click="bookmarkCampaignFunc(campaign._id, checkBookmarkedCampaign(campaign._id))">
+                              <!-- <input id="test2{{$index}}" type="checkbox" ng-checked="checkBookmarkedCampaign(campaign._id)" for="test2{{$index}}" data-ng-click="bookmarkCampaignFunc(campaign._id, checkBookmarkedCampaign(campaign._id))"> -->
+                              <img  ng-show="!checkBookmarkedCampaign(campaign._id)" class="unbookmark_{{campaign._id}}" ng-src="./assets/images/bookmark.png" id="test2{{$index}}" />
+                              <img  ng-show="checkBookmarkedCampaign(campaign._id)" class="bookmark_{{campaign._id}}" ng-src="./assets/images/bookmark-highlighted.png" id="test2{{$index}}" />
+                              <label for="test2{{$index}}">
+                                <div class="bookmark_{{campaign._id}} color-red" ng-show="checkBookmarkedCampaign(campaign._id)" translate="HOMEPAGE.BOOKMARK">Bookmark</div>
+                                <div class="unbookmark_{{campaign._id}}" ng-show="!checkBookmarkedCampaign(campaign._id)" translate="HOMEPAGE.BOOKMARK">Bookmark
+                                </div>
+                              </label>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <dir-pagination-controls max-size="15" direction-links="true" boundary-links="true" on-page-change="getCampaignData(newPageNumber)" >
+    </dir-pagination-controls>
+</div>

@@ -1,0 +1,62 @@
+<form data-ng-submit="adminCtrl.saveReseller(user, signUpForm)" name="signUpForm"  novalidate>
+      <div class="padding-all-50 padding-top-0 padding-bottom-0">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <input type="text" data-ng-model="user.name" name="name" class="form-control input-flat" placeholder="Name" required/>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <input type="email" data-ng-model="user.email" name="email" class="form-control input-flat" placeholder="Email" required/>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <input type="password" data-ng-model="user.password" name="password" class="form-control input-flat" placeholder="Password" required/>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <input type="text" data-ng-model="user.company" name="brand" class="form-control input-flat" placeholder="Company Name" required/>
+            </div>
+          </div>
+        </div>
+          <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <input type="text" id="startdate" data-ng-model="user.startdate" name="brand" class="form-control input-flat" placeholder="Start Date" required/>
+            </div>
+          </div>
+        </div>
+          <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <input type="text" id="enddate" data-ng-model="user.enddate" name="brand" class="form-control input-flat" placeholder="End Date" required/>
+            </div>
+          </div>
+        </div>
+          <div class="row">
+        
+          <div class="col-md-3">
+            <div class="form-group">
+              <button type="submit" ng-disabled="signUpForm.$invalid" class="btn  input-flat">Save</button>
+            </div>
+          </div>
+        </div>
+        </div>
+    
+    </form>
+  </div>
+<script>
+  $(function() {
+    $( "#startdate" ).datepicker();
+    $( "#enddate" ).datepicker();
+  });
+  </script>

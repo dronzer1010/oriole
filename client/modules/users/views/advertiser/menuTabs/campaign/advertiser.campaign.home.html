@@ -1,0 +1,79 @@
+<div class="row ma-search-box-diff ">
+    <nav class="navbar navbar-default">
+        <div class="col-md-2 col-md-offset-10 align-center padding-top-10">
+            <button ng-if="userLevel" data-ng-click="createCampaignPopUp()" class="btn bg-red btn-round input-flat save-draft" style="float:right;" translate="AD_MESSAGE_PAGE.BTN_1">Create Campaign</button>
+        </div>
+    </nav>
+</div>
+<div class="bg-grey-light padding-top-20 max-height" ui-view style="clear:both;height:100vh;">
+    <div class="wrapper wrapper-content ma-campaign bg-grey-light">
+        <div class="row bg-white border padding-row">
+            <div class="col-md-3">
+                <h4 translate="ADVERTISER_CAMPAIGNS.YOUR_CAMPAIGN">Your Campaigns</h4>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3 mob-none"></div>
+        </div>
+        <div class="row border closed-relative bg-white" ng-repeat="campaign in campaignList">
+            <div class="col-md-4 col-xs-4">
+                <div class="max-message border-less padding-top-5 padding-bottom-0">
+                    <h4 class="color-red bold">{{campaign.campaignTitle }}</h4>
+                    <p><span translate="ADVERTISER_CAMPAIGNS.DUE_DATE" style="float:left;">Due Date</span>: {{campaign.dueDate | date:'yyyy-MM-dd'}}</p>
+                    <p><span translate="ADVERTISER_CAMPAIGNS.PRICE_RANGE" style="float:left;">Price Range</span>: ${{campaign.priceRange.from}} - ${{campaign.priceRange.to}}</p>
+                </div>
+            </div>
+            <div class="max-closed-influ" ng-show="campaign.campaignStatus == 'Close'">
+                <span class="color-white" translate="ADVERTISER_CAMPAIGNS.CLOSED">CLOSED</span>
+            </div>
+            <div class="col-md-2 col-xs-3 padding-top-15 align-center mid-lbl">{{ campaign.campaignStatus!='Pending'?checkAppliedApplicants(campaign._id):'0'}}
+                <p translate="ADVERTISER_CAMPAIGNS.APPLICANT">Applicants</p>
+            </div>
+            <div class="col-md-2 col-xs-3 padding-top-25 align-center">
+                <div class="mob-absolute" ng-show="campaign.campaignStatus == 'Close'">
+                    <button class="btn bg-red btn-round btn-fix" translate="ADVERTISER_CAMPAIGNS.CLOSE">Close</button>
+                </div>
+                <div class="mob-absolute" align="center" ng-show="campaign.campaignStatus == 'Draft'">
+                    <button class="btn bg-red btn-round btn-fix save-draft" translate="ADVERTISER_CAMPAIGNS.SAVE_AS_DRAFT">Saved as Draft</button>
+                </div>
+                <div class="mob-absolute" align="center" ng-show="campaign.campaignStatus == 'Pending'">
+                    <button class="btn btn-yellow btn-round btn-fix" translate="ADVERTISER_CAMPAIGNS.PENDING">Pending</button>
+                </div>
+                <div class="mob-absolute" align="center" ng-show="campaign.campaignStatus == 'Accept'">
+                    <button class="btn btn-green btn-round btn-fix" translate="ADVERTISER_CAMPAIGNS.APPROVED">Approved</button>
+                </div>
+                <div class="mob-absolute" align="center" ng-show="campaign.campaignStatus == 'Declined'">
+                    <button class="btn bg-red btn-round btn-fix" translate="ADVERTISER_CAMPAIGNS.DECLINED">Declined</button>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-3 padding-top-30 mid-lbl mob-none" ng-show="campaign.visiblePrivate == false" translate="ADVERTISER_CAMPAIGNS.PUBLIC">PUBLIC
+            </div>
+            <div class="col-md-2 col-xs-3 padding-top-30 mid-lbl mob-none" ng-show="campaign.visiblePrivate == true" translate="ADVERTISER_CAMPAIGNS.INVITE_ONLY">INVITE-ONLY
+            </div>
+            <div class="col-md-2 col-xs-3">
+                <div class="max-campaign-btn">
+                    <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn bg-red" ng-show="campaign.campaignStatus !== 'Close'" translate="ADVERTISER_CAMPAIGNS.ACTIONS">ACTIONS <i class="fa fa-caret-down margin-left-5"></i></button>
+                        <button class="btn bg-red close-action" ng-show="campaign.campaignStatus == 'Close'" translate="ADVERTISER_CAMPAIGNS.ACTIONS">ACTIONS <i class="fa fa-caret-down margin-left-5"></i></button>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                        <a ng-show="campaign.campaignStatus == 'Close'" data-ng-click="openAndCloseCampaign(campaign._id, 'Accept')" translate="ADVERTISER_CAMPAIGNS.REOPEN">Reopen</a></li>
+                        <li><a ui-sref="advertiser.campaigns.detailed({campaignId: campaign._id})" ng-show="campaign.campaignStatus !== 'Close'" translate="ADVERTISER_CAMPAIGNS.VIEW_CAMPAIGN" >View Campaign</a></li>
+                        <li><a ui-sref="advertiser.campaigns.detailed({campaignId: campaign._id})" ng-show="campaign.campaignStatus == 'Close'" translate="ADVERTISER_CAMPAIGNS.VIEW_CAMPAIGN">View Campaign</a></li>
+                        <li><a ui-sref="advertiser.candidate.applicants.campaign({campaignid: campaign._id})" data-ng-click="loadCandiatePage('applicants')" translate="ADVERTISER_CAMPAIGNS.VIEW_APPLICANT">View Applicants</a></li>
+                        <li><a ng-href="" data-ng-click="makePrivate(campaign._id, 'false')" 
+                            ng-show="campaign.visiblePrivate == true && campaign.campaignStatus !== 'Close'" translate="ADVERTISER_CAMPAIGNS.MAKE_PUBLIC">Make Public</a></li>
+                        <li><a ng-href="" data-ng-click="makePrivate(campaign._id, 'true')" 
+                        ng-show="campaign.visiblePrivate == false && campaign.campaignStatus !== 'Close'" translate="ADVERTISER_CAMPAIGNS.MAKE_PRIVATE">Make Private</a></li>
+                        <li><a ui-sref="advertiser.campaign.home" data-ng-click="editCampaign(campaign._id)"
+                        translate="ADVERTISER_CAMPAIGNS.EDIT_CAMPAIGN"  ng-show="campaign.campaignStatus !== 'Close'">Edit Campaign</a></li>
+                        <li><a data-ng-click="duplicateCampaign(campaign)" translate="ADVERTISER_CAMPAIGNS.DUPLICATE_CAMPAIGN">Duplicate Campaign</a></li>
+                        <li><a data-ng-click="deleteCampaign(campaign._id)" translate="ADVERTISER_CAMPAIGNS.DELETE_CAMPAIGN">Delete Campaign</a></li>
+                        <li><a ng-show="campaign.campaignStatus == 'Accept'" data-ng-click="openAndCloseCampaign(campaign._id, 'Close')" translate="ADVERTISER_CAMPAIGNS.CLOSE_CAMPAIGN">Close Campaign</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

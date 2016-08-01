@@ -1,0 +1,48 @@
+<div class="row ma-search-box-diff" style="z-index: 150000;">
+    <nav class="navbar navbar-default">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="col-sm-4"><h1 style="font-size:19px;margin: 0 auto;padding-top:15px;">{{pageHeading}}</h1></div>
+            <div class="pull-right padding-top-10" style="margin-bottom:10px">
+                <button style="margin-left: 5px;" ng-click="getHubPageHeading()" ui-sref="advertiser.help.new" class="btn bg-red btn-round input-flat save-draft" translate="HUB_PAGE.CREATE_HUB">Create Hub</button>
+            </div>
+
+        </div>
+    </nav>
+</div>
+<div ng-if="_id" class="bg-grey-light padding-top-20 max-height" ui-view style="clear:both;margin-bottom:15px" ng-init="fetchHubList();">
+    <div class="bg-grey-light padding-top-20 max-height" ui-view style="clear:both;height:100vh;">
+    <div class="wrapper wrapper-content ma-campaign bg-grey-light">
+        <div class="row bg-white border padding-row">
+            <div class="col-md-3">
+                <h4 translate="HUB_PAGE.HUB_PAGE_LIST">Hub Pages List</h4>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3 mob-none"></div>
+        </div>
+        <div class="row border closed-relative bg-white" ng-repeat="hub in hubList">
+            <div class="col-md-4 col-xs-4">
+              
+                    <h4 class="color-red bold">{{hub.pageName}}</h4>
+               
+            </div>
+            <div class="col-md-2 col-xs-3 padding-top-30 mid-lbl mob-none">
+                <input type="text" class="form-control" ng-model="hub.wildCardUrl"></input>
+            </div>
+            <div class="col-md-2 col-xs-3">
+                <div class="max-campaign-btn">
+                    <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn bg-red close-action"  translate="">ACTIONS <i class="fa fa-caret-down margin-left-5"></i></button>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a  translate="HUB_PAGE.VIEW_HUB_PAGE">View Hub Page</a></li>
+                        <li><a  translate="HUB_PAGE.EDIT_HUB_PAGE">Edit Hub Page</a></li>
+                        <li><a  translate="HUB_PAGE.DELETE_HUB_PAGE">Delete Hub Page</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

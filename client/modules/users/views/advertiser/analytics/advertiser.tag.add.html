@@ -1,0 +1,23 @@
+<div class="signup-tab">
+    <div class="modal-body" style="min-height: auto;">
+        <div class="row" style="color: red">{{max_tag_limit}}</div>
+        <form name="add_tag_form" ng-submit="saveTag(advertiser, add_tag_form);"  novalidate>
+            <div class="padding-all-50 padding-top-0 padding-bottom-0">
+                <div class="row">
+                    <div class="col-md-12">
+                        Add a tag you want to analyse.Don't add "#" below.
+                        <div class="form-group">
+                            <input type="text" name="tag" data-ng-model="advertiser.name" class="form-control input-flat" placeholder="Tag" required/>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-full btn-yellow input-flat">ANALYSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,477 @@
+    <div id="logindialog" ng-if="advertiserInfo.userLevel!='Trial' && showLoginAnalytics">
+    <div class="signup-tab">
+        <div class="modal-header bg-login padding-top-10 padding-bottom-20">
+            <h3 class="color-white text-center" translate="ANALYTICS.INTEGRATE_IG_LABEL"></h3>
+        </div>
+        <div class="modal-body">
+            <div class="text-center signup-completed">
+                <p translate="ANALYTICS.INTEGRATE_IG_DESC"></p>
+                <button class="btn btn-default btn-primary btn-login" data-ng-click="authenticate('instagram')" 
+                translate="ANALYTICS.IG_LOGIN_BTN_LBL"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="processing" ng-if="advertiserInfo.userLevel!='Trial'" translate="ANALYTICS.LOADING_MSG"></div>
+<div ng-if="email && advertiserInfo.userLevel!='Trial'"  class="container ma-campaign bg-grey-light padding-top-15" id="ad-analy" ng-init="advertiserGet(email);">
+    <div class="row bg-white" style="margin-left: 0px;margin-right: 0px;margin-bottom: 4px;padding-top: 10px;padding-bottom: 10px;">
+        <div class="col-xs-12 col-sm-4 leftmargin" id="reportrange" style="background: #fff; cursor: pointer; border: 1px solid #ccc;height: 32px;">
+            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+            <span></span> <b class="caret"></b>
+        </div>
+        <input type="hidden" name="start" id="start" value="">
+        <input type="hidden" name="end" id="end" value="">
+        <div class="col-xs-12 col-sm-1 widthlargewindow" style="text-align:center!important;padding-top:5px;" translate="ANALYTICS.BY">by</div>
+        <div class="col-xs-12 col-sm-1" style="padding-left: 0px;padding-right: 0px;"><!-- <span style="float:left">By &nbsp;&nbsp;&nbsp;</span> -->
+            <select id="display_by_category" name="display_by_category" class="form-control" onchange="changeDisplayMode();">
+                    <option  value="month" translate="ANALYTICS.MONTHLY" >Month</option>
+                    <option value="week" translate="ANALYTICS.WEEKLY">Weekly</option>
+                    <option value="day" selected="selected" translate="ANALYTICS.DAY">Day</option>
+            </select>
+        </div>
+        <script type="text/javascript">
+            function changeDisplayMode(){
+                 var scope = angular.element("#reportrange").scope();
+                 var displayMode =$("#display_by_category").val();
+                 scope.fetchFollowerAnalytics($("#start").val(),$("#end").val(),displayMode);
+            }
+            $(function() {
+                function cb(start, end) {
+                   var timestamp=Date.parse(start);
+                   var scope = angular.element("#reportrange").scope();
+                   var displayMode =$("#display_by_category").val();
+                   document.getElementById("start").value = start;
+                   document.getElementById("end").value = end;
+                   if (isNaN(timestamp)==false){
+                        
+                        scope.fetchFollowerAnalytics(start,end,displayMode);
+                        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                   }else{
+                        scope.fetchFollowerAnalytics(undefined,undefined,displayMode);
+                        $('#reportrange span').html('From Beginning' + ' - ' + end.format('MMMM D, YYYY'));
+                   }
+                    
+                }
+                cb('All Days', moment());
+
+                $('#reportrange').daterangepicker({
+                    ranges: {
+                    'All Days': ['All days'],
+                       'Today': [moment(), moment()],
+                       'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                       'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                       'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                       
+                       'This Month': [moment().startOf('month'), moment().endOf('month')],
+                       'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    }
+                }, cb);
+
+            });
+        </script>
+    </div>
+    <div class="row bg-white" style="margin-left: 0px;margin-right: 0px;padding-top: 10px;padding-bottom: 10px;" ng-if="postsHourlyCountArray">
+        <div class="col-xs-12 col-sm-1 col-lg-3" style="font-size: 15px;text-align: center;">
+            <span translate="ANALYTICS.TOTAL_FOLLOWER_COUNT">Total Followers Count</span>
+            <div style="text-align: center;">
+            <span style="font-size: 28px;">{{totalFollowerByPeriod}}</span> 
+            <span class="glyphicon glyphicon-arrow-up" style="color: green" ng-if="followerChange/totalFollowerByPeriod*100>0">{{followerChange/totalFollowerByPeriod*100| number:0}}%</span>
+            <span class="glyphicon glyphicon-arrow-down" style="color: red" ng-if="followerChange/totalFollowerByPeriod*100<=0">{{followerChange/totalFollowerByPeriod*100| number:0}}%</span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-2" ng-if="followerChange>0" style="font-size: 15px;text-align: center;">
+            <span translate="ANALYTICS.FOLLOWER_CHANGE">Followers Change</span>
+            <div style="text-align: center;">
+                <span style="font-size: 28px;color: green;">+{{followerChange}}</span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-2" ng-if="followerChange<=0" style="font-size: 15px;text-align: center;">
+            <span translate="ANALYTICS.FOLLOWER_CHANGE">Followers Change</span>
+            <div style="text-align: center;">
+                <span style="font-size: 28px;color: red;">{{followerChange}}</span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-3" style="font-size: 15px;text-align: center;">
+                    <span translate="ANALYTICS.MAX_FOLLOWER_CHANGE">Max. Followers Change</span>
+                    
+                    <div style="text-align: center;">
+                    <span style="font-size: 28px;">+{{maxFollowerChangeByDay.follower?maxFollowerChangeByDay.follower:0}}</span>
+                        {{maxFollowerChangeByDay.day|date:'dd MMM yyyy'}}
+                    </div>
+        </div>
+        <div class="col-xs-12 col-lg-4" ng-if="noOfFollowerChangePerMonth>0" style="font-size: 15px;text-align: center;">
+            <span translate="ANALYTICS.NO_OF_FOLLOWER_CHANGE_PER_MONTH">No. Followers Change per Month</span>
+            <div style="text-align: center;">
+                <span style="color:green;font-size: 28px;">  +{{noOfFollowerChangePerMonth}}</span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-4" ng-if="noOfFollowerChangePerMonth<=0" style="font-size: 15px;">
+             
+            <span translate="ANALYTICS.NO_OF_FOLLOWER_CHANGE_PER_MONTH">No. Followers Change per Month</span>
+            <div style="text-align: center;">
+                <span style="color:red;font-size: 28px;"> {{noOfFollowerChangePerMonth}}</span>
+            </div>
+        </div>
+    </div>
+     
+    <div ng-if="postsHourlyCountArray" class="container-fluid ma-campaign-body ">
+       
+        <div  id="containerfollower" style="height: 400px; margin-top: 4px;background: white;"></div>
+        <div id="container" style="height: 400px; margin-top: 15px;background: white;"></div>
+            <div class="row" style="margin-top: 15px;margin-bottom: 15px;background: white; ">
+                <div class="col-md-12">
+                    <h3 translate="ANALYTICS.BEST_TIME_TO_POST_LABEL"></h3>
+                    <span translate="ANALYTICS.BEST_TIME_TO_POST"></span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="mytable">
+                    <div class="table-responsive">
+                      <table class="table" width="100%">
+                       <tr ng-repeat="item in bestTimeToPost">
+
+                            <td  class="left-title">{{item.dayname}}</td>
+                            <td bgcolor="{{ weekrow.split('-')[1]}}" ng-repeat="weekrow in item.list track by $index">
+                                {{weekrow.split('-')[0]}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left-title"> &nbsp; </td>
+                            <td><p class="timing">12am</p></td>
+                            <td><p class="timing">1am</p></td>
+                            <td><p class="timing">2am</p></td>
+                            <td><p class="timing">3am</p></td>
+                            <td><p class="timing">4am</p></td>
+                            <td><p class="timing">5am</p></td>
+                            <td><p class="timing">6am</p></td>
+                            <td><p class="timing">7am</p></td>
+                            <td><p class="timing">8am</p></td>
+                            <td><p class="timing">9am</p></td>
+                            <td><p class="timing">10am</p></td>
+                            <td><p class="timing">11am</p></td>
+                            <td><p class="timing">12am</p></td>
+                            <td><p class="timing">1pm</p></td>
+                            <td><p class="timing">2pm</p></td>
+                            <td><p class="timing">3pm</p></td>
+                            <td><p class="timing">4pm</p></td>
+                            <td><p class="timing">5pm</p></td>
+                            <td><p class="timing">6pm</p></td>
+                            <td><p class="timing">7pm</p></td>
+                            <td><p class="timing">8pm</p></td>
+                            <td><p class="timing">9pm</p></td>
+                            <td><p class="timing">10pm</p></td>
+                            <td><p class="timing">11pm</p></td>
+
+                            </tr>               
+                      </table>
+                    </div>
+                </div>
+            </div>
+        <div ng-if="followerDemographics" class="row" style="margin-bottom: 5px;">
+            <div class="col-sm-12 col-lg-8 bg-white ad" style="margin-top: 15px; ">
+                <h5 translate="ANALYTICS.FOLLOWER_DEMOGRAPHY"></h5>
+                <div id="world-map" class="" style="height:300px;"></div>
+            </div>
+           
+            <div class="col-xs-12 col-sm-12 col-lg-4 bg-white gendergraph" style="margin-top: 15px;">
+                <h5 translate="ANALYTICS.GENDER"></h5>
+                <div style="height:300px;" class="bg-white" id="gendermap"></div>
+            </div>
+            <script type="text/javascript">
+            var scope = angular.element("#world-map").scope();
+            if (scope != undefined) {
+                if (scope.countryList != undefined) {
+                    var mapData = scope.countryList;
+                    $('#world-map').vectorMap({
+                        map: 'world_mill_en',
+                        backgroundColor: "transparent",
+                        enableZoom: true,
+                        regionStyle: {
+                            initial: {
+                                fill: '#e4e4e4',
+                                "fill-opacity": 0.9,
+                                stroke: 'none',
+                                "stroke-width": 0,
+                                "stroke-opacity": 0
+                            }
+                        },
+                        series: {
+                            regions: [{
+                                values: mapData,
+                                scale: ["#1ab394", "#22d6b1"],
+                                normalizeFunction: 'polynomial'
+                            }]
+                        },
+                    });
+                }
+            }
+            </script>
+            <script>
+            $(function() {
+                var scope = angular.element("#gendermap").scope();
+                if (scope !== undefined) {
+                    if (scope.malefollower != undefined) {
+                        $('#gendermap').highcharts({
+                            chart: {
+                                plotBackgroundColor: null,
+                                plotBorderWidth: null,
+                                plotShadow: false,
+                                type: 'pie'
+                            },
+                            title: {
+                                text: ''
+                            },
+                            tooltip: {
+                                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: true,
+                                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                        style: {
+                                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                        }
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: 'Followers',
+                                colorByPoint: true,
+                                data: [{
+                                    name: scope.maleLabel,
+                                    y: scope.malefollower
+                                }, {
+                                    name: scope.femaleLabel,
+                                    y: scope.femalefollower,
+                                    selected: true
+                                }]
+                            }],
+                            credits: {
+                                enabled: false
+                            },
+                        });
+                    }
+                }
+                var elements = $("g[style='cursor:pointer;'] text");
+                var element1 = $(elements[0]);
+                var element2 = $(elements[1]);
+                element1.attr("x", "-40");
+                element1.attr("y", "25");
+                element2.attr("x", "50");
+                element2.attr("y", "0");
+            });
+            </script>
+        </div>
+        <div class="row" style="margin-top:15px;">
+            <div ng-if="topfollowerDemographybyCountry" class="col-xs-12 col-lg-4 bg-white ad3 ad-nomobile">
+                <h5 class="text-uppercase" translate="ANALYTICS.TOP_COUNTRY"></h5>
+                <div style="height: 250px;overflow: auto;" class="sc_hd1 sc_hd2 sc_hd3">
+                    <div ng-repeat="country in countrySortedList">
+                        <span class="text-uppercase">{{country.name}}</span>
+                        <span class="tagcount">{{country.value}}%</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="topfollowerDemographybyCities" class="col-xs-12 col-lg-4 bg-white  ad4 ad-nomobile">
+                <h5 class="text-uppercase" translate="ANALYTICS.TOP_CITIES"></h5>
+                <div style="height: 250px;overflow: auto;" class="sc_hd1 sc_hd2 sc_hd3">
+                     <div ng-repeat="city in citySortedList">
+                        <span class="text-uppercase">{{city.name}}</span>
+                        <span class="tagcount">{{city.value}}%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-4 bg-white ad5" style="float:right;">
+                <h5 class="text-uppercase" translate="ANALYTICS.TAG_RANKINGS"></h5>
+                <div style="height: 250px;overflow: auto;">
+                    <div ng-repeat="tag in tags track by $index">
+                        <span>{{$index+1}}.</span>
+                        <span class="text-uppercase">{{tag.tagname}}</span>
+                        <span class="tagcount">{{tag.count}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+       
+        $(function() {
+            var scope = angular.element("#container").scope();
+            if (scope !== undefined){
+                $('#container').highcharts({
+                    chart: {
+                        zoomType: 'xy'
+                    },
+                    title: {
+                        text: scope.postingAnalyticsLabel
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: [{
+                        categories: scope.hourArray,
+                        crosshair: true
+                    }],
+                    yAxis: [{ // Primary yAxis
+                        labels: {
+                            format: '{value}',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        title: {
+                            text: scope.avgLikesLabel,
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        }
+                    }, { // Secondary yAxis
+                        title: {
+                            text: scope.totalPostsLabel,
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        labels: {
+                            format: '{value}',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        opposite: true
+                    }],
+                    tooltip: {
+                        shared: true
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'left',
+                        x: 120,
+                        verticalAlign: 'top',
+                        y: 100,
+                        floating: true,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: scope.totalPostsLabel,
+                        type: 'column',
+                        yAxis: 1,
+                        data: scope.postsHourlyCountArray,
+                        tooltip: {
+                            valueSuffix: ''
+                        }
+                    }, {
+                        name: scope.avgLikesLabel,
+                        type: 'spline',
+                        data: scope.avgLikesCountArray,
+                        tooltip: {
+                            valueSuffix: ''
+                        }
+                    }]
+                });
+                 $("#processing").hide();
+                scope.drawFollowerGraph();
+            }
+        });
+        $('#world-map').find('div').first().remove();
+        $("text[y='24']").attr("x", "110");
+        </script>
+        <script type="text/javascript">
+       
+      /*  var scope = angular.element("#containerfollower").scope();
+            if (scope !== undefined && scope.FollowerDates){
+            $(function () {
+                $('#containerfollower').highcharts({
+                    title: {
+                        text: '',
+                        x: -20 //center
+                    },
+                    subtitle: {
+                        text: '',
+                        x: -20
+                    },
+                    xAxis: {
+                        categories: scope.FollowerDates
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Followers'
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 1,
+                            color: '#808080'
+                        }]
+                    },
+                    tooltip: {
+                        valueSuffix: ''
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        borderWidth: 0
+                    },
+                    series: [{
+                        name: 'Follower',
+                        data: scope.dailyFollower
+                    }]
+                });
+            });
+        }*/
+        </script>
+    </div>
+    <div id="analy-bot"></div>
+</div>
+<style>
+.small_btn{float:right; margin:55px 0 15px 15px}
+.small_btn a{color:#4399e4; border:1px solid #4399e4; padding:10px}
+.small_btn a:hover{background:#4399e4;color:#fff}
+
+.mytable{float:left; width:100%;background: white;}
+.mytable{padding:0 10px;padding-top:20px;}
+.mytable table{width:100%; border:none; padding:0; margin:0}
+.mytable table tr td{border:0; vertical-align:middle; text-align:center; font-weight:bold; font-size:10px}
+.mytable table tr td.left-title{color:#8b8b8b}
+.timing{transform: rotate(-25deg); font-weight:normal; font-size:12px}
+</style>
+
+<div ng-if="advertiserInfo.userLevel=='Trial'">
+        <div class="row" style="width:100%;">
+           <img style="width:95%;margin-top: 44px;margin-left:49px;" src="assets/images/account-analytics_1024.jpg"></img>
+        </div>
+        <div class="overlayTrial">
+            <div style="margin:0 auto;height:95%;top:50%;color:red;font-size:25px;">
+                You need a monthly contract. Please contact support@expaus.in
+            </div>
+        </div>
+<style>
+.nav .navbar-nav .tb-menu .margin-top-0{
+    display: none;
+}
+.overlayTrial
+{
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 3px;
+
+    text-align: center;
+    right: 0;
+    background: rgba(2, 2, 2, 0.5);
+    z-index: 15000;
+}
+
+</style>
+</div>

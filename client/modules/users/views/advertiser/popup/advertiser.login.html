@@ -1,0 +1,37 @@
+<div ng-controller="AdvertiserCtrl">
+    <div data-ng-show="!showLogin">
+        <h3 class="message-show color-navy-blue" ng-if="loginStatus == 'Not Exist'">Invalid User</h3>
+        <h3 class="message-show color-navy-blue" ng-if="loginStatus == 'Pending'">User status pending</h3>
+        <h3 class="message-show color-navy-blue" ng-if="loginStatus == 'Declined'">User Declined by admin</h3>
+        <h3 class="message-show color-navy-blue" ng-if="loginStatus == 'Invalid Username and Password'">Invalid Username and Password</h3>
+        <h2 class="message-show color-navy-blue" ng-if="loginStatus == 'Verify your email'">Verify your email id</h2>
+    </div>
+    <div class="signup-tab">
+        <div class="modal-header bg-login padding-top-10 padding-bottom-20">
+            <h3 class="color-white">Login</h3>
+        </div>
+        <div class="modal-body" style="min-height: auto;">
+            <form data-ng-submit="login(user, loginForm)" name="loginForm" novalidate>
+                <div class="padding-all-50 padding-top-0 padding-bottom-0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="email" name="email" data-ng-model="user.email" class="form-control input-flat" placeholder="Email" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="password" name="password" data-ng-model="user.password" class="form-control input-flat" placeholder="Password" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-full btn-yellow input-flat">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

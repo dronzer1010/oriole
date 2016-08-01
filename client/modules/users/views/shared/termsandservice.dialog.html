@@ -1,0 +1,19 @@
+<div class="signup-tab bg-white padding-top-30-term padding-bottom-30-term">
+    <div class="signup-tab-content_term center_term">
+        <div class="color-navy-blue padding-bottom-10">
+            <h3 class="bold" translate="TERMS_DIALOG.H3_1" style="font-size:24px">Click here to indicate that you have read and agree to the terms presented in the Terms of Service</h3>
+        </div>
+        <div class="color-navy-blue padding-bottom-10">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div style="center">
+                        <input type="checkbox" id="checkbox-head" class="regular-checkbox" ng-model="confirmed" ng-change="updateUser()" />
+                        <label for="checkbox-head" style="white-space: nowrap;">
+                            I accept the <a href="#" ng-click="$event.preventDefault(); termsAndConditionDocPopup();">Terms of Service</a>.
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

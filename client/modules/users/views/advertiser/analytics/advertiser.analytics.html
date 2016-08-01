@@ -1,0 +1,30 @@
+<div class="row ma-search-box-diff" style="z-index: 150000;">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <select class="form-control influ-toggle"  ng-model='toggle' ng-options="month.value as month.name |translate for month in ad_analytics" required ng-change="goAnalytics(toggle)">
+            </select>
+            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="width:40px">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> -->
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav tb-menu margin-top-0">
+                <li><a ui-sref-active="current" ui-sref="advertiser.analytics.account" data-ng-click="loadProfilePage('analytics_account');" translate="ANALYTICS.ACCOUNT">Account <span class="sr-only"></span></a></li>
+                <li ng-if="advertiserInfo.instagramId || advertiserInfo.userLevel=='Trial'"><a ui-sref-active="current" ui-sref="advertiser.analytics.campaign" data-ng-click="loadProfilePage('analytics_campaign')" translate="ANALYTICS.CAMPAIGN">Campaign <span class="sr-only"></span></a></li>
+                
+            </ul>
+            <div class="pull-right padding-top-10" style="margin-bottom:10px">
+                 <button translate="ANALYTICS.LOGOUTIG" ng-if="instagramId" data-ng-click="deleteAdvertiserStat()" class="btn bg-red btn-round input-flat save-draft">logout IG</button>
+                <button style="margin-left: 5px;" translate="ANALYTICS.CREATE_CAMPAIGN" data-ng-click="createCampaignPopUp()" class="btn bg-red btn-round input-flat save-draft">Create Campaign</button>
+            </div>
+
+        </div>
+        <div ng-if="isTokenInValid" translate="ANALYTICS.ACCESS_TOKEN_PERMISSION_ISSUE" style="font-size:13px;color:red;padding-left:29px !important;">
+             
+        </div>
+    </nav>
+</div>
+<div class="bg-grey-light padding-top-20 max-height" ui-view style="clear:both;margin-bottom:15px"></div>

@@ -1,0 +1,138 @@
+<div data-ng-controller="AdvertiserCtrl" id="ad-ad-popup">
+    <button type="button" data-ng-click="$dismiss()" class="category-close fa fa-times-circle-o" data-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-body" style="width:100%;">
+        <div class="row">
+            <div class="container-fluid ma-campaign-body ">
+                <div ng-if="followerDemographics" class="row" style="margin-bottom: 5px;">
+                    <div class="col-sm-12 col-lg-8 bg-white ad" style="margin-top: 15px; ">
+                        <h5 translate="ANALYTICS.FOLLOWER_DEMOGRAPHY"></h5>
+                        <div id="world-map" class="" style="height:300px;"></div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-lg-4 bg-white gendergraph" style="margin-top: 15px;">
+                        <h5 translate="ANALYTICS.GENDER"></h5>
+                        <div style="width: auto;height:300px;" class="bg-white" id="gendermap"></div>
+                    </div>
+                    <script type="text/javascript">
+                    var scope = angular.element("#world-map").scope();
+                    if (scope != undefined) {
+                        if (scope.countryList != undefined) {
+                            var mapData = scope.countryList;
+                            $('#world-map').vectorMap({
+                                map: 'world_mill_en',
+                                backgroundColor: "transparent",
+                                regionStyle: {
+                                    initial: {
+                                        fill: '#e4e4e4',
+                                        "fill-opacity": 0.9,
+                                        stroke: 'none',
+                                        "stroke-width": 0,
+                                        "stroke-opacity": 0
+                                    }
+                                },
+                                series: {
+                                    regions: [{
+                                        values: mapData,
+                                        scale: ["#1ab394", "#22d6b1"],
+                                        normalizeFunction: 'polynomial'
+                                    }]
+                                },
+                            });
+                        }
+                    }
+                    </script>
+                    <script>
+                    $(function() {
+                        var scope = angular.element("#gendermap").scope();
+                        if (scope.malefollower != undefined) {
+
+                            $('#gendermap').highcharts({
+                                chart: {
+                                    plotBackgroundColor: null,
+                                    plotBorderWidth: null,
+                                    plotShadow: false,
+                                    type: 'pie'
+                                },
+                                title: {
+                                    text: ''
+                                },
+                                tooltip: {
+                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        allowPointSelect: true,
+                                        cursor: 'pointer',
+                                        dataLabels: {
+                                            enabled: true,
+                                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                            style: {
+                                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                            }
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    name: 'Followers',
+                                    colorByPoint: true,
+                                    data: [{
+                                        name: scope.maleLabel,
+                                        y: scope.malefollower
+                                    }, {
+                                        name: scope.femaleLabel,
+                                        y: scope.femalefollower,
+
+                                        selected: true
+                                    }]
+                                }],
+                                credits: {
+                                    enabled: false
+                                },
+                            });
+                        };
+                        var elements = $("g[style='cursor:pointer;'] text");
+                        var element1 = $(elements[0]);
+                        var element2 = $(elements[1]);
+                        element1.attr("x", "-40");
+                        element1.attr("y", "25");
+                        element2.attr("x", "50");
+                        element2.attr("y", "0");
+                    });
+                    </script>
+                </div>
+                <div class="row" style="margin-top:15px;">
+                    <div ng-if="topfollowerDemographybyCountry" class="col-xs-12 col-lg-4 bg-white ad3 ad-nomobile">
+                        <h5 class="text-uppercase" translate="ANALYTICS.TOP_COUNTRY"></h5>
+                        <div style="height: 250px;overflow: auto;" class="sc_hd1 sc_hd2 sc_hd3">
+                            <div ng-repeat="country in countrySortedList">
+                                <span class="text-uppercase">{{country.name}}</span>
+                                <span class="tagcount">{{country.value}}%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="topfollowerDemographybyCities" class="col-xs-12 col-lg-4 bg-white ad4 ad-nomobile">
+                        <h5 class="text-uppercase" translate="ANALYTICS.TOP_CITIES"></h5>
+                        <div style="height: 250px;overflow: auto;" class="sc_hd1 sc_hd2 sc_hd3">
+                            <div ng-repeat="city in citySortedList">
+                                <span class="text-uppercase">{{city.name}}</span>
+                                <span class="tagcount">{{city.value}}%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-4 bg-white ad5" style="float:right;">
+                        <h5 class="text-uppercase" translate="ANALYTICS.TAG_RANKINGS"></h5>
+                        <div style="height: 250px;overflow: auto;" class="sc_hd1 sc_hd2 sc_hd3">
+                            <div ng-repeat="tag in tags track by $index">
+                                <span>{{$index+1}}.</span>
+                                <span class="text-uppercase">{{tag.tagname}}</span>
+                                <span class="tagcount">{{tag.count}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                $('#world-map').find('div').first().remove();
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

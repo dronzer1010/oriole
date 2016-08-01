@@ -1,0 +1,54 @@
+<div  data-ng-controller="AdvertiserCtrl">
+  <div class="bg-white padding-all-20">
+  	<form  name="createHireForm" novalidate>
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="align-left"></h4>
+          <div class="form-group">
+            <div class="row">
+              <span ng-if="alreadyExist" class="col-md-4 col-md-offset-4 current" translate="HOMEPAGE.ALREADY_HIRED">already hired</span>
+            </div>
+            <select ng-show="!campaignId" class="dropdown-camp form-control input-flat" data-ng-model="data.campaignId" ng-options="campaign._id as campaign.campaignTitle for campaign in campaignList" ng-init="data.campaignId=campaignId" required ng-change="alreadyExist=false">
+	            <option value ="" translate="HOMEPAGE.SELECT_CAMPAIGN">Select Campaign</option>
+            </select>
+            <div ng-repeat="campaign in campaignList">
+              <input class="dropdown-camp form-control input-flat" ng-show="campaign._id == campaignId" data-ng-model="campaign.campaignTitle" ng-value="campaign.campaignTitle" readonly>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea type="text" placeholder="Write message to insatgrammer" class="form-control input-flat" data-ng-model="data.message" required></textarea>
+          </div>
+          <h4 class="border margin-top-20 line-height-39">
+          <div class="form-group clearfix">
+            <label class="col-md-8" translate="HOMEPAGE.PAYMENT_TO_INFLUENCER">Payment to Influencer</label>
+            <div class="col-md-4">
+      <input type="Number" ng-keyup = "serviceFee  = data.payment * serviceFeesmultiplier/100 || 0; 
+            totalFee = data.payment + data.payment * serviceFeesmultiplier/100 || 0" data-ng-model="data.payment" placeholder="min $100" class="form-control col-md-4 align-right input-flat" required>
+            </div>
+          </div>
+          </h4>
+          <h4 class="border margin-top-5" ng-if="serviceFeesmultiplier">
+            <div class="form-group clearfix">
+              <label class="col-md-8" translate="HOMEPAGE.SERVICE_FEE" >Service Fee</label>
+              <label class="col-md-4 align-right">{{serviceFee}}</label>
+            </div>
+          </h4>
+          <h4 class="margin-top-15">
+          <div class="form-group clearfix">
+            <label class="col-md-8" translate="HOMEPAGE.TOTAL">Total</label>
+            <label class="col-md-4 align-right">{{totalFee}}</label>
+          </div>
+          </h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button  style="width:128px;" ng-show="!campaignId" class="btn btn-green pull-right" data-ng-click="hireSave(data, influencer, createHireForm)" required translate="INFLUENCER.HIRE">Hire</button>
+          <button ng-show="campaignId" class="btn btn-green pull-right" data-ng-click="hireSave(data, influencer, createHireForm, campaignId, conversationId)" required ng-disabled="alreadyExist" translate="INFLUENCER.HIRE" style="width:128px;"></button>
+          <button ng-show="!campaignId" ng-if="userLevel == 'Subscriber'" class="btn btn-green pull-right" style="margin-right: 5px;width:166px;" data-ng-click="hireSave(data, influencer, createHireForm,undefined,undefined,'bank')" required translate="HOMEPAGE.PAY_BIA_BANK">Pay via bank</button>
+           <button ng-show="campaignId" ng-if="userLevel == 'Subscriber'" class="btn btn-green pull-right" style="margin-right: 5px;width:166px;" data-ng-click="hireSave(data, influencer, createHireForm,campaignId,conversationId,'bank')" required translate="HOMEPAGE.PAY_BIA_BANK">Pay via bank</button>
+        </div>
+      </div>
+    </form>
+  </div>	
+</div>

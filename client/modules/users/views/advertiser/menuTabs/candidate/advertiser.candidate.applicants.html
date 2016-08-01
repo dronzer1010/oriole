@@ -1,0 +1,84 @@
+
+    <div class="flui-candiate bg-white ma-candidate bg-grey-light" style="height:100vh;">
+        <div class="row padding-top-20 padding-bottom-20">
+            <div class="padding-left-20 bg-white">
+                <div class="col-md-3">
+                    <select class="dropdown-camp form-control input-flat" data-ng-model="search.campaignId" ng-options="campaign._id as campaign.campaignTitle for campaign in campaignList" ng-init="search.campaignId=$state.params.campaignid||''">
+                        <option value>All campaign</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div ng-if="advertiserInfo.userLevel" ng-repeat="applicant in applicantList | filter:{campaignId:{_id: search.campaignId||undefined}}">
+          
+            <div class="row">
+                <div class="border"></div>
+                <div class="col-md-12 margin-top-10 margin-bottom-10">
+                    <div class="col-md-1 padding-right-0 padding-top-5">
+                        <img class="img-responsive img-circle img-ht-70" ng-src="{{applicant.influencerId.profilePhoto}}">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="max-message border-less padding-top-0 padding-bottom-0 margin-left-15">
+                            <h3 class="color-red">{{applicant.influencerId.aboutMe.name}}</h3>
+                            <p class="bold">{{applicant.campaignId.campaignTitle}}</p>
+                            <p>$ {{applicant.price || applicant.influencerId.aboutMe.minPrice}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 border-left">
+                        <div class="max-message align-center border-less">
+                            <label class="small-lbl color-grey-light" translate="PROFILE_PAGE_TOP.LABEL_FOLLOWERS">FOLLOWERS</label>
+                            <h4 class="color-red align-center">{{applicant.influencerId.followed_by}}</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-2 border-left">
+                        <div class="max-message align-center border-less">
+                            <label class="small-lbl color-grey-light" translate="PROFILE_PAGE_TOP.LABEL_LIKES" >LIKES AVG</label>
+                            <h4 class="color-red align-center">{{applicant.influencerId.averageLikes}}</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-2 border-left">
+                        <div class="max-message align-center border-less">
+                            <label class="small-lbl color-grey-light" translate="PROFILE_PAGE_TOP.LABEL_COMMENTS">COMMENTS AVG</label>
+                            <h4 class="color-red align-center">{{applicant.influencerId.averageComments}}</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-3 border-left">
+                        <div class="max-campaign-btn">
+                            <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn bg-red" translate="ADVERTISER_CAMPAIGNS.ACTIONS">ACTIONS<i class="fa fa-caret-down"></i></button>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="advertiser.home.influencer({influencerId: applicant.influencerId._id})" translate="AD_MESSAGE_PAGE.BTN_2">View Profile</a></li>
+                                <li><a data-ng-click="messageInfluencerPopUp(applicant.influencerId._id)" translate="ADVERTISER_CANDIDATE.SEND_MESSAGE">Send Message</a></li>
+                                <li><a data-ng-click="hireInfluencerPopUp(applicant.influencerId._id)" translate="HOMEPAGE.HIRE">Hire</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-11 col-md-offset-1">
+                        <h6 class="padding-left-15 margin-top-0 color-grey-light"></h6>
+                    </div>
+                </div>
+                  <div ng-if="$index>0 && advertiserInfo.userLevel=='Trial'" ng-click="trialLimitedAccessPopUp();" 
+                        class="row overlayTrial">
+                  </div>
+            </div>
+          
+               
+        </div>
+    </div>
+
+<style>
+.overlayTrial
+{
+  
+    top: 0;
+    bottom: 0;
+    left: 13px;
+    width:100%;
+    opacity: 0.9;
+    height:100%;
+    right: 0;
+    background: rgba(2, 2, 2, 0.5);
+    z-index: 15000;
+}
+</style>

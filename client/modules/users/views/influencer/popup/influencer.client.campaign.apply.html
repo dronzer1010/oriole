@@ -1,0 +1,31 @@
+<div data-ng-controller="InfluencerCtrl">
+  <div class="signup-tab bg-white padding-top-30 padding-bottom-30">
+    <div class="signup-tab-content center">
+  	  <form name="applyCampaignForm" novalidate>
+        <span ng-if="alreadyExist" class="current" translate="APPLY_DIALOG.ALREADY_APPLIED">Already applied</span>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="align-left bold">Lxgic Inc.</h4>
+            <div class="form-group">
+              <h4 class="align-left">{{singleCampaign.campaignTitle}}</h4>
+              <input type="hidden" data-ng-model="applyCampaign.campaignId" name="campaignId" ng-value="singleCampaign._id">
+              <input type="hidden" data-ng-model="applyCampaign.advertiserId" name="advertiserId" ng-value="singleCampaign.advertiserId">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-flat" readonly ng-value="influencer">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea type="text" placeholder="Write a proposal to a contractor" class="form-control input-flat" data-ng-model="applyCampaign.message" name="message" required></textarea>
+        </div>
+           
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-green pull-right" data-ng-click="sendCampaign(applyCampaignForm, applyCampaign, singleCampaign)" ng-disabled="alreadyExist" translate="APPLY_DIALOG.BTN_SEND">Send</button>
+          </div>
+        </div>
+	    </form>
+    </div>
+  </div>	
+</div>

@@ -1,0 +1,87 @@
+<div class="max-dashboard sidebar-nav">
+    <div class="navbar navbar-default ma-navbar" role="navigation">
+        <div class="dashboard-profile">
+         <!--    <img ng-if="!advertiserInfo.profile" class="img-responsive img-circle" alt="a1.jpg" src="../assets/images/a1.jpg"/> -->
+            <img ng-if="advertiserInfo.profile" style="width:60px;height:60px;" class="img-responsive img-circle" alt="a1.jpg" ng-src="{{advertiserInfo.profile}}"/>
+            <p class="margin-top-10"><i class="fa fa-users"></i><span class="bold">{{advertiserInfo.company}}</span></p>
+            <p class="color-grey-light"><a target="_self" ng-href="/logout" translate="AD_SIDEBAR.LOGOUT">Sign Out</a></p>
+        </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" ng-click="collapseNav()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="visible-xs navbar-brand">Sidebar</span>
+            <a ng-if="$root.search_icon" class="ma-search search-home" ng-click="collapseSearch();">
+                <i class="fa fa-search"></i>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse sidebar-navbar-collapse" collapse="navCollapsed" ui-state="activeTab">
+            <ul class="ul-list">
+                <li ui-sref-active="current"><a ui-sref="advertiser.home" translate="AD_SIDEBAR.LIST_1" data-ng-click="show_search_icon()">Home</a></li>
+                <li ui-sref-active="current"><a ui-sref="advertiser.cta.list"  data-ng-click="showPage('cta' ,'list')">CTA</a></li>
+                <li ui-sref-active="current"><a ui-sref="advertiser.campaigns" data-ng-click="showPage('campaignPage')" translate="AD_SIDEBAR.LIST_2">Campaigns</a></li>
+                <li ui-sref-active="current"><a ui-sref="advertiser.messages" data-ng-click="showPage('messagePage')" translate="AD_SIDEBAR.LIST_3">Messages</a></li>
+                <li ui-sref-active="current"><a ui-sref="advertiser.candidate" data-ng-click="showPage('candidatePage')" translate="AD_SIDEBAR.LIST_4">Candidates</a></li>
+                <li ng-click="advertiserGet(advertiserInfo.email)" ui-sref-active="current">
+                    <a ui-sref="advertiser.analytics.account" translate="AD_SIDEBAR.LIST_8">Analytics</a>
+                </li>
+                 <li  ui-sref-active="current">
+                    <a ui-sref="advertiser.help" ng-click="hideCreateHelpPageTitle();" translate="AD_SIDEBAR.LIST_9">Create Help Page</a>
+                </li>
+                <li ui-sref-active="current"><a ui-sref="advertiser.settings" data-ng-click="showPage('settingsPage')" translate="AD_SIDEBAR.LIST_5">Settings</a></li>
+                <li class="hide block bg-green"><a class="nav-link" translate="AD_SIDEBAR.LIST_6">Help</a></li>
+                <li class="hide block bg-green"><a class="nav-link" translate="AD_SIDEBAR.LIST_7">Contact Us</a></li>
+            </ul>
+        </div>
+       <!--  <div class="navbar-collapse collapse sidebar-navbar-collapse" collapse="navCollapsed" ui-state="activeTab" ng-if="env == 'block'">
+            <ul class="ul-list">
+                <li ui-sref-active="current">
+                   
+                <a tooltip="Coming Soon" translate="AD_SIDEBAR.LIST_1" >Home</a></li>
+                <li ui-sref-active="current">
+                    <a tooltip="Coming Soon"  translate="AD_SIDEBAR.LIST_2">Campaigns</a></li>
+                <li ui-sref-active="current">
+                    <a tooltip="Coming Soon"  translate="AD_SIDEBAR.LIST_3">Messages</a></li>
+                <li ui-sref-active="current">
+                    <a tooltip="Coming Soon"  translate="AD_SIDEBAR.LIST_4">Candidates</a>
+                </li>
+              
+                <li ng-click="advertiserGet(advertiserInfo.email)" ui-sref-active="current"><a ui-sref="advertiser.analytics.account">Analytics</a></li>
+                <li ui-sref-active="current"><a ui-sref="advertiser.settings" data-ng-click="showPage('settingsPage')" translate="AD_SIDEBAR.LIST_5">Settings</a></li>
+                <li class="hide block bg-green"><a class="nav-link" translate="AD_SIDEBAR.LIST_6">Help</a></li>
+                <li class="hide block bg-green"><a class="nav-link" translate="AD_SIDEBAR.LIST_7">Contact Us</a></li>
+            </ul>
+        </div> -->
+        <div class="navbar-bottom">
+            <a class="nav-link" translate="AD_SIDEBAR.LIST_6">Help</a>
+            <a class="nav-link" translate="AD_SIDEBAR.LIST_7">Contact Us</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(function() {
+    $(".ma-search").click(function() {
+        $(".ma-search-box").slideToggle();
+    });
+});
+</script>
+<style>
+    .tooltip-inner {
+       background-color: black;
+   }
+   .top .tooltip-arrow {
+           border-top-color: black;
+       }
+    .right .tooltip-arrow {
+           border-right-color: black;
+       }
+    .bottom .tooltip-arrow {
+           border-bottom-color: black;
+       }
+    .left .tooltip-arrow {
+           border-left-color: black;
+    }
+</style>

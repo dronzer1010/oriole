@@ -1,0 +1,413 @@
+{ 
+	"LANDING_PAGE":{
+		"HEADER_LI_1": "For Instagramer",
+		"HEADER_LI_2": "로그인",
+		"HEADER_LI_3": "가입",
+		"HEADER_LI_2_MOBILE": "로그인",
+		"HEADER_LI_3_MOBILE": "가입",
+	  "HEADING_PAGE1": "크리에이티브한 마케팅으로 감성을 자극하다",
+	  "SUB_HEADING_PAGE1": "아시아 최대급의 인플루언서(influencer) 플랫폼",
+	  "BTN_SINGUP": "무료 회원가입",
+	  "P_FOLLOWERS": "총 팔로워 수",
+	  "P_REG_INSTAGRAM": "등록 인스타그래머 수",
+	  "P_COUNTIERS" : "국가",
+
+	  "HEADING_BRAND" : "콜라보레이션 실적",
+	  "HEADING_THREESTEPS" : "3 STEPS",
+
+	  "HEADING_STEP1": "1. 캠페인 관리",
+	  "P_STEP1": "새로운 캠페인을 열고, 브랜드 홍보에 참여할 인스타그래머를 모집해 보세요.",
+	  "HEADING_STEP2": "2. 인스타그래머 검색",
+	  "P_STEP2": "브랜드 프로모션을 위해 가장 적합한 인스타그래머를 찾아보세요.",
+	  "HEADING_STEP3": "3. 콜라보레이션",
+	  "P_STEP3": "인스타그래머와 직접 연락하며 보다 간편하게 콜라보레이션 의뢰나 스케줄 조정이 가능하게 됩니다.",
+	  
+	  "HEADING_CASE1_1": "Case Study",
+	  "HEADING_CASE1_2": "ELLE café",
+	  "HEADING_CASE1_3": "Overview:",
+	  "P_CASE1_1": "ELLE cafe의 머그컵 신발매를 앞두고 소비자 인지 확대를 목적으로 8명의 인스타그래머와 브랜드가 홍보 캠페인을 실시. ELLE 브랜드 이미지와 테이블 풍경의 조화를 통해 보다 일상적이고 보다 친숙한 캠페인에 성공.",
+    "HEADING_CASE1_4": "Result:",
+    "HEADING_CASE1_5": "600K | 20K | 276",
+    "P_CASE1_2": "총 도달 수 　 좋아요' 합계　 코멘트 합계",
+
+    "HEADING_CASE2_1": "Case Study",
+	  "HEADING_CASE2_2": "ELLE café",
+	  "HEADING_CASE2_3": "Overview:",
+	  "P_CASE2_1": "'빵,에스프레소 앤'의 한국 진출에 맞춰 6명의 인스타그래머와 함께 작업을 시작. 가게의 간판 메뉴인 프렌치 토스트를 중심으로 한 프로모션을 실시함으로써 신규 점포 개설에 앞서 '빵, 에스프레소 앤'' 한국 점포의 인지 확대와 손님을 모으는데 성공.",
+    "HEADING_CASE2_4": "Result:",
+    "HEADING_CASE2_5": "360K | 16K | 186",
+    "P_CASE2_2": "총 도달 수 　 좋아요' 합계　 코멘트 합계",
+
+    "FOOTER_INSTAGRAMERS": "INSTAGRAMERS",
+    "FOOTER_INSTAGRAMERS_SIGN_UP" : "인스타그래머 등록",
+    "FOOTER_FOR_INSTAGRAMERS" : "For Instagramer",
+    "FOOTER_FOR_INSTAGRAMER_FAQ" : "인스타그래머 FAQ",
+    "FOOTER_ADVERTISERS": "ADVERTISERS",
+    "FOOTER_ADVERTISER_SIGN_UP": "등록",
+    "FOOTER_FOR_ADVERTISER": "For Advertiser",
+    "FOOTER_ADVERTISER_FAQ": "광고주 FAQ",
+    "FOOTER_LEARN_MORE": "PARTNERS",
+    "FOOTER_TOP_FASHION": "Top Fashion Influencers",
+    "FOOTER_TACKLE": "TACKLE",
+    "FOOTER_NOKIA_INTERNATIONAL": "Nokia International",
+    "FOOTER_CONTACTUS": "CONTACT US",
+    "FOOTER_PHONE_SL": "비지니스:",
+    "FOOTER_PHONE_SUP": "서포트:"
+	},
+	"SIGNUP_DIALOG":{
+	  "FOR_ADVERTISERS": "기업",
+	  "FOR_INSTAGRAMERS": "인스타그래머"
+	},
+	"LOGIN_DIALOG":{
+	  "FOR_ADVERTISERS": "기업",
+	  "FOR_INSTAGRAMERS": "인스타그래머"
+	},
+	"INFLUENCER_COMMON_HEADER":{
+	  "LIST_1": "캠페인",
+	  "LIST_2": "나의 캠페인",
+	  "LIST_3": "즐겨찾기",
+	  "LIST_4": "메세지",
+	  "LIST_5": "Analytics",
+	  "MENU_PROFILE_PC": "프로필",
+	  "MENU_SIGNOUT_PC": "로그아웃",
+	  "MENU_PROFILE_MOBILE": "프로필",
+	  "MENU_SIGNOUT_MOBILE": "로그아웃"
+	},
+	"INVALID_SIGNUP_LESS_FOLLOWER":{
+		"H3_1": "Your application was declined",
+		"H3_2": "Only Instagramers with more than 10K followers can join"
+		},
+	"ACCOUNT_VERIFY":{
+		"H3_1": "Your account has been successfully verified. Sign in and enjoy expaus!"
+		},
+	"ALREADY_VERIFY":{
+		"H3_1": "You are already verified. Sign In and enjoy collaborating with awesome Influencers"
+		},
+	"TERMS_DIALOG":{
+		"H3_1": "Click here to indicate that you have read and agree to the terms presented in the Terms of Service"
+		},
+	"PROFILE_MENU":{
+	  "LIST_1": "프로필",
+	  "LIST_2": "결제 수단",
+	  "LIST_3": "사진",
+	  "LIST_4": "통지 설정",
+	  "LIST_5": "언어",
+	  "LIST_6": "Terms of Service"
+	},
+	"PROFILE_PAGE_TOP":{
+	  "BUTTON_EDIT_PC": "프로필 수정",
+	  "BUTTON_EDIT_MOBILE": "프로필 수정",
+	  "LABEL_YEAR": "연령",
+	  "LABEL_FOLLOWERS": "팔로워",
+	  "LABEL_LIKES": "좋아요' 평균 수",
+	  "LABEL_COMMENTS": "평균 코멘트 수",
+	  "LABEL_MINPRICE": "최저보수 (USD)"
+	},
+	"PROFILE_PAGE_ABOUTME":{
+	  "LABEL_PROFILE_IMAGE": "프로필 사진",
+	  "LABEL_NAME": "이름 (필수)",
+	  "LABEL_BIRTHDAY": "생년월일 (필수)",
+	  "LABEL_EMAIL": "이메일 (필수)",
+	  "LABEL_CATEGORY": "카테고리 (최대 3개까지) (필수)",
+	  "LABEL_CITY": "거주도시 (도시, 국가) (필수)",
+	  "LABEL_PHONE": "전화번호",
+	  "LABEL_MINPRICE": "최저보수 (USD) (필수)",
+	  "VALIDATION_NUMBER": "Only numbers are allowed",
+	  "VALIDATION_GREATER": "Please enter a value greater than or equal to 100",
+	  "LABEL_GENDER": "성별 (필수)",
+	  "OPTION_GENDER_MALE": "남성",
+	  "OPTION_GENDER_FEMALE": "여성",
+	  "BUTTON_SAVE": "저장",
+	  "PHOTO_IS_REQUIRED": "profile photo is required",
+	  "ABOUT_ME_UPDATED": "About me updated successfully",
+	  "ABOUT_ME_PAYPAL_EMAIL_UPDATED": "Paypal email updated successfully",
+	  "ABOUT_ME_NOTIFICATION_UPDATED": "notification updated successfully",
+	  "ABOUT_ME_LANGUAGE_UPDATED": "language updated successfully",
+	  "ABOUT_PHOTO_UPDATED_MESSAGE":"changes saved successfully"
+	},
+	"PROFILE_PAGE_LANGUAGE":{
+	  "LABEL_1": "언어",
+	  "LABEL_2": "통지 언어",
+	  "P_1": "언어 설정",
+	  "P_2": "선택하신 언어로 이메일을 전송합니다."
+	},
+	"PROFILE_PAGE_NOTIFICATION":{
+	  "LABEL_1": "expaus의 최신 뉴스를 ",
+	  "LABEL_2": "클라이언트 기업으로부터 새로운 메세지가 도착할 경우 이메일 통지를 희망한다."
+	},
+	"PROFILE_PAGE_PAYMENT":{
+	  "LABEL_PAYPAL": "Paypal Email",
+	  "P_PAYPAL_VALIDATION": "Please enter a valid email address"
+	},
+	"PROFILE_PAGE_TERMS":{
+	  "H3_1": "1.0 Applicability of Terms",
+	  "P_1_1": "These general terms and conditions shall apply to all services provided by expaus, and will be applicable directly between the company using expaus as a connector to an Instagram user (the “Promoter”), and directly between expaus and the Instagram user who is connected with the Promoter (the “Instagramer”).",
+	  "P_1_2": "These general terms and conditions take precedence over any other terms and conditions – whether oral or in writing - unless otherwise specific agreed between the parties in a separate written and signed agreement.",
+	  "H3_2": "2.0 Contractual relationship and liability",
+	  "P_2_1": "expaus provides the contact between the Promoter and the Instagramer, and acts as a facilitator for the parties’ interaction on the provided expaus platform.",
+	  "P_2_2": "expaus assumes no liability for the content of any Instagramer’s profile connected to one or more Promoters, and expaus is not liable for the Instagramer’s or the Promoter’s violation of Instagram’s Terms and Conditions.",
+	  "P_2_3": "expaus may provide a sample written agreement between an unspecified Promoter and an unspecified Instagramer. This is a service provided by expaus, and the Promoter and the Instagramer may decide not to use the sample; use the sample in the exact form as provided or adjust the sample as see fit.",
+	  "P_2_4": "expaus cannot be held liable for the content of the agreement regardless of the Promoter’s and the Instagramer’s use of the sample provided by expaus.",
+	  "P_2_5": "Under all circumstances, expaus cannot be held liable for any acts and/or omissions of neither the Instagramer nor the Promoter for any reason, including but not limited to infringements of third party rights including intellectual property rights or claims arisen as a result of either party’s failure to comply with obligations in the parties’ contractual relationship.",
+	  "H3_3": "3.0 Handling of personal data",
+	  "P_3": "expaus will at all times act in accordance with the Japanese Act on Processing of Personal Data (Persondataloven), and personal data of the Instagramer will only be disclosed to a Promoter with the consent of the Instagramer.",
+	  "H3_4": "4.0 The registration in expaus’s database",
+	  "P_4_1": "expaus will at all times act in accordance with the Japanese Act on Processing of Personal Data (Persondataloven), and personal data of the Instagramer will only be disclosed to a Promoter with the consent of the Instagramer.",
+	  "P_4_2": "The Promoter or the Instagramer are at any time entitled to get the registration in the database of expaus deleted.",
+	  "H3_5": "5.0 Confidentiality",
+	  "P_5_1": "Unless otherwise expressly agreed in writing, no information provided to expaus shall be regarded as confidential, unless their confidential nature is obvious.",
+	  "P_5_2": "However, personal data will be handled in accordance with section 3.",
+	  "H3_6": "6.0 Applicable Laws and Jurisdiction",
+	  "P_6": "These Terms will be governed by the Laws of Japan, and Tokyo District Court shall have the exclusive jurisdiction of the first instance over all disputes arising in connection with this agreement.",
+	  "H3_7": "7.0 Changes to these Terms of Use and Platform",
+	  "P_7_1": "Except where prohibited by applicable law, expaus reserves the right to change these Terms of Use at any time without notice. Your continued access to or use of the Platform after any changes to these Terms of Use indicates your acceptance of such changes. It is your responsibility to review these Terms of Use regularly.",
+	  "P_7_2": "expaus reserves the right to change any information, material or content (including, but not limited to, price, features, availability of Promoters) contained on or provided through the Platform (the \"Content\") at any time, and from time to time, without notice."
+	},
+	"MESSAGE_PAGE":{
+	  "P_HEADER_STATUS_1": "Not Hired",
+	  "P_HEADER_STATUS_2": "In Progress",
+	  "P_HEADER_STATUS_3": "In Review",
+	  "P_HEADER_STATUS_4": "Changes Required",
+	  "P_HEADER_STATUS_5": "Completed",
+	  "OPTION_STATUS_1": "All",
+	  "OPTION_STATUS_2": "Not Hired",
+	  "OPTION_STATUS_3": "In Progress",
+	  "OPTION_STATUS_4": "In Review",
+	  "OPTION_STATUS_5": "Changes Required",
+	  "OPTION_STATUS_6": "Completed",
+	  "BTN_SUBMIT_WORK": "Submit Work",
+	  "BTN_RESUBMIT_WORK": "Resubmit Work",
+	  "BTN_SEND": "SEND"
+	},
+	"ALREADY_APPLIED":{
+		"H3_1": "You've already submitted a proposal for this campaign"
+	},
+	"PROPOSAL_SUBMIT_SUCCESS":{
+		"H3_1": "Congratulations",
+		"H3_2": "You have successfully submitted a proposal"
+	},
+	"BOOKMARK_SUCCESS":{
+		"H3_1": "You have successfully bookmarked a campaign"
+	},
+	"UNBOOKMARK_SUCCESS":{
+		"H3_1": "You have successfully unbookmarked a campaign"
+	},
+	"CATEGORY_BOX":{
+		"LI_1_FALSE": "코스메틱",
+		"LI_1_TRUE": "코스메틱",
+		"LI_2_FALSE": "패션",
+		"LI_2_TRUE": "패션",
+		"LI_3_FALSE": "음식",
+		"LI_3_TRUE": "음식",
+		"LI_4_FALSE": "스포츠",
+		"LI_4_TRUE": "스포츠",
+		"LI_5_FALSE": "쥬얼리",
+		"LI_5_TRUE": "쥬얼리",
+		"LI_6_FALSE": "헬스",
+		"LI_6_TRUE": "헬스",
+		"LI_7_FALSE": "여행",
+		"LI_7_TRUE": "여행",
+		"LI_8_FALSE": "음악",
+		"LI_8_TRUE": "음악"
+	},
+	"PICK_IMAGE":{
+		"P_1": "사진 업로드",
+		"P_2": "브랜드 측에 인상을 남길 수 있을만한 사진을 30장까지 선택 가능합니다.",
+		"P_3": "사진이 선택됨",
+		"BTN_1": "업데이트"
+	},
+	"APPLY_DIALOG":{
+		"ALREADY_APPLIED": "Already applied",
+		"BTN_SEND": "Send"
+	},
+	"HIRED_ADD_PAYPAL":{
+		"H3_1": "You Got Hired",
+		"P_1": "You still haven’t added any paypal email on your profile. Add paypal email below and save them. Once you add the info, this alert will disappear.",
+		"BTN_SAVE": "Save"
+	},
+	"INFLUENCER_SIGNUP_SUCCESS":{
+		"H3_1": "You have been approved",
+		"H3_2": "Enjoy Collabrating with amazing advertisers on expuas"
+	},
+	"AD_SIDEBAR":{
+		"LOGOUT": "Sign Out",
+		"LIST_1": "홈",
+		"LIST_2": "캠페인",
+		"LIST_3": "메세지",
+		"LIST_4": "지원자",
+		"LIST_5": "설정",
+		"LIST_6": "Help",
+		"LIST_7": "문의"
+	},
+	"AD_MESSAGE_PAGE":{
+		"STATUS_1": "All",
+		"STATUS_2": "Not Hired",
+		"STATUS_3": "In Progress",
+		"STATUS_4": "In Review",
+		"STATUS_5": "요청 변경",
+		"STATUS_6": "완료",
+		"TIPS_1": "You still have not started an actual contract with Instagramer. Press 'Hire' button to collaborate with Instagramer.",
+		"TIPS_2": "You are now waiting for the work to be submitted from Instagramer.",
+		"TIPS_3": "You are reviewing the work submitted from Instagramer. You can either press 'Request Changes' or 'End Contract' button for the next step.",
+		"TIPS_4": "Instagramer is reworking on the work per your request.'Request Changes' button was pressed.",
+		"TIPS_5": "Instagramer has successfully completed the task. Release button was pressed and payment was released.",
+		"BTN_1": "새 캠페인",
+		"BTN_2": "프로필을 표시",
+		"BTN_3": "계약 종료"
+	},
+	"ADVERTISER":{
+		"PASSWORD_NOT_MATCHED": "New password and confirm password does not match",
+		"INVALID_OLD_PASSWORD": "Invalid old password",
+		"FILE_UPLOAD_ERROR_MESSAGE":"something went wrong to upload file.",
+		"CHANGE_CAMPAIGN_STATUS": "Campaign status changed successfully",
+		"CHANGE_ADVERTISER_STATUS":"Advertiser status changed successfully"
+	},
+	"INFLUENCER":{
+	  "THREE_CATEGORY_ALLOW": "카테고리는 3개까지만 선택 가능합니다",
+	  "ABOUT_ME_ADDED_SUCCESSFULLY": "About me added successfully",
+	  "NEW_INFLUENCER_MESSAGE": "개인 정보 페이지를 기입한 후에 다른 페이지 접속 및 열람이 가능합니다."
+	},
+	"ERROR_MESSAGE":{
+	  "API_ERROR_MESSAGE": "oops something went wrong"	
+	},
+	"ANALYTICS":{
+		"ACCOUNT":"ACCOUNT",
+		"INTEGRATE_IG_LABEL":"Integrate Instagram Account",
+		"INTEGRATE_IG_DESC":"Enable analytics on your instagram account by clicking on 'Integrate Now' button below.Analyze your account and make effective promotion",
+		"IG_LOGIN_BTN_LBL":"Integrate Now",
+		"LOADING_MSG":"Please wait,we are processing it.........",
+		"BEST_TIME_TO_POST_LABEL":"Best Time to post",
+		"BEST_TIME_TO_POST":"Shows the times of the day and the days of the week when your audience was interacting during a selected time range. The darkest red is the best time for you to post.(Timezone can be set on the settings page)",
+		"FOLLOWER_DEMOGRAPHY":"Followers Demography",
+		"TOP_COUNTRY":"Top Countries",
+		"TOP_CITIES":"Top Cities",
+		"GENDER":"Gender",
+		"TAG_RANKINGS":"Tag Rankings",
+		"CAMPAIGN":"CAMPAIGN",
+		"CREATE_CAMPAIGN":"Create Campaign",
+		"LOGOUTIG":"logout IG",
+		"TAG_ADDED_MESSAGE": "Tag for analytics added successfully",
+		"TAG_REMOVED_MESSAGE": "Tag removed successfully",
+		"ACCESS_TOKEN_PERMISSION_ISSUE":"Important: Your permission on Instagram or password might got changed. Please logout from your instagram from top right “IG Logout” button and re-login again"
+	},
+	"SETTINGS":{
+			"PROFILE_TITLE":"Profile",
+			"DASHBOARD_LANGUAGE":"Dashboard Language",
+			"PROFILE_IMAGE":"Profile Image",
+			"UPLOAD_IMAGE":"Upload Image",
+			"MAX_SIZE_IMG_UPLOAD":"Maximum size 2MB",
+			"RECOMMENDED_DIMENSIONS":"Recommended dimensions 60x60px",
+			"COMPANY_NAME":"Company Name",
+			"LOGIN_EMAIL":"Login Email",
+			"TIME_ZONE_SETTINGS":"Timezone Settings",
+	
+			"PASSWORD_TITLE":"Password",
+			"OLD_PASSWORD":"Old Password",
+			"NEW_PASSWORD":"New Password",
+			"CONFIRM_PASSWORD":"Confirm Password",
+			"UPDATE_PASSWORD":"Update Password",
+		
+			"NOTIFICATION_TITLE":"Notification",
+			"PREFERRED_LANGUAGE":"Preffered Language",
+			"PREFERRED_LANGUAGE_DESC":"You will receive the email in the selected language",
+			"CAMPAIGN_STATUS":"Campaign Status",
+			"CAMPAIGN_STATUS_DESC":"Recieve Email when campaign's status changed",
+			"CAMPAIGN_APPLICANT":"Campaign applicant",
+			"CAMPAIGN_APPLICANT_DESC":"Recieve Email when influencers applied your campaign",
+			"MESSAGES":"Messages",
+			"MESSAGES_DESC":"Recieve Email when getting a message from influencer",
+			"EXPAUS_UPDATES":"expaus Updates",
+			"EXPAUS_UPDATES_DESC":"Receive useful info from expaus",
+			"SAVE_CHANGES":"Save Changes",
+			"ENGLISH":"English",
+			"JAP":"Japanese",
+			"KOREAN":"Korean",
+			"CHINESE":"Chinese"
+	},
+	"HOMEPAGE":{
+		"GENDER":"Gender",
+		"MALE":"Male",
+		"FEMALE":"Female",
+		"AGE":"Age",
+		"FOLLOWERS":"Followers",
+		"PRICE":"Price",
+		"CATEGORY_SELECT":"Select Category",
+		"APPLY":"Apply",
+		"CHAT":"Chat",
+		"BOOKMARK":"Bookmark",
+		"AVERAGE_LIKES":"Average Likes",
+		"COSMETIC":"Cosmetic",
+		"FASHION":"Fashion",
+		"FOOD":"Food",
+		"SPORTS":"Sports",
+		"JEWELLARY":"Jewellary",
+		"HEALTH":"Health",
+		"TRAVEL":"Travel",
+		"MUSIC":"Music",
+		"YEAR_OLD":"Year Old",
+		"STATS":"Stats",
+		"LIKES_AVG":"Likes Avg",
+		"COMMENT_AVG":"Comments Avg",
+		"HIRE":"Hire",
+		"INVITE":"Invite",
+		"BOOKMARKED_SUCCESS_POPUP":"You have successfully bookmarked an influencer.",
+		"UNBOOKMARKED_SUCCESS_POPUP":"You have successfully unbookmarked an influencer.",
+		"SELECT_CAMPAIGN":"Select Campaign",
+		"ALREADY_INVITED":"Already Invited",
+		"ALREADY_HIRED":"Already Hired",
+		"PAYMENT_TO_INFLUENCER":"Payment to Influencer",
+		"SERVICE_FEE":"Service Fee",
+		"TOTAL":"Total",
+		"PAY_BIA_BANK":"Pay outside expaus"
+	},
+	"ADVERTISER_CAMPAIGNS":{
+		"YOUR_CAMPAIGN":"Your Campaigns",
+		"DUE_DATE":"Due Date",
+		"PRICE_RANGE":"Price Range",
+		"CLOSED":"CLOSED",
+		"APPLICANT":"Applicants",
+		"CLOSE":"Close",
+		"SAVE_AS_DRAFT":"Saved as Draft",
+		"PENDING":"Pending",
+		"APPROVED":"Approved",
+		"DECLINED":"Declined",
+		"PUBLIC":"PUBLIC",
+		"INVITE_ONLY":"INVITE-ONLY",
+		"ACTIONS":"Actions",
+		"REOPEN":"Reopen",
+		"VIEW_CAMPAIGN":"View Campaign",
+		"VIEW_APPLICANT":"View Applicants",
+		"MAKE_PUBLIC":"Make Public",
+		"MAKE_PRIVATE":"Make Private",
+		"EDIT_CAMPAIGN":"Edit Campaign",
+		"DUPLICATE_CAMPAIGN":"Duplicate Campaign",
+		"DELETE_CAMPAIGN":"Delete Campaign",
+		"CLOSE_CAMPAIGN":"Close Campaign"
+	},
+	"CAMPAIGN_DETAILS":{
+		"EDIT":"Edit",
+		"BUDGET":"Budget",
+		"DUE_DATE":"Due Date",
+		"TARGET_AGE":"Target Age",
+		"REFERENCE_URL":"Reference URL",
+		"DETAILS":"Details",
+		"POST_CAMPAIGN":"Post a Campaign",
+		"CAMPAIGN_TITLE":"Campaign Title",
+		"CATEGORY":"Category",
+		"DETAIL":"Detail",
+		"EDIT_CAMPAIGN":"Edit Campaign",
+		"SELECT_AREA":"Select Area",
+		"VISIBILITY":"Visibility",
+		"SELECT_VISIBILITY":"Select Visiblity",
+		"VISIBILITY_EVERYONE":"Everyone can see the campaign",
+		"VISIBILITY_INVITED":"Only invited applicants see the campaign",
+		"SAVE_AS_DRAFT":"Save as Draft",
+		"PUBLISH":"Publish"
+	},
+	"ADVERTISER_CANDIDATE":{
+		"HIRED":"Hired",
+		"ALL_CAMPAIGN":"All Campaign",
+		"SEND_MESSAGE":"Send Message",
+		"END_CONTRACT":"End Contract"
+	}
+}

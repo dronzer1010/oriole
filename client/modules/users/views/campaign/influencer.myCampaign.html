@@ -1,0 +1,48 @@
+<div class="container ma-campaign bg-grey-light ">
+    <div class="row margin-top-20">
+        <div class="col-md-6 col-xs-4 padding-top-15 align-left">
+            <div class="max-message border-less padding-top-0 padding-bottom-0">
+                <h5 translate="INFLUENCER_COMMON_HEADER.LIST_1">Campaigns</h5></div>
+        </div>
+        <div class="col-md-2 col-xs-3 padding-top-15 align-left">
+            <div class="max-message border-less padding-top-0 padding-bottom-0">
+                <h5 style="white-space: nowrap;" translate="ADVERTISER_CAMPAIGNS.DUE_DATE">Due Date</h5></div>
+        </div>
+        <div class="col-md-2 col-xs-3 padding-top-15 align-left">
+            <div class="max-message border-less padding-top-0 padding-bottom-0">
+                <h5 translate="HOMEPAGE.PRICE">Price</h5></div>
+        </div>
+        <div class="col-md-2 mob-none"></div>
+    </div>
+    <div ng-if= "_id"  class="container-fluid bg-white ma-campaign-body" ng-init="getMyCampaignData(_id)">
+        <div n class="row border closed-relative" ng-repeat="campaign in myCampaignData" ng-show="campaign.campaignId != null">
+            <div class="col-md-6 col-xs-4">
+                <div class="max-message border-less padding-top-0 padding-bottom-0">
+                    <h5 class="color-yellow">{{campaign.status | uppercase}}</h5>
+                    <h4 ui-sref="influencer.campaign.details({campaignId: campaign.campaignId._id})" class="color-red">{{campaign.campaignId.campaignTitle}}</h4>
+                    <p></p>
+                </div>
+            </div>
+            <div class="max-closed-influ" ng-show="campaign.campaignId.campaignStatus == 'Close'">
+                <span class="color-white" translate="ADVERTISER_CAMPAIGNS.CLOSED">CLOSED</span>
+            </div>
+            <div class="col-md-2 col-xs-3 padding-top-15 align-left">
+                <p>{{campaign.campaignId.dueDate | date:'yyyy-MM-dd'}}</p>
+            </div>
+            <div class="col-md-2 col-xs-3 padding-top-15 align-left">
+                <p>{{campaign.price}}</p>
+            </div>
+            <div class="col-md-2 col-xs-3">
+                <div class="max-campaign-btn">
+                    <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn bg-red" translate="ADVERTISER_CAMPAIGNS.ACTIONS">ACTIONS<i class="fa fa-caret-down"></i></button>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="influencer.campaign.details({campaignId: campaign.campaignId._id})" translate="ADVERTISER_CAMPAIGNS.VIEW_CAMPAIGN">View campaign</a></li>
+                        <li><a ui-sref="influencer.message" data-ng-click="messageView(campaign)" translate="ADVERTISER_CANDIDATE.SEND_MESSAGE">Send Message</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

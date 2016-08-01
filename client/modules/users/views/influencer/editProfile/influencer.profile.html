@@ -1,0 +1,27 @@
+<div class="container-fluid bg-grey-light of-hidden influ-body">
+    <div class="row" style="background: #F3F3F4;">
+        <div class="toggle-body">                    
+            <select class="form-control influ-toggle"  ng-model='toggle' ng-options="month.value as month.name| translate for month in toggles" required ng-change="goToggle(toggle)">
+            </select>
+        </div>
+        <div class="col-md-3 influ-menu" style="background:white">
+            <nav class="navbar navbar-default" style='width:96%'>
+                <div class="collapse navbar-collapse tb-section-left max-menu" id="bs-example-navbar-collapse-7">
+                    <ul id="dx-tabs" class="ul-menulist">
+                        <li ui-sref-active="current"><a translate="PROFILE_MENU.LIST_1" href="" ui-sref="influencer.profile.aboutMe">About Me</a></li>
+                        <li ui-sref-active="current"><a translate="PROFILE_MENU.LIST_2" href="" ui-sref="influencer.profile.payment">Payment</a></li>
+                        <li ui-sref-active="current"><a translate="PROFILE_MENU.LIST_3" href="" ui-sref="influencer.profile.photo">Photo</a></li>
+                        <li ui-sref-active="current"><a translate="PROFILE_MENU.LIST_4" href="" ui-sref="influencer.profile.notificationSetting">Notification Settings</a></li>
+                        <li ui-sref-active="current"><a translate="PROFILE_MENU.LIST_5" href="" ui-sref="influencer.profile.langugae">Language</a></li>
+                        <li ui-sref-active="current"><a translate="PROFILE_MENU.LIST_6" href="" ui-sref="influencer.profile.terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-9 col-sm-offset-3" style="background:white">
+            <div class="tb-section-middle influencer-max-height">
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+</div>

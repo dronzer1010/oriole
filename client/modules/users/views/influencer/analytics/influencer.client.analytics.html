@@ -1,0 +1,106 @@
+<div class="container ma-campaign bg-grey-light padding-top-15 inf-analy" ng-init="getProfileData();">
+    <div class="container-fluid ma-campaign-body ">
+        <div id="container" style="height: 400px; margin-top: 25px;background: white;"></div>
+        <div class="row" style="margin-top: 15px;margin-bottom: 15px;background: white; ">
+            <div class="col-md-12"><h3 translate="ANALYTICS.BEST_TIME_TO_POST_LABEL"></h3>
+                <span translate="ANALYTICS.BEST_TIME_TO_POST"></span>
+            </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="mytable">
+                    <div class="table-responsive">
+                      <table class="table" width="100%">
+                       <tr ng-repeat="item in bestTimeToPost">
+
+                            <td  class="left-title">{{item.dayname}}</td>
+                            <td bgcolor="{{ weekrow.split('-')[1]}}" ng-repeat="weekrow in item.list track by $index">
+                                {{weekrow.split('-')[0]}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left-title"> &nbsp; </td>
+                            <td><p class="timing">12am</p></td>
+                            <td><p class="timing">1am</p></td>
+                            <td><p class="timing">2am</p></td>
+                            <td><p class="timing">3am</p></td>
+                            <td><p class="timing">4am</p></td>
+                            <td><p class="timing">5am</p></td>
+                            <td><p class="timing">6am</p></td>
+                            <td><p class="timing">7am</p></td>
+                            <td><p class="timing">8am</p></td>
+                            <td><p class="timing">9am</p></td>
+                            <td><p class="timing">10am</p></td>
+                            <td><p class="timing">11am</p></td>
+                            <td><p class="timing">12am</p></td>
+                            <td><p class="timing">1pm</p></td>
+                            <td><p class="timing">2pm</p></td>
+                            <td><p class="timing">3pm</p></td>
+                            <td><p class="timing">4pm</p></td>
+                            <td><p class="timing">5pm</p></td>
+                            <td><p class="timing">6pm</p></td>
+                            <td><p class="timing">7pm</p></td>
+                            <td><p class="timing">8pm</p></td>
+                            <td><p class="timing">9pm</p></td>
+                            <td><p class="timing">10pm</p></td>
+                            <td><p class="timing">11pm</p></td>
+
+                            </tr>               
+                      </table>
+                    </div>
+                </div>
+            </div>
+        <div class="row" style="margin-bottom: 5px;">
+            <div class="col-sm-12 col-lg-8 bg-white ad" style="margin-top: 15px; ">
+                <h5 translate="ANALYTICS.FOLLOWER_DEMOGRAPHY"></h5>
+                <div id="world-map" class="" style="height:300px;"></div>
+            </div>            
+            <div class="col-sm-12 col-xs-12 col-lg-4 bg-white gendergraph" style="margin-top: 15px;">
+                <h5  translate="ANALYTICS.GENDER"></h5>
+                <div style="width: auto;height:300px;" class="bg-white" id="gendermap"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:15px;">
+            <div ng-if="topfollowerDemographybyCountry" class="col-xs-12 col-lg-4 bg-white ad3 ad-nomobile">
+                <h5 class="text-uppercase" translate="ANALYTICS.TOP_COUNTRY">Top Countries</h5>
+                <div style="height: 250px;overflow: auto;">
+                    <div ng-repeat="country in countrySortedList">
+                        <span class="text-uppercase">{{country.name}}</span>
+                        <span class="tagcount">{{country.value}}%</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="topfollowerDemographybyCities" class="col-xs-12 col-lg-4 bg-white ad4 ad-nomobile">
+                <h5 class="text-uppercase" translate="ANALYTICS.TOP_CITIES"></h5>
+                <div style="height: 250px;overflow: auto;">
+                    <div ng-repeat="city in citySortedList">
+                        <span class="text-uppercase">{{city.name}}</span>
+                        <span class="tagcount">{{city.value}}%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-4 bg-white ad5" style="float:right;">
+                <h5 class="text-uppercase" translate="ANALYTICS.TAG_RANKINGS"></h5>
+                <div style="height: 250px;overflow: auto;">
+                    <div ng-repeat="tag in tags track by $index">
+                        <span>{{$index+1}}.</span>
+                        <span class="text-uppercase">{{tag.tagname}}</span>
+                        <span class="tagcount">{{tag.count}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.small_btn{float:right; margin:55px 0 15px 15px}
+.small_btn a{color:#4399e4; border:1px solid #4399e4; padding:10px}
+.small_btn a:hover{background:#4399e4;color:#fff}
+
+.mytable{float:left; width:100%;background: white;}
+.mytable{padding:0 10px;padding-top:20px;}
+.mytable table{width:100%; border:none; padding:0; margin:0}
+.mytable table tr td{border:0; vertical-align:middle; text-align:center; font-weight:bold; font-size:10px}
+.mytable table tr td.left-title{color:#8b8b8b}
+.timing{transform: rotate(-25deg); font-weight:normal; font-size:12px}
+</style>

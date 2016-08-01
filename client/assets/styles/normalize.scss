@@ -1,0 +1,101 @@
+//fonts
+$font_0: sans-serif;
+//@extend-elements
+//button, input, select, textarea
+%extend_1 {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+html {
+    font-family: $font_0;
+    input[type="button"] {
+        cursor: pointer;
+    }
+}
+
+body {
+    margin: 0;
+}
+
+footer {
+    display: block;
+}
+
+header {
+    display: block;
+}
+
+nav {
+    display: block;
+}
+
+section {
+    display: block;
+}
+
+a {
+    background-color: transparent;
+    &:active {
+        outline: 0;
+    }
+    &:hover {
+        outline: 0;
+    }
+}
+
+strong {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+img {
+    border: 0;
+}
+
+button {
+    @extend %extend_1;
+    overflow: visible;
+    text-transform: none;
+    cursor: pointer;
+}
+
+input {
+    @extend %extend_1;
+    line-height: normal;
+}
+
+select {
+    @extend %extend_1;
+    text-transform: none;
+}
+
+textarea {
+    @extend %extend_1;
+    overflow: auto;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+input[type="checkbox"] {
+    //Instead of the line below you could use @include box-sizing($bs)
+    box-sizing: border-box;
+    padding: 0;
+}

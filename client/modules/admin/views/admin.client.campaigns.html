@@ -1,0 +1,159 @@
+<div class="wrapper wrapper-content admin bg-grey-light padding-top-20 companies" ng-controller="AdminController as adminCtrl" ng-init="adminCtrl.getPendingCampaignList();">
+    <!-- <div class="head">
+        <a class="btn btn-primary" ng-click="adminCtrl.mulitipleCampaignSelected('Accept')">Accept Selected</a>
+        <a class="btn btn-danger" ng-click="adminCtrl.mulitipleCampaignSelected('Declined')" style="border-radius: 0px;">Decline Selected</a>
+    </div> -->
+    <!-- <div class="table-responsive">
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <input style="left:19px,top:9px;" type="checkbox" id="checkbox-head" class="regular-checkbox" ng-model="master" />
+                        <label for="checkbox-head"></label>
+                    </th>
+                    <th>Campaign</th>
+                    <th>Category</th>
+                    <th>Reference URL</th>
+                    <th>More</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="item in adminCtrl.campaigns">
+                <tr>
+                    <td>
+                        <input type="checkbox" id="{{item._id}}" class="regular-checkbox-td" ng-checked="master" />
+                        <label for="{{item._id}}"></label>
+                    </td>
+                    <td>{{item.campaignTitle}}</td>
+                    <td>{{item.campaignCategory}}</td>
+                    <td><strong><a ng-href="{{item.referenceUrl}}" target="_blank">Click Here</a></strong></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="item.isCollapsed = !item.isCollapsed">Know more</button>
+                    </td>
+                </tr>
+                <tr>
+                    <div ng-init="item.isCollapsed = true" collapse="item.isCollapsed">
+                        <div class="well well-lg" style="height: 360px;">
+                            <div class="col-lg-8">
+                                <div class="col-lg-4">Price Range : </div>
+                                <div class="col-lg-4">$ {{item.priceRange.from}} - {{item.priceRange.to}}</div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="col-lg-4">Target Age : </div>
+                                <div class="col-lg-4">{{item.targetAge.from}} - {{item.targetAge.to}}</div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="col-lg-4">Due Date : </div>
+                                <div class="col-lg-4">{{item.dueDate}}</div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="col-lg-4">Location : </div>
+                                <div class="col-lg-4">{{item.area}}</div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="col-lg-4">Gender : </div>
+                                <div class="col-lg-4">{{item.gender}}</div>
+                            </div>
+                            <div class="col-lg-8" ng-if="item.visiblePrivate==false">
+                                <div class="col-lg-4">Visibility : </div>
+                                <div class="col-lg-4">Public</div>
+                            </div>
+                            <div class="col-lg-8" ng-if="item.visiblePrivate==true">
+                                <div class="col-lg-4">Visibility : </div>
+                                <div class="col-lg-4">Private</div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="col-lg-2">Detail : </div>
+                                <div style="padding-left:66px;" class="col-lg-10">{{item.campaignDetail}}</div>
+                            </div>
+                            <div class="col-lg-8" style="margin-top: 30px;">
+                                <a class="btn btn-primary" ng-click="adminCtrl.actionCampaign(item, 'Accept','')">Accept</a>
+                                <a class="btn btn-danger" ng-click="adminCtrl.declineCampaignPopUp(item)" style="border-radius: 0px;">Decline</a>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+    <div class="col-lg-12 ">
+        <div class="col-lg-12 company-table">
+            <div class="col-lg-2 company-head">
+                <input style="left:19px,top:9px;" type="checkbox" id="checkbox-head" class="regular-checkbox" ng-model="master" />
+                <label for="checkbox-head"></label>
+            </div>
+            <div class="col-lg-2">
+                <strong>Campaign</strong>
+            </div>
+            <div class="col-lg-2">
+                <strong>Category</strong>
+            </div>
+            <div class="col-lg-2">
+                <strong>Reference URL</strong>
+            </div>
+            <div class="col-lg-4">
+                <a class="btn btn-primary" ng-click="adminCtrl.mulitipleCampaignSelected('Accept')">Accept Selected</a>
+                <a class="btn btn-danger" ng-click="adminCtrl.mulitipleCampaignSelected('Declined')" style="border-radius: 0px;">Decline Selected</a>
+            </div>
+        </div>
+        <div class="col-lg-12 company-data" ng-repeat="item in adminCtrl.campaigns">
+            <div class="col-lg-2">
+                <input type="checkbox" id="{{item._id}}" class="regular-checkbox-td" ng-checked="master" />
+                <label for="{{item._id}}"></label>
+            </div>
+            <div class="col-lg-2">
+                <strong>{{item.campaignTitle}}</strong>
+            </div>
+            <div class="col-lg-2">
+                <strong>{{item.campaignCategory}}</strong>
+            </div>
+            <div class="col-lg-2">
+                <strong><a ng-href="{{item.referenceUrl}}" target="_blank">Click Here</a></strong>
+            </div>
+            <div class="col-lg-2 company-collapse">
+                <button type="button" class="btn btn-primary" ng-click="item.isCollapsed = !item.isCollapsed">Know more</button>
+            </div>
+            <div class="col-lg-12">
+                <div ng-init="item.isCollapsed = true" collapse="item.isCollapsed">
+                    <div class="well well-lg" style="height: 360px;">
+                        <div class="col-lg-8">
+                            <div class="col-lg-4">Price Range : </div>
+                            <div class="col-lg-4">$ {{item.priceRange.from}} - {{item.priceRange.to}}</div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="col-lg-4">Target Age : </div>
+                            <div class="col-lg-4">{{item.targetAge.from}} - {{item.targetAge.to}}</div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="col-lg-4">Due Date : </div>
+                            <div class="col-lg-4">{{item.dueDate}}</div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="col-lg-4">Location : </div>
+                            <div class="col-lg-4">{{item.area}}</div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="col-lg-4">Gender : </div>
+                            <div class="col-lg-4">{{item.gender}}</div>
+                        </div>
+                        <div class="col-lg-8" ng-if="item.visiblePrivate==false">
+                            <div class="col-lg-4">Visibility : </div>
+                            <div class="col-lg-4">Public</div>
+                        </div>
+                        <div class="col-lg-8" ng-if="item.visiblePrivate==true">
+                            <div class="col-lg-4">Visibility : </div>
+                            <div class="col-lg-4">Private</div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="col-lg-2">Detail : </div>
+                            <div style="padding-left:66px;" class="col-lg-10">{{item.campaignDetail}}</div>
+                        </div>
+                        <div class="col-lg-8" style="margin-top: 30px;">
+                            <a class="btn btn-primary" ng-click="adminCtrl.actionCampaign(item, 'Accept','')">Accept</a>
+                            <a class="btn btn-danger" ng-click="adminCtrl.declineCampaignPopUp(item)" style="border-radius: 0px;">Decline</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

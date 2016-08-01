@@ -1,0 +1,36 @@
+.companies {
+    margin-left: 15px;
+    margin-right: 15px;
+    .head {
+        text-align: right;
+        width: 95%;
+    }
+    .table-responsive {
+        table>thead>tr {
+            th:first-child {
+                padding-bottom: 22px;
+            }
+        }
+    }
+}
+
+#bs-example-navbar-collapse-1 {
+    .dropdown {
+        border: none;
+    }
+    .signout{
+    	display: none;
+    }
+}
+@media screen and (max-width: 768px){
+	#bs-example-navbar-collapse-1{
+		float: left;
+		width: 100%;
+		.dropdown{
+			display: none;
+		}
+		.signout{
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,51 @@
+<div ng-controller="AdminController as adminCtrl" ng-init="adminCtrl.test()">
+    <nav class="navbar navbar-default nav-color" style="width:100%;background:white">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand new-app" style="font-size:1.7em;font-weight: 400;line-height: 100%;
+          color: #000;" href="#">Admin Panel</a>
+                <!-- <a class="navbar-brand" style="margin-left:0px;" ng-href="#">NewApp</a> -->
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav tb-menu">
+                    <li><a ui-sref="admin.advertiser" data-ng-click="adminCtrl.loadPage('advertiserList')">Advertiser List <span class="sr-only"></span></a></li>
+                    <li><a ui-sref="admin.campaigns" data-ng-click="adminCtrl.loadPage('campaignList')">Campaign List</a></li>
+                    <li><a ui-sref="admin.updateadvertiserssubscription">Update Advertisers Subscription</a></li>
+                    <li ng-if="admin=='admin'"><a ui-sref="admin.resellers">Resellers</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="user-circle"><i class="fa fa-user"></i></span><i class="fa fa-caret-down"></i>
+                        </a>
+                    
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0);" ng-click="adminCtrl.adminlogout()">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div  ng-if="resellerApiKey">
+                <div><a href="javascript:void(0);" onclick="$('#apikey').toggle();"> Click to view Api key</a></div>
+                <div id="apikey" style="display:none;">{{resellerApiKey}}</div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div ui-view></div>
+</div>
+<style>
+body {
+    padding-top: 0px !important;
+}
+</style>

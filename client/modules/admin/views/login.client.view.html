@@ -1,0 +1,33 @@
+<div ng-controller="AdminController as adminCtrl">
+    <br>
+    <br>
+    <div class="row">
+        <h3 ng-if="loginStatus == 'Not Exist'" class="col-sm-2 col-sm-offset-6">Invalid User</h3>
+        <h3 ng-if="loginStatus == 'Invalid Username and Password'" class="col-sm-4 col-sm-offset-5">Invalid Username and Password</h3>
+    </div>
+    <div class="row">
+        <h3 class="col-sm-2 col-sm-offset-6">Admin/Reseller Login</h3>
+    </div>
+    <div style="width:800px; margin:0 auto;">
+        <form data-ng-submit="adminCtrl.login(user, loginForm)" name="loginForm" novalidate class="form-horizontal">
+            <!-- <input type="hidden" name="_csrf" value="{{ csrf_token }}"> -->
+            <div class="form-group">
+                <label for="email" class="col-sm-5 col-sm-offset-3 control-label">Email</label>
+                <div class="col-sm-4">
+                    <input id="email" class="form-control" data-ng-model="user.email" type="email" placeholder="Email" name="email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-5 col-sm-offset-3 control-label">Password</label>
+                <div class="col-sm-4">
+                    <input id="password" class="form-control" data-ng-model="user.password" type="password" placeholder="Password" name="password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 col-sm-offset-5">
+                    <button class="btn btn-primary" type="submit">Log in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

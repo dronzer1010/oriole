@@ -1,0 +1,47 @@
+<div  ng-init="getInstagramRecentPhotoNotSaved();" class="confirm-tab" >
+  <div class="modal-header bg-login padding-top-10 padding-bottom-20">
+    <h3 class="color-white" translate="PICK_IMAGE.P_1">Upload Image</h3>
+    <div class="row">
+      <div class="col-md-9 small-lbl" style="color: white;" translate="PICK_IMAGE.P_2">Choose up to 30 photos to impress brands</div>
+
+      <div class="col-md-3 small-lbl" style="color: white; text-align: right;">
+        <span style="color: orange;">{{noOfSelectImages}} </span> <span translate="PICK_IMAGE.P_3">Photos selected</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body padding-top-10 padding-bottom-20" id="getInstagramRecentPhotoNotSaved">
+    <div class="row" >
+      <div  class="col-md-2 col-sm-4 col-xs-4 nopadding" ng-repeat="photo in instagramNotsavedPhotoList">
+        <div ng-click="clickedOnPhotos(photo)" class="box" ng-class="{boxclicked : photo.checked}" style="background:url({{photo.images.thumbnail}}) no-repeat 50% 50%;">
+          <div class="overlay">
+            <span class="checkMark"><img src="assets/images/tick.png"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-4 col-xs-4 nopadding" ng-repeat="photo in removingMediaList_temp">
+        <div ng-click="changeRemoveImageStates(photo)" class="box" ng-class="{boxclicked : photo.checked}" style="background:url({{photo.images.thumbnail}}) no-repeat 50% 50%;">
+          <div class="overlay" >
+            <span class="checkMark"><img src="assets/images/tick.png"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div  ng-if="max_id" class="col-sm-offset-5 col-xs-2">
+        <img id="load_more" ng-click="getInstagramRecentPhotoNotSaved();" class="img-responsive" src="assets/images/ic_arrow_down.png">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer" style="background-color: white;">
+    <button class="btn btn-warning" type="button" ng-click="updateInstagramPhotos()" translate="PICK_IMAGE.BTN_1">Update</button>
+  </div>
+</div>
+<script>
+jQuery(function($) {
+    $('#getInstagramRecentPhotoNotSaved').on('scroll', function() {
+        if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-10) {
+            $("#load_more").click();
+        }
+    })
+});
+</script>

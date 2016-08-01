@@ -1,0 +1,125 @@
+
+<div class="container ma-campaign bg-grey-light padding-top-15" id="ad-analy" ng-init="calculateHashTags();">
+    <div class="container-fluid ma-campaign-body ">
+        <div id="loadingdev" style="display:none;">Processing...please wait for some time</div>
+        <div ng-if="dateListing" id="container_hashtag" style="height: 400px; margin-top: 25px;background: white;margin-bottom: 15px;"></div>
+        <div style="background: white;" class="hashtagbox row">
+            <div ng-if="dateListing" >
+                  <div class="col-md-2" style="text-align: center;"><strong>Total Reach</strong><br/><p style="color:red;text-align: center;">{{totalReach}}</p></div>
+                  <div class="col-md-2" style="text-align: center;"><strong>Total Posts</strong><br/><p style="color:red;text-align: center;">{{totalPosts}}</p></div>
+                  <div class="col-md-2" style="text-align: center;"><strong>Total Likes</strong><br/>
+                        <p style="color:red;text-align: center;">{{totalLikes}}</p>
+                  </div>
+                  <div class="col-md-2" style="text-align: center;"><strong>Total Comments</strong><br/>
+                        <p style="color:red;text-align: center;">{{totalComments}}</p>
+                  </div>
+                  <div class="col-md-2" style="text-align: center;"><strong>First Posted Date</strong><br/>
+                        <p style="color:red;text-align: center;">{{firstPostedDate}}</p>
+                  </div>
+                  <div class="col-md-2" style="text-align: center;"><strong>Last Posted Date</strong><br/>
+                        <p style="color:red;text-align: center;">{{lastPostedDate}}</p>
+                  </div>
+            </div>
+        </div>
+        <div ng-if="topSixPhotos" class="row hashtagbox" style="margin-top:15px;background: white;">
+            <p style="padding-top: 12px;padding-left: 15px;"><strong>Most Engaged Photos</strong></p><br/>
+            <div class="col-md-2" ng-repeat="photo in topSixPhotos  |limitTo:photoDisplayLimit| orderBy:'-likesCount'" style="padding-left:5px;padding-right:5px;">
+                <div class="box-icon">
+                    <img class="img-responsive"  ng-src="{{photo.thumbnail}}"><br/>
+                    @{{photo.username}}<br/>
+                    {{photo.likesCount}} Likes<br/>
+                    {{photo.commentsCount}} Comments<br/>
+                </div>
+            </div>
+            <div style="margin-left:46%" ng-if="topSixPhotos.length>36 && topSixPhotos.length>photoDisplayLimit">
+                <button  ng-click='loadMorePhotos()' class="btn btn-default">Show More</button>
+            </div>
+        </div>
+        <div ng-if="dateListing">
+        <script>
+            $(function() {
+            var scope = angular.element("#container_hashtag").scope();
+
+            if (scope !== undefined){
+                $('#container_hashtag').highcharts({
+                    chart: {
+                        zoomType: 'xy'
+                    },
+                    title: {
+                        text: '#'+scope.tagname
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: [{
+                        categories: scope.dateListing,
+                        crosshair: true
+                    }],
+                    yAxis: [{ // Primary yAxis
+                        labels: {
+                            format: '{value}',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        title: {
+                            text: 'Total Likes',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        }
+                    }, { // Secondary yAxis
+                        title: {
+                            text: 'Total Posts',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        labels: {
+                            format: '{value}',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        opposite: true
+                    }],
+                    tooltip: {
+                        shared: true
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'left',
+                        x: 120,
+                        verticalAlign: 'top',
+                        y: 100,
+                        floating: true,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Total Posts',
+                        type: 'column',
+                        yAxis: 1,
+                        data: scope.postsByDate,
+                        tooltip: {
+                            valueSuffix: ''
+                        }
+                    }, {
+                        name: 'Total Likes',
+                        type: 'column',
+                        data: scope.likesByDate,
+                        tooltip: {
+                            valueSuffix: ''
+                        }
+                    }]
+                });
+        
+            } });
+        </script>
+        </div>
+       
+    </div>
+    <div id="analy-bot"></div>
+</div>

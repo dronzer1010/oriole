@@ -1,0 +1,39 @@
+<div  data-ng-controller="AdvertiserCtrl">
+  <button type="button" data-ng-click="$dismiss()" class="close category-close fa fa-times-circle-o" data-dismiss="modal" aria-label="Close"></button>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Cosmetic') == false" ng-href="" data-ng-click="catgeoryArray('Cosmetic')">Cosmetic</div>
+        <div class="category-box-checked" ng-show="checkCategory('Cosmetic') == true" ng-href="" data-ng-click="catgeoryArray('Cosmetic')">Cosmetic</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Fashion') == false" ng-href="" data-ng-click="catgeoryArray('Fashion')">Fashion</div>
+        <div class="category-box-checked" ng-show="checkCategory('Fashion') == true" ng-href="" data-ng-click="catgeoryArray('Fashion')">Fashion</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Food') == false" ng-href="" data-ng-click="catgeoryArray('Food')">Food</div>
+        <div class="category-box-checked" ng-show="checkCategory('Food') == true" ng-href="" data-ng-click="catgeoryArray('Food')">Food</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Sports') == false" ng-href="" data-ng-click="catgeoryArray('Sports')">Sports</div>
+        <div class="category-box-checked" ng-show="checkCategory('Sports') == true" ng-href="" data-ng-click="catgeoryArray('Sports')">Sports</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Jewellary') == false" ng-href="" data-ng-click="catgeoryArray('Jewellary')">Jewellary</div>
+        <div class="category-box-checked" ng-show="checkCategory('Jewellary') == true" ng-href="" data-ng-click="catgeoryArray('Jewellary')">Jewellary</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Health') == false" ng-href="" data-ng-click="catgeoryArray('Health')">Health</div>
+        <div class="category-box-checked" ng-show="checkCategory('Health') == true" ng-href="" data-ng-click="catgeoryArray('Health')">Health</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Travel') == false" ng-href="" data-ng-click="catgeoryArray('Travel')">Travel</div>
+        <div class="category-box-checked" ng-show="checkCategory('Travel') == true" ng-href="" data-ng-click="catgeoryArray('Travel')">Travel</div>
+      </div>
+      <div class="col-md-3">
+        <div class="category-box" ng-show="checkCategory('Music') == false" ng-href="" data-ng-click="catgeoryArray('Music')">Music</div>
+        <div class="category-box-checked" ng-show="checkCategory('Music') == true" ng-href="" data-ng-click="catgeoryArray('Music')">Music</div>
+      </div>
+    </div>
+  </div>
+</div>

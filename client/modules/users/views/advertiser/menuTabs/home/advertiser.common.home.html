@@ -1,0 +1,231 @@
+<div class="max-right-box"  style="clear:both;margin-bottom:15px;">
+<div class="row ma-search-box-diff adver_search" style="z-index:25000" collapse="searchCollapsed">
+     
+        <div class="row">
+            <div class="col-md-3 col-xs-12 margin-top-minus-7 padding-left-30 margin-bottom-25">
+                <label class="mid-lbl color-black ">
+                    <strong translate="HOMEPAGE.GENDER">
+                        Gender
+                    </strong>
+                </label>
+                <div class="form-group">
+                    <span class="small-lbl color-black margin-left-0">
+                        <input id="male" type="checkbox" data-ng-model="search.male" cd-true-value="male" cd-false-value="" ng-init="true" ng-checked="true"/>
+                        <label for="male" class="male_lab" translate="HOMEPAGE.MALE">
+                            Male
+                        </label>
+                    </span>
+                    <span class="small-lbl color-black margin-left-0">
+                        <input id="female" type="checkbox" data-ng-model="search.female" cd-true-value="female" cd-false-value="" ng-init="true" ng-checked="true"/>
+                        <label for="female" class="male_lab" translate="HOMEPAGE.FEMALE">
+                            Female
+                        </label>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 margin-bottom-25">
+                <div class="form-group">
+                    <p class="mid-lbl color-black margin-bottom-0">
+                        <strong translate="HOMEPAGE.AGE">
+                            Age
+                        </strong>
+                    </p>
+                    <span class="mid-lbl margin-left-0">
+                        18
+                        <input type="text" ng-model="search.age" ng-list class="span2 form-control" value="" data-slider-min="18" data-slider-max="50" data-slider-step="1" data-slider-value="[18,50]" id="max-range-slider"/>
+                        50+
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 margin-bottom-25">
+                <div class="form-group">
+                    <p class="mid-lbl color-black margin-bottom-0">
+                        <strong translate="HOMEPAGE.FOLLOWERS">
+                            Followers
+                        </strong>
+                    </p>
+                    <span class="mid-lbl margin-left-0">
+                        10k
+                        <input type="text" ng-model="search.followers" ng-list class="span2" value="" data-slider-min="10000" data-slider-max="500000" data-slider-step="5000" data-slider-value="[10000,500000]" id="max-range-slider1"/>
+                        500k+
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 margin-bottom-25">
+                <div class="form-group">
+                    <p class="mid-lbl color-black margin-bottom-0">
+                        <strong translate="HOMEPAGE.PRICE">
+                            Price
+                        </strong>
+                    </p>
+                    <span class="mid-lbl margin-left-0">
+                        $100
+                        <input type="text" ng-model="search.price" ng-list class="span2" value=""  data-slider-min="100" data-slider-max="1000" data-slider-step="50" data-slider-value="[100,1000]" id="max-range-slider2"/>
+                        $1000+
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 margin-bottom-25 padding-left-30">
+                <div class="form-group">
+                    <input class="dropdown-camp form-control input-flat" placeholder="Search Area" data-ng-model="search.chosenPlace" googleplace/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <select class="dropdown-camp form-control input-flat" data-ng-model="search.campaignCategory" ng-options="category| translate for category in categories">
+                        <option value="" translate="HOMEPAGE.CATEGORY_SELECT">
+                            Select Category
+                        </option>
+                    </select>
+                </div>
+            </div>
+             <div class="col-md-4">
+            <button class="btn btn-primary bg-red" style="width: 60px;" data-ng-click="applyAdvertiserFilter(search)" translate="HOMEPAGE.APPLY_SEARCH">
+                        Apply
+            </button>
+             </div>
+        </div>
+    </div>
+<div ui-view >
+    <div  id="topnav" class="wrapper wrapper-content bg-grey-light padding-top-20 max-height" 
+    ng-init="applyAdvertiserFilter(search);">
+        <div class="row" >
+
+            <div class="col-md-4" dir-paginate="influencer in allInfluencer |itemsPerPage:15:owner" current-page="pageNumber" total-items="totalPages">
+                <div class="max-block center">
+                    <div class="body">
+                        <img class="img-responsive img-circle " ng-src="{{influencer.profilePhoto}}" ui-sref="advertiser.home.influencer({influencerId: influencer._id})" />
+                        <h4 class="headline bold" ui-sref="advertiser.homehome.influencer({influencerId: influencer._id})">
+                            {{influencer.aboutMe.name}}
+                        </h4>
+                        <p ui-sref="advertiser.home.influencer({influencerId: influencer._id})">
+                            <span ng-if="influencer.aboutMe.gender=='male'" translate="HOMEPAGE.MALE" style="margin:0;float:none!important"></span>
+                            <span ng-if="influencer.aboutMe.gender=='female'" translate="HOMEPAGE.FEMALE" style="margin:0;float:none!important"></span>
+                            <span style="margin:0;float:none!important">, {{calculateAge(influencer.aboutMe.birthday)}}</span> 
+                            <span style="margin:0;float:none!important" translate="HOMEPAGE.YEAR_OLD">Year Old</span></br>
+                            <!-- {{influencer.aboutMe.gender}}, {{calculateAge(influencer.aboutMe.birthday)}} Year Old -->
+                        </p>
+                        <p ui-sref="advertiser.home.influencer({influencerId: influencer._id})">
+                            {{influencer.aboutMe.city}}
+                        </p>
+                        <div class="row">
+                            <div class="col-xs-6 padding-right-5">
+                                <div class="button-block " data-ng-click="inviteInfluencerPopUp(influencer)">
+                                    <img id="test1{{$index}}" src="./assets/images/contact.png" />
+                                    <label class="padding-top-0 home" for="test1{{$index}}"  translate="HOMEPAGE.CHAT">
+                                        Chat
+                                    </label>
+                                </div>
+                            </div>
+                            <div ng-if="false" data-ng-click="inviteInfluencerPopUp(influencer, $index)" class="col-xs-6 padding-right-5">
+                                <div class="button-block button-block-clicked">
+                                    <img id="test2{{$index}}" src="./assets/images/contact-highlighted.png" />
+                                    <label class="padding-top-0 home" for="test2{{$index}}" translate="HOMEPAGE.CHAT">
+                                        Chat
+                                    </label>
+                                </div>
+                            </div>
+                            <div data-ng-click="bookmarkedInfluencerFunc(influencer._id, checkInfluencer(influencer._id), $index)" ng-if="!influencer.bookmark" class="col-xs-6 padding-left-5">
+                                <div class="button-block">
+                                    <img id="test{{$index}}" src="./assets/images/save.png" />
+                                    <label class="padding-top-0 home" for="test{{$index}}" translate="HOMEPAGE.BOOKMARK">
+                                        Bookmark
+                                    </label>
+                                </div>
+                            </div>
+                            <div ng-if="influencer.bookmark" class="col-xs-6 padding-left-5" data-ng-click="bookmarkedInfluencerFunc(influencer._id, checkInfluencer(influencer._id), $index)">
+                                <div class="button-block button-block-clicked">
+                                    <img id="test3{{$index}}" src="./assets/images/save-highlighted.png" />
+                                    <label class="padding-top-0 home" for="test3{{$index}}" translate="HOMEPAGE.BOOKMARK">
+                                        Bookmark
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row max-block-footer">
+                        <!-- <div class="col-md-4 col-md-offset-1 col-xs-offset-2 col-xs-2 center">
+                            <label class="color-grey">
+                                Followers
+                            </label>
+                            <label class="color-black">
+                                {{influencer.followed_by}}
+                            </label>
+                        </div>
+                        <div class="col-md-5 col-md-offset-0 col-xs-offset-2 col-xs-3 center">
+                            <label class="color-grey">
+                                Average Likes
+                            </label>
+                            <label class="color-black">
+                                {{influencer.averageLikes}}
+                            </label>
+                        </div> -->
+                        <div class="center" style="width:50%;float:left">
+                            <label class="color-grey" translate="HOMEPAGE.FOLLOWERS">
+                                Followers
+                            </label><br>
+                            <label class="color-black">
+                                {{influencer.followed_by}}
+                            </label>
+                        </div>
+                        <div class="center" style="width:50%;float:left">
+                            <label class="color-grey" translate="HOMEPAGE.AVERAGE_LIKES">
+                                Average Likes
+                            </label><br>
+                            <label class="color-black">
+                                {{influencer.averageLikes}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row max-avatar-footer">
+                        <div class="col-md-11 col-md-offset-1 align-left">
+                            <button ng-repeat="category in influencer.aboutMe.category" class="btn btn-primary bg-red cat_btn">
+                                <p ng-if="category=='Cosmetic'" translate="HOMEPAGE.COSMETIC"></p>
+                                <p ng-if="category=='Fashion'" translate="HOMEPAGE.FASHION"></p>
+                                <p ng-if="category=='Food'" translate="HOMEPAGE.FOOD"></p>
+                                <p ng-if="category=='Sports'" translate="HOMEPAGE.SPORTS"></p>
+                                <p ng-if="category=='Jewellary'" translate="HOMEPAGE.JEWELLARY"></p>
+                                <p ng-if="category=='Health'" translate="HOMEPAGE.HEALTH"></p>
+                                <p ng-if="category=='Travel'" translate="HOMEPAGE.TRAVEL"></p>
+                                <p ng-if="category=='Music'" translate="HOMEPAGE.MUSIC"></p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="pageNumber!==1 && advertiserInfo.userLevel=='Trial'" ng-click="trialLimitedAccessPopUp();" 
+                    class="overlayTrial">
+                </div>
+            </div>
+        </div>
+        <dir-pagination-controls max-size="15"   direction-links="true" boundary-links="true" on-page-change="getInfluencerList(newPageNumber);">
+
+        </dir-pagination-controls>
+    </div>
+</div>
+</div>
+  <script type="text/javascript">
+        var slider = new Slider("#max-range-slider", {});
+        var slider1 = new Slider('#max-range-slider1', {});
+        var slider2 = new Slider('#max-range-slider2', {});
+        $(function() {
+            $(".ma-search").click(function() {
+                $(".ma-search-box").slideToggle();
+            });
+        });
+</script>
+<style>
+.overlayTrial
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 13px;
+    width:93%;
+    height:93%;
+    right: 0;
+    background: rgba(2, 2, 2, 0.5);
+    z-index: 15000;
+}
+</style>
